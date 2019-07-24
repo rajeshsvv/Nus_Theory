@@ -1,0 +1,99 @@
+The scope of a variable in python is that part of the code where it is visible. 
+Actually, to refer to it, you don’t need to use any prefixes then. 
+Let’s take an example, but before let’s revise python Syntax.
+
+>>> b=8
+>>> def func():
+                a=7
+                print(a)
+                print(b)              
+>>> func()
+7
+8
+
+>>> a
+Traceback (most recent call last):
+
+File “<pyshell#6>”, line 1, in <module>
+
+a
+
+NameError: name ‘a’ is not defined
+Also, the duration for which a variable is alive is called its ‘lifetime’.
+
+UnboundLocalError: local variable ‘a’ referenced before assignment
+Here, we could’ve accessed the global Scope ‘a’ inside ‘func’, 
+but since we also define a local ‘a’ in it, it no longer accesses the global ‘a’. 
+Then, the first print statement inside ‘func’ throws an error in Python, 
+because we’re trying to access the local scope ‘a’ before assigning it. 
+However, it is bad practice to try to manipulate global values from inside local scopes. 
+Try to pass it as a parameter to the function.
+
+>>> def func(a=0):
+                a+=1
+                print(a)             
+>>> func()
+
+b. Global Scope
+We also declare a variable ‘b’ outside any other python Variable scope, this makes it global scope. 
+Consequently, we can read it anywhere in the program. 
+Later in this article, we will see how to write it inside func.
+
+c. Enclosing Scope
+Let’s take another example.
+
+>>> def red():
+                a=1
+                def blue():
+                                b=2
+                                print(a)
+                                print(b)
+                blue()
+                print(a)
+>>> red()
+1
+2
+1
+In this code, ‘b’ has local scope in Python function ‘blue’, and ‘a’ has nonlocal scope in ‘blue’. 
+Of course, a python variable scope that isn’t global or local is nonlocal. 
+This is also called enclosing scope
+
+d. Built-in Scope
+Finally, we talk about the widest scope. 
+The built-in scope has all the names that are loaded into python variable scope when we start the interpreter. 
+For example, we never need to import any module to access functions like print() and id().
+
+
+Like the ‘global’ keyword, you want to make a change to a nonlocal variable, you must use the ‘nonlocal’ keyword. Let’s first try this without the keyword.
+
+>>> def red():
+                a=1
+                def blue():
+                                a=2
+                                b=2
+                                print(a)
+                                print(b)
+                blue()
+                print(a)           
+>>> red()
+2
+2
+1
+As you can see, this did not change the value of ‘a’ outside function ‘blue’. 
+To be able to do that, we use ‘nonlocal’.
+
+>>> def red():
+                a=1
+                def blue():
+                                nonlocal a
+                                a=2
+                                b=2
+                                print(a)
+                                print(b)
+                blue()
+                print(a)             
+>>> red()
+2
+2
+2
+See? This works perfectly fine.

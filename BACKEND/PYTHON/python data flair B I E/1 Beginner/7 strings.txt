@@ -1,0 +1,287 @@
+A Python string is a sequence of characters. 
+There is a built-in class ‘str’ for handling Python string. You can prove this with the type() function.
+
+>>> type('Dogs are love')
+<class ‘str’>
+
+Python doesn’t have the char data-type like C++ or Java does.
+
+When you want to span a Python string across multiple lines, you can use triple quotes.
+
+<pre data-enlighter-language="php" class="EnlighterJSRAW">>>> a="""Hello
+  Welcome"""
+>>> print(a)</pre>
+Hello
+Welcome
+
+It preserves newlines too, unlike using a backward slash for the same.
+
+>>> a="Hello\
+        Welcome"
+>>> print(a)
+Hello      Welcome
+
+
+A string is immutable; it can’t be changed.
+
+>>> a="Dogs"
+>>> a[0]="H"
+Traceback (most recent call last):
+
+File “<pyshell#22>”, line 1, in <module>
+
+a[0]=”H”
+
+TypeError: ‘str’ object does not support item assignment
+
+
+Python String Formatters:
+
+Sometimes, you may want to print variables along with a string. You can either use commas, or use string formatters for the same.
+
+>>> city='Ahmedabad'
+>>> print("Age",21,"City",city)
+Age 21 City Ahmedabad
+
+i. f-strings
+The letter ‘f’ precedes the string, and the variables are mentioned in curly braces in their places.
+
+>>> name='Ayushi'
+>>> print(f"It isn't {name}'s birthday")
+It isn’t Ayushi’s birthday
+
+Notice that because we wanted to use two single quotes in the string, we delimited the entire string with double quotes instead.
+
+
+ii. format() method
+You can use the format() method to do the same. 
+It succeeds the string, and has the variables as arguments separated by commas. 
+In the string, use curly braces to posit the variables. Inside the curly braces, you can either put 0,1,.. or the variables. 
+When doing the latter, you must assign values to them in the format method.
+
+>>> print("I love {0}".format(a))
+I love dogs
+
+>>> print("I love {a}".format(a='cats'))
+I love cats
+
+The variables don’t have to defined before the print statement.
+
+>>> print("I love {b}".format(b='ferrets'))
+I love ferrets
+
+
+c. % operator
+The % operator goes where the variables go in a string. 
+%s is for string. What follows the string is the operator and variables in parentheses/in a tuple.
+
+>>> b='ferrets'
+>>> print("I love %s and %s" %(a,b))
+I love dogs and cats
+
+Other options include:
+
+%d – for integers
+
+%f – for floating-point numbers
+
+
+
+							9. Escape Sequences in Python
+
+In a Python string, you may want to put a tab, a linefeed, or other such things. 
+Escape sequences allow us to do this. 
+An escape sequence is a backslash followed by a character, depending on what you want to do. Python supports the following sequences.
+
+\n – linefeed
+\t – tab
+>>> print("hell\to")
+hell         o
+
+\\ – backslash
+Since a backslash may be a part of an escape sequence, so, a backslash must be escaped by a backslash too.
+
+\’ – A single quote can be escaped by a backslash. This lets you use single quotes freely in a string.
+\” – Like the single quote, the double quote can be escaped too.
+
+
+
+
+							10. Python String Functions
+
+Python provides us with a number of functions that we can apply on strings or to create strings.
+
+
+a. len()
+The len() function returns the length of a string.
+
+>>> a='book'
+>>> len(a)
+4
+
+You can also use it to find how long a slice of the string is.
+
+>>> len(a[2:])
+2
+
+b. str()
+This function converts any data type into a string.
+
+>>> str(2+3j)
+‘(2+3j)’
+
+>>> str(['red','green','blue'])
+“[‘red’, ‘green’, ‘blue’]”
+
+c. lower() and upper()
+These methods return the string in lowercase and uppercase, respectively.
+
+>>> a='Book'
+>>> a.lower()
+‘book’
+
+>>> a.upper()
+‘BOOK’
+
+d. strip()
+It removes whitespaces from the beginning and end of the string.
+
+>>> a='  Book '
+>>> a.strip()
+‘Book’
+
+e. isdigit()
+Returns True if all characters in a string are digits.
+
+>>> a='777'
+>> a.isdigit()
+True
+
+>>> a='77a'
+>>> a.isdigit()
+False
+
+f. isalpha()
+Returns True if all characters in a string are characters from an alphabet.
+
+>>> a='abc'
+>>> a.isalpha()
+True
+
+>>> a='ab7'
+>>> a.isalpha()
+False
+
+g. isspace()
+Returns True if all characters in a string are spaces.
+
+>>> a='   '
+>>> a.isspace()
+True
+
+>>> a=' \'  '
+>>> a.isspace()
+False
+
+h. startswith()
+It takes a string as an argument, and returns True is the string it is applied on begins with the string in the argument.
+
+>>> a.startswith('un')
+True
+
+i. endswith()
+It takes a string as an argument, and returns True if the string it is applied on ends with the string in the argument.
+
+>>> a='therefore'
+>>> a.endswith('fore')
+True
+
+j. find()
+It takes an argument and searches for it in the string on which it is applied. It then returns the index of the substring.
+
+>>> 'homeowner'.find('meow')
+2
+
+If the string doesn’t exist in the main string, then the index it returns is 1.
+
+>>> 'homeowner'.find('wow')
+-1
+k. replace()
+It takes two arguments. The first is the substring to be replaced. The second is the substring to replace with.
+
+>>> 'banana'.replace('na','ha')
+‘bahaha’
+
+l. split()
+It takes one argument. The string is then split around every occurrence of the argument in the string.
+
+>>> 'No. Okay. Why?'.split('.')
+[‘No’, ‘ Okay’, ‘ Why?’]
+
+m. join()
+It takes a list as an argument and joins the elements in the list using the string it is applied on.
+
+>>> "*".join(['red','green','blue'])
+‘red*green*blue’
+
+						11. Python String Operations
+
+a. Comparison
+Python Strings can compare using the relational operators.
+
+>>> 'hey'<'hi'
+True
+
+‘hey’ is lesser than ‘hi lexicographically (because i comes after e in the dictionary)
+
+>>> a='check'
+>>> a=='check'
+True
+
+>>> 'yes'!='no'
+True
+
+b. Arithmetic
+Some arithmetic operations can be applied on strings.
+
+>>> 'ba'+'na'*2
+‘banana’
+
+c. Membership
+The membership operators of Python can be used to check if string is a substring to another.
+
+>>> 'na' in 'banana'
+True
+
+>>> 'less' not in 'helpless'
+False
+
+d. Identity
+Python’s identity operators ‘is’ and ‘is not’ can be used on strings.
+
+>>> 'Hey' is 'Hi'
+False
+
+>>> 'Yo' is not 'yo'
+True
+
+
+e. Logical
+Python’s and, or, and not operators can be applied too. An empty string has a Boolean value of False.
+
+1. and- If the value on the left is True it returns the value on the right. Otherwise, the value on the left is False, it returns False.
+
+>>> '' and '1'
+”
+
+>>> '1' and ''
+”
+2. or- If the value on the left is True, it returns True. Otherwise, the value on the right is returned.
+
+3. not- As we said earlier, an empty string has a Boolean value of False.
+
+>>> not('1')
+False
+
+>>> not('')
+True

@@ -1,0 +1,35 @@
+https://www.quora.com/How-do-I-post-my-code-in-github
+
+
+1. Install git.
+2. Go the folder where your code is. 
+3. Open a terminal there(windows-shift+right click, Command Prompt/Unix-right click, Terminal)
+4. Type git init and press enter.
+5. Open Github and signup there.
+6. Login and Create a new repository.
+7. Do not add readme and licence U can add it later. 
+8. Copy the line git remote add origin .........................
+9. Go to your local code folder open terminal or command prompt and paste that line and press enter.
+10. Type git add --all and press enter.
+11. Type git commit -m "Initial commit" and press enter.
+12. Type git push -u origin master.
+13. Give your github userid and Password.
+14. Open github and open your repository and check if your code is pushed or not.
+
+
+
+
+
+for upload backend and frontend code to rajeshsvv gtihub account follow these steps:
+
+go to your code folder where u want to git.and initialise the git
+git init
+
+add your created repo link in github to local folder by his command 
+git remote add origin https://github.com/rajeshsvv/Nous_Backend.git
+
+next git add --all
+
+git commit -m "Nous Backend"
+
+git push origin master -f

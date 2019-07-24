@@ -1,0 +1,17 @@
+Sets
+
+5. Python Set
+This is one of the important Python Data Structures. 
+A Python set is a slightly different concept from a list or a tuple. 
+A set, in Python, is just like the mathematical set. 
+It does not hold duplicate values and is unordered. However, it is not immutable, unlike a tuple.
+
+Let’s first declare a set. Use curly braces for the same.
+
+>>> myset={3,1,2}
+>>> myset
+{1, 2, 3}
+
+As you can see, it rearranged the elements in an ascending order.
+
+Since a set is unordered, there is no way we can use indexing to access or delete its elements. Then, to perform operations on it, Python provides us with a list of functions and methods like discard(), pop(), clear(), remove(), add(), and more. Functions like len() and max() also apply on sets.

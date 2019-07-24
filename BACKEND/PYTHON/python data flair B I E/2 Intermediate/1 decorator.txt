@@ -1,0 +1,92 @@
+In Python, a function is a first-class object. 
+This means that you can pass it around with absolute ease. 
+You can return it, and even pass it as an argument to another. 
+You can also nest a python function inside another.
+
+Python Decorator function is a function that adds functionality to another, but does not modify it.
+In other words, Python Decorator wraps another function. 
+This is like a gift wrapper in real life. 
+Also, this is called metaprogramming, because a part of the program tries to modify another at compile time. 
+
+
+This is useful in cases when you want to add functionality to a function, but don’t want to modify it for the same
+
+>>> def decor(func):
+         def wrap():
+             print("$$$$$$$$$$$$$$$$$$$$$$")
+             func()
+             print("$$$$$$$$$$$$$$$$$$$$$$")
+          return wrap
+>>> def sayhello():
+          print("Hello")
+>>> newfunc=decor(sayhello)
+>>> newfunc()
+
+output--------------------------
+$$$$$$$$$$$$$$$$$$$$$$
+
+Hello
+
+$$$$$$$$$$$$$$$$$$$$$$
+
+decorators in python help us add extra functionality to a function without modifying it
+
+					7. Chaining Decorators in Python
+
+You don’t have to settle with just one Python decorator. That’s the beauty of the pie syntax. Let’s see how.
+
+>>> def decor1(func):
+        def wrap():
+               print("$$$$$$$$$$$$$$")
+               func()
+               print("$$$$$$$$$$$$$$")
+         return wrap
+>>> def decor2(func):
+        def wrap():
+               print("##############")
+               func()
+               print("##############")
+return wrap
+Now, let’s define the sayhello() function. We’ll use decor1 and decor2 on this.
+
+>>> @decor1
+@decor2
+def sayhello():
+         print("Hello")
+>>> sayhello()
+$$$$$$$$$$$$$$
+
+########
+Hello
+
+########
+$$$$$$$$$$$$$$
+
+Note how the octothorpes (#) are sandwiched by dollars ($)? This lends us an important piece of information- the order of the decorators in python in the pie syntax matters. Since we used decor1 first, we get the dollars first
+
+*args is a tuple of arguments, and **kwargs is a dictionary of keyword arguments.
+
+If you feel the assignment and calling statements are unnecessary, we’ve got the pie syntax for you. 
+It’s simple; name the decorating function after the @ symbol, and put this before the function to decorate. Here’s an example.
+
+>>> @decor
+def sayhello():
+       print("Hello")
+>>> sayhello()
+$$
+
+Hello
+
+$$
+
+a. Python Closure
+When we call func, it remembers the value of func from the argument to the function decorator(). 
+This is called closure in Python. Here’s another example to clear this up.
+
+>>> msg="Hello"
+>>> def func1(msg):
+         def func2():
+              print(msg)
+         func2()
+>>> func1(msg)
+Hello

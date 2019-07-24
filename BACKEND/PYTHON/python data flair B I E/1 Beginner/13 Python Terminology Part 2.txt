@@ -1,0 +1,158 @@
+2. Lambda					A lambda is an anonymous inline function made of a single expression. 
+						When we call the function, it evaluates the expression and returns it.
+
+3. LBYL						Look Before You Leap is a coding style that explicitly tests for pre-conditions before making calls 
+						or lookups. If your code has too many if-statements, you know it follows LBYL.
+
+4. List						A list is a sequence of objects. This sequence is mutable, and can be heterogeneous.
+
+5. List Comprehension				A list comprehension is a compact way to create a list.
+						a=[i**2 for i in range(7)]			[0, 1, 4, 9, 16, 25, 36] 
+
+
+6. Loader					A loader is an object that loads a module. 
+						A loader object must define the method load_module(), and a finder returns a loader.
+
+7. Mapping					A container object, Mapping supports arbitrary key lookups. 
+						It also implements the methods specified in the MutableMapping or Mapping abstract base classes. 
+						Examples- dict, collections.defaultdict, collections.OrderedDict and collections.Counter
+
+8. Meta Path Finder				The meta path finder is a finder that a search of sys.meta_path returns. 
+						It is different from a path entry finder.
+
+9. Metaclass					Meta means beyond. This way, a metaclass is a class of a class. 
+						A regular class definition creates a name, a dictionary for it, and a list of its base classes. 
+						The metaclass is the one that takes these three arguments, and actually creates the class.
+						While most object-oriented languages implement it by default, Python lets us create our own metaclasses. 						Although we don’t always need this, this can provide for elegant solutions in logging attribute access, 						adding thread-safety, tracking object creation, implementing singletons, and other tasks.
+
+10. Method					A method is simply a function we define inside a class body. 
+						We provide ‘self’ as the first parameter to each method; 
+						it is how it understands that it must work with this object. 
+
+11. Method Resolution Order			MRO is the order in which the interpreter searches base classes when we look a member up.
+
+12. Module					A module is any object that is an organizational unit of Python code. 
+						While we can import modules provided by the Python, we can also create our own.
+
+13. Module Spec					A namespace that contains the import-related information when we load a module is module spec. 
+						It is an instance of importlib.machinery.ModuleSpec. 
+
+15. Mutable					Unlike immutables, a mutable can change its value. However, it keeps its id(). 
+						Examples include lists and dictionaries.
+
+16. Namedtuple					A namedtuple lets us access a value using a label instead of an index. 
+						We import the namedtuple() function from the module collections.
+
+17. Namespace					Implemented as dictionaries, namespaces hold variables. 
+						We have local, global, and nested namespaces in objects. 
+						They prevent name collisions and provide modularity.
+
+
+18. Namespace Package				It is a PEP 420 package that contains subpackages. 
+						In fact, that is all it does. It has no physical representation, not even a __init__.py file.
+
+19. Nested Scope				In Python, we can refer to a variable in an enclosing definition. 
+						An inner function can refer to variables in the outer function. 
+						But when we say refer, we mean it can access that variable to read it, but cannot modify it.
+
+20. Object					An object is an instance of a class. It has attributes(state) and methods(behavior). 
+						It is the ultimate base class of any class in Python.
+
+21. Package					A package is a container for modules and other subpackages. 
+						Each package is like a directory, except for the fact that it has a __init__.py file. 
+						We usually keep that empty.
+
+22. Parameter					When we define a function or a method, 
+						we name entities that specify arguments that the function can accept when we call it.
+
+23. Path Entry					A path entry is a single location on the import path. 
+						The path-based finder consults it to find modules to import.
+						
+24. Path Entry Finder				The path entry finder is a finder that a callable returns on sys.path_hooks. 
+						It knows how to locate modules if it knows a path entry.
+
+25. Path Entry Hook				It is a callable on the sys.path_hook list. 
+						If it knows how to find modules on a specific path entry, it returns a path entry finder.
+
+
+26. Path Based Finder				This is a default meta path finder, and it searches for an import path for modules.
+
+27. Path-Like Object				A path-like object is an object that represents a system file path. 
+						It can either be a str or bytes object that represents a path, or an object that implements the os.
+						PathLike protocol.
+
+28. Portion					A portion is a set of files, in a single directory, that contribute to a namespace package.
+
+
+30. Provisional API			An API purposely excluded from the standard library’s backwards-compatibility guarantees is a provisional API.
+
+31. Python 3000				Python 3000 is a nickname for the Python 3.x release line. We also call it Py3k.
+
+32. Pythonic				A common Python idiom is to iterate over a list using a for-loop directly instead of using a counter. 
+					Programmers in another language would do this:
+					nums=[1,2,3,4,5,6,7]
+					for i in range(len(nums)):
+				      	print(nums[i])
+
+					for num in nums:
+				     	print(num)
+
+
+33. Qualified Name			A dotted name that shows us the path from a module’s global scope to a class, method, or function 
+					defined in that module. The attribute __qualname__ will tell us.
+
+34. Reference Count			This is the number of references to an object. 
+					A deallocated object’s reference count drops to 0. The function getrefcount() from the module to find out.
+
+35. Regular Package			A regular package is a traditional package-  a directory with a __init__.py file.
+
+36. __slots__				__slots__ is a declaration inside a class, 
+					that pre-declares space for instance attributes, and eliminates instance dictionaries. This way, it saves memory.
+
+37. Sequence				A sequence is an iterable which accesses elements efficiently with integer indices. 
+					It also has the methods __getitem__() and __len__(). 
+					Examples of sequences include lists, strings, tuples, and bytes.
+
+38. Single Dispatch			It is a kind of a generic function dispatch where a single argument’s type decides the implementation.
+
+
+39. Slice				A slice is an object that holds a part of a collection. For this, we use the slicing operator [].
+
+40. Special Method			A special method is one that Python calls implicitly to execute an operation on a type, say, addition. 
+					Such a method has two leading and two trailing underscores.
+
+41. Statement				A statement is a block of code. Actually, it can be an expression or a keyword.
+
+42. Struct Sequence			A struct sequence is a tuple with named elements. 
+					So, they are like namedtuples, but lack methods like _make() and _asdict().
+
+
+43. Text Encoding			We use codecs to encode Unicode strings to bytes.
+
+44. Text File				A text file is one that can read and write str objects. To open a file in text mode, we may use ‘r’ or ‘w’ modes.
+
+
+45. Triple-Quoted String		A triple-quoted string is delimited by three sets of single/double quotes. 
+					We can use it to easily work with single/double quotes without trouble, or to create a docstring.
+
+46. Type				The type function, when we call it on an object, tells us what type of a Python object it is.
+
+47. Universal Newlines			This is a way to interpret text streams where the following end a line:
+‘\n’ (Unix)
+‘\r\n’ (Windows)
+‘\r’ (Macintosh)
+48. Variable Annotation			A variable annotation is a type metadata value. 
+					It is associated with a class attribute or a module global variable. Third-party libraries make use of them.
+
+49. Virtual Environment			A virtual environment is a cooperatively isolated runtime environment. 
+					It allows users and applications to exclusively install and upgrade Python distribution packages.
+					For more on virtual environments, read Python Virtual Environments.
+
+50. Virtual Machine			A VM is a computer that is entirely defined in software. 
+					The virtual machine for Python executes the bytecode that the bytecode compiler emits.
+
+
+
+
+
+

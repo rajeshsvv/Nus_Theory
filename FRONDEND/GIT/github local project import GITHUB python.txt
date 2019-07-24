@@ -1,0 +1,247 @@
+								code basics GIT tutorial 
+
+
+inside target project folder in command prompt remove git related files in the paticular target folder
+(rd-remove directory)
+
+ls to check the files in the particular folder.
+
+cd "D:\OTHERS\JAVASCRIPT\Mosh JS"
+rd .git /S/Q
+
+
+
+go to gihub and login to your account
+and make new repository
+
+and after that create repository button option
+
+then go to bit bash or git gui application k to upload the source code to Github acocunt.
+
+
+ls
+cd
+git init
+git remote add origin <gitlink>
+git remote -v (to check read and push permissions)
+git add .
+git commit -m "First commit"
+git push origin master(git push -u origin master)(git push origin master -f)
+
+git help
+(git config --global --unset http.proxy)
+
+
+go to desire path where u want to create a repository to upload the files into GITHUB account.
+D:\PYTHON\PRACTICE
+
+check ls in git bash command prompt
+
+
+1-git init
+initialize the new Git repository in our local environment
+
+
+2 git remote add origin https://github.com/rajesh237/Python-DataFlair.git
+  now we created git hub repository empty folder and created local git repository.now configure these two.
+
+  git remote -v (to check push and fetch operations)
+
+
+3 git add .
+  we add everything by this command
+
+
+4 git commit -m "First Commit"
+
+5 git push -u origin master(this is not work first)
+  you need to push all these changes to github repository
+  (git push origin master -f)
+	
+   so refer this link for answer
+  (https://stackoverflow.com/questions/10333836/git-clone-cant-resolve-proxy)
+
+Ans:git config --global --unset http.proxy
+
+
+git clone git repository link
+git clone https://github.com/rajesh237/Python-DataFlair.git
+
+git status
+
+git difftool HEAD(if u want to update the file to github repository)
+
+now it is working
+
+git log
+
+
+
+to delete the proxy enable in the regedit:
+Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+
+
+
+				4 th part refer this link (https://www.youtube.com/watch?v=3dk3s4LK-Wg&list=PLeo1K3hjS3usJuxZZUBdjAcilgfQHkRzW&index=4)
+
+undo uncommited changes
+git checkout
+
+undo committed changes
+git revert
+
+resetting changes
+git reset
+
+
+				5 video	create branches in GIT
+
+
+
+to know the current branch				git branch  
+
+to create the new branch				git branch thirsty
+
+git branch 				now it shows two branches master and thirsty but master is in green colour means active to do for thirsty also. 
+
+git checkout thirsty			to switch another branch for example main branch master k
+
+git add hungry.py
+
+git commit -m "fried fish"  		this changes are related to thirsty branch only because now u r in thirsty brnach.
+
+[7:41]	Merge two branches like thirsty and master.
+
+git merge thirsty
+
+
+now to do visible branch in github page
+
+git checkout master
+
+git push
+
+git push --set-upstream origin thirsty
+
+branches allows u to maintain two diifferent copies of code 
+
+11:24
+
+delete the branch now:
+
+ create some dummy for that.
+
+(means branch)
+ git checkout -b dummy
+
+
+(means delete)
+ git branch -d dummy 
+
+
+									6 HEAD in GIT
+
+HEAD is reference to most recent commit in current branch(in most of the cases).
+
+when HEAD does not point to most recent commit  you go into detached HEAD state.
+
+
+
+git show HEAD
+
+2:21
+
+git difftool
+
+									7 .gitignore
+
+
+when enter command git status it shows .idea directory always unneccessarily.
+so we have to ignore those idea directory.for that need to create a file with
+
+touch .gitignore in git bash command prompt and put .idea in .gitignore file
+
+
+what ever files u dont want to show when u enter a command git status then keep those files in .gitignore file.
+
+like in .gitignore file
+
+.idea
+test.py
+*.exe			(for multiple files need to be hide here)
+
+
+									8 Diff Merge using Meld
+
+diff merge using meld
+
+1)install meld
+
+2)diff (git difftool)
+
+3)merge (git mergetool)
+
+
+git difftool origin/master
+
+
+working with specific tool even if it is old like vim or meld
+
+git difftool -t vimdiff
+
+git difftool -t meld
+
+
+6:50
+
+how to merge conflicts?
+
+error: Your local changes to the following files would be overwritten by checkout:
+        .gitignore
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+run git stash before and git stash pop afterwards,
+use git checkout --merge, or
+discard your local changes with git reset --hard.
+
+before pushing the changes u always want to do
+
+git pull(u always get the latest copy from the upstream)
+
+
+
+									9 what is GITHUB?
+
+github is a website to store our code  on the cloud.
+it is not just cloud storage but it is full version control system powered by GIT.
+
+it is adaptable for collaboration and open source projects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+ 
+
+s
+
+
+
+
+
+
+
+
+

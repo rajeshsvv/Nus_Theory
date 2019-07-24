@@ -1,0 +1,29 @@
+Apache Airflow is an open-source tool for orchestrating complex computational workflows and data processing pipelines. ... 
+An Airflow workflow is designed as a directed acyclic graph (DAG). 
+That means, that when authoring a workflow, you should think how it could be divided into tasks which can be executed independently
+
+
+Airflow is a platform to programmatically author, schedule and monitor workflows. 
+Use airflow to author workflows as directed acyclic graphs (DAGs) of tasks. 
+The airflow scheduler executes your tasks on an array of workers while following the specified dependencies.
+
+The Airflow scheduler monitors all tasks and all DAGs, and triggers the task instances whose dependencies have been met. ... 
+The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. 
+To kick it off, all you need to do is execute airflow scheduler .
+
+In computer science and mathematics, a directed acyclic graph (DAG) is a graph that is directed and without cycles connecting the other edges. 
+This means that it is impossible to traverse the entire graph starting at one edge. ... 
+The graph is a topological sorting, where each node is in a certain order.
+
+
+
+docker pull puckel/docker-airflow
+docker images
+docker run -d -p 8090:8090 puckel/docker-airflow webserver
+docker ps
+docker exec -ti <container name> bash
+/usr/local/airflow/dags
+
+docker run -d -p 8080:8080 -v /path/to/dags/on/your/local/machine/:/usr/local/airflow/dags  puckel/docker-airflow webserver
+
+airflow test Helloworld task_1 2015-06-01

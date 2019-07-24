@@ -1,0 +1,392 @@
+Questions for Python Interview for freshers – Q. 2,3,6,7,8,9
+Questions for Python Interview for experienced – Q. 1,4,5,10
+
+Questions for Python Interview for freshers – Q. 11,12,13,15,18,20
+Questions for Python Interview for experienced – Q. 14,16,17,19
+
+
+Questions for Python Interview for freshers – Q. 21,22,23,27,28,29
+Questions for Python Interview for experienced – Q. 24,25,26,30
+
+
+
+__len__ is a wrapper descriptor which in turn makes a call to len().
+
+>>> word='word'
+>>> len(word)
+
+
+
+Q.2. Have you heard of the yield keyword in Python?
+Ans. Yes, I have. This keyword bears the ability to turn any function into a generator. 
+Much like the standard return keyword, but returns a generator object. 
+It is also true that one function may observe multiple yields.
+
+>>> def odds(n):
+      odd=[i for i in range(n+1) if i%2!=0]
+      for i in odd:
+               yield i
+>>> for i in odds(8):
+      print(i)
+1
+3
+5
+7
+
+
+Q.3. How will you print the contents of a file?
+Ans.
+
+>>> try:
+       with open('tabs.txt','r') as f:
+              print(f.read())
+except IOError:
+       print("File not found")
+
+
+
+Q.4. How will you convert a list into a string?
+Ans. We will use the join() method for this.
+
+>>> nums=['one','two','three','four','five','six','seven']
+>>> s=' '.join(nums)
+>>> s
+‘one two three four five six seven’
+
+Q.5. What will the following code output?
+>>> a=1
+>>> a,b=a+1,a+1
+>>> a,b
+Ans. The output is (2, 2). 
+This code increments the value of a by 1 and assigns it to both a and b. 
+This is because this is a simultaneous declaration. The following code gives us the same:
+
+>>> a=1
+>>> b,a=a+1,a+1
+>>> a,b
+
+Q.6. Explain different ways to create an empty NumPy array in Python.
+Ans. We’ll talk about two methods to create NumPy array-
+
+First method-
+>>> import numpy
+>>> numpy.array([])
+array([], dtype=float64)
+
+Second method-
+>>> numpy.empty(shape=(0,0))
+array([], shape=(0, 0), dtype=float64)
+(2, 2)
+
+Q.7. How will you remove a duplicate element from a list?
+Ans. We can turn it into a set to do that.
+
+>>> list=[1,2,1,3,4,2]
+>>> set(list)
+{1, 2, 3, 4}
+
+
+Q.8. How many types of objects does Python support?
+Ans. Objects in Python are mutable and immutable. Let’s talk about these.
+
+Immutable objects- Those which do not let us modify their contents. 
+Examples of these will be tuples, booleans, strings, integers, floats, and complexes. Iterations on such objects are faster.
+>>> tuple=(1,2,4)
+>>> tuple
+(1, 2, 4)
+
+>>> 2+4j
+(2+4j)
+
+Mutable objects- Those that let you modify their contents. Examples of these are lists, sets, and dicts. Iterations on such objects are slower.
+>>> [2,4,9]
+[2, 4, 9]
+
+>>> dict1={1:1,2:2}
+>>> dict1
+{1: 1, 2: 2}
+While two equal immutable objects’ reference variables share the same address, 
+it is possible to create two mutable objects with the same content.
+
+
+Q.9. What is a control flow statement?
+Ans. A Python program usually starts to execute from the first line. 
+From there, it moves through each statement just once and as soon as it’s done with the last statement, it transactions the program. 
+However, sometimes, we may want to take a more twisted path through the code. 
+Control flow statements let us disturb the normal execution flow of a program and bend it to our will.
+
+
+Q.10. Create a new list to convert the following list of number strings to a list of numbers.
+nums=[‘22’,’68’,’110’,’89’,’31’,’12’]
+Ans. We will use the int() function with a list comprehension to convert these strings into integers and put them in a list.
+
+>>> [int(i) for i in nums]
+[22, 68, 110, 89, 31, 12]
+
+
+Q.11. What is the MRO in Python?
+Ans. MRO stands for Method Resolution Order. 
+Talking of multiple inheritances, whenever we search for an attribute in a class, Python first searches in the current class. 
+If found, its search is satiated.If not, it moves to the parent class. 
+It follows an approach that is left-to-right and depth-first. It goes Child, Mother, Father, Object.
+We can call this order a linearization of the class Child;
+the set of rules applied are the Method Resolution Order (MRO). 
+We can borrow the __mro__ attribute or the mro() method to get this.
+
+
+Q.12. Are methods and constructors the same thing?
+Ans. No, there are subtle but considerable differences-
+
+We must name a constructor in the name of the class; a method name can be anything.
+
+Whenever we create an object, it executes a constructor; whenever we call a method, it executes a method.
+
+For one object, a constructor executes only once; a method can execute any number of times for one object.
+
+We use constructors to define and initialize non-static variables; we use methods to represent business logic to perform operations
+
+
+
+Q.13. Can you explain the life cycle of a thread?
+Let’s revise Python Multithreading
+
+To create a thread, we create a class that we make override the run method of the thread class. Then, we instantiate it.
+A thread that we just created is in the new state. 
+When we make a call to start() on it, it forwards the threads for scheduling. These are in the ready state.
+When execution begins, the thread is in the running state.
+Calls to methods like sleep() and join() make a thread wait. Such a thread is in the waiting/blocked state.
+When a thread is done waiting or executing, other waiting threads are sent for scheduling.
+A running thread that is done executing terminates and is in the dead state.
+
+
+
+Q.14. Below, we give you code to remove numbers smaller than 5 from the list nums. However, it does not work as expected. Can you point out the bug for us?
+>>> nums=[1,2,5,10,3,100,9,24]
+>>> for i in nums:
+             if i<5:
+                         nums.remove(i)
+>>> nums
+[2, 5, 10, 100, 9, 24]
+Ans. This code checks for each element in nums- is it smaller than 5? If it is, it removes that element. 
+In the first iteration, 1 indeed is smaller than 5. So it removes that from this list. 
+But this disturbs the indices. Hence, it checks the element 5, but not the element 2. For this situation, we have three workarounds:
+
+Create an empty array and append to that-
+>>> nums=[1,2,5,10,3,100,9,24]
+>>> newnums=[]
+>>> for i in nums:
+        if i>=5:
+               newnums.append(i)
+>>> newnums
+[5, 10, 100, 9, 24]
+
+Using a list comprehension-
+>>> nums=[1,2,5,10,3,100,9,24]
+>>> newnums=[i for i in nums if i>=5]
+>>> newnums
+[5, 10, 100, 9, 24]
+
+Using the filter() function-
+>>> nums=[1,2,5,10,3,100,9,24]
+>>> newnums=list(filter(lambda x:x>=5, nums))
+>>> newnums
+[5, 10, 100, 9, 24]
+
+Q.15. What is the best code you can write to swap two numbers?
+Ans. I can perform the swapping in one statement.
+
+>>> a,b=b,a
+Here’s the entire code, though-
+
+>>> a,b=2,3
+>>> a,b=b,a
+>>> a,b
+(3, 2)
+
+
+Q.16. Explain the problem with the following piece of code-
+>>> def func(n=[]):
+               #playing around
+                pass
+>>> func([1,2,3])
+>>> func()
+>>> n
+Ans. The request for n raises a NameError. 
+This is since n is a variable local to func and we cannot access it elsewhere.
+It is also true that Python only evaluates default parameter values once; 
+every invocation shares the default value. 
+If one invocation modifies it, that is what another gets. 
+This means you should only ever use primitives, strings, and tuples as default parameters, not mutable objects.
+
+
+Q.17. Can you remove the whitespaces from the string “aaa bbb ccc ddd eee”?
+Ans. I can think of two ways to do this.
+
+Using join-
+>>> s='aaa bbb ccc ddd eee'
+>>> s1=''.join(s.split())
+>>> s1
+‘aaabbbcccdddeee’
+
+Using a list comprehension-
+>>> s='aaa bbb ccc ddd eee'
+>>> s1=str(''.join(([i for i in s if i!=' '])))
+>>> s1
+‘aaabbbcccdddeee’
+
+Q.18. Given the first and last names of all employees in your firm, what data type will you use to store it?
+Ans. I can use a dictionary to store that. It would be something like this-
+{‘first_name’:’Ayushi’,’second_name’:’Sharma’}
+
+Q.19. What do you see below?
+s = a + ‘[‘ + b + ‘:’ + c + ‘]’
+Ans. This is string concatenation. If a, b, and c are strings themselves, 
+then it works fine and concatenates the strings around the strings ‘[‘, ‘:’, and ‘]’ as mentioned. 
+If even one of these isn’t a string, this raises a TypeError.
+
+Q.20. If a function does not have a return statement, is it valid?
+Ans. Very conveniently. A function that doesn’t return anything returns a None object. 
+Not necessarily does the return keyword mark the end of a function; 
+it merely ends it when present in the function. 
+Normally, a block of code marks a function and where it ends, the function body ends.
+
+
+
+Q.21. What good is recursion?
+Ans. With recursion, we observe the following:
+
+Need to put in less efforts.
+Smaller code than that by loops.
+Easier-to-understand code.
+
+Q.22. So does recursion cause any trouble?
+Ans. Sure does:
+
+Needs more function calls.
+Each function call stores a state variable to the program stack- consumes memory, can cause memory overflow.
+Calling a function consumes time.
+
+
+Q.23. How do you get the current working directory using Python?
+Ans. Working on software with Python, you may need to read and write files from various directories. 
+To find out which directory we’re presently working under, we can borrow the getcwd() method from the os module.
+
+>>> import os
+>>> os.getcwd()
+‘C:\\Users\\Ayushi\\AppData\\Local\\Programs\\Python\\Python37-32’
+
+
+Q.24. What is tuple unpacking?
+Ans. Suppose we have a tuple nums=(1,2,3). We can unpack its values into the variables a, b, and c. Here’s how:
+Have a look at Python tuple
+
+>>> nums=(1,2,3)
+>>> a,b,c=nums
+>>> a
+1
+
+>>> b
+2
+
+>>> c
+3
+
+
+Q.25. What does the following code give us?
+>>> b=(1)
+Ans. Not a tuple. This gives us a plain integer.
+
+>>> type(b)
+<class ‘int’>
+To let it be a tuple, we can declare so explicitly with a comma after 1:
+
+>>> b=(1,)
+>>> type(b)
+<class ‘tuple’>
+
+
+Q.26. What is the iterator protocol?
+Ans. The iterator protocol for Python declares that we must make use of two functions to build an iterator- iter() and next().
+
+iter()- To create an iterator
+next()- To iterate to the next element
+>>> a=iter([2,4,6,8,10])
+>>> next(a)
+2
+
+>>> next(a)
+4
+
+>>> next(a)
+6
+
+>>> next(a)
+8
+
+>>> next(a)
+10
+
+>>> next(a)
+Traceback (most recent call last):
+ File “<pyshell#31>”, line 1, in <module>
+   next(a)
+StopIteration
+
+
+Q.27. Why do we need to overload operators?
+Ans. To compare two objects, we can overload operators in Python. 
+We understand 3>2. But what is orange>apple? Let’s compare apples and oranges now.
+
+>>> class fruit:
+       def __init__(self,type,size):
+               self.type='fruit'
+               self.type=type
+               self.size=size
+       def __gt__(self,other):
+               if self.size>other.size:
+                        return True
+               return False
+>>> orange=fruit('orange',7)
+>>> apple=fruit('apple',8)
+>>> apple>orange
+True
+
+>>> orange>apple
+False
+
+Q.28. What is the enumerate() function in Python?
+Ans. enumerate() iterates through a sequence and extracts the index position and its corresponding value too.
+Let’s take an example.
+
+>>> for i,v in enumerate(['Python','C++','Scala']):
+         print(i,v)
+0 Python
+1 C++
+2 Scala
+
+
+Q.29. How do we make forms in Python?
+Ans. We use the cgi module for this; we borrow the FieldStorage class from it. It has the following attributes:
+
+form.name: Name of field.
+form.filename: Client-side filename for FTP transactions.
+form.value: Value of field as string.
+form.file: File object from which to read data.
+form.type: Content type.
+form.type_options: Options of ‘content-type’ line of HTTP request, returned as dictionary.
+form.disposition: The field ‘content-disposition’.
+form.disposition_options: Options for ‘content-disposition’.
+form.headers: All HTTP headers returned as dictionary.
+
+Q.30. How will you create the following pattern using Python?
+*
+**
+***
+****
+*****
+Ans. We will use two for-loops for this.
+
+>>> for i in range(1,6):
+        for j in range(1,i+1):
+                  print('*',end='')
+        print()

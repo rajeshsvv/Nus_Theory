@@ -1,0 +1,115 @@
+wsdl (wis dul) web service description lanaguage:
+-------------------------------------------------
+is a document holds the information in the form of xml format.
+consist of all the information of services like, method names, return types, parameters,throwing exceptions and endpoint urls.
+
+webservices:
+---------------------
+
+java app------------uses WSDL Documnet----------------->Python application
+
+UDDI-->UNIVERSAL DESCRIPTION DISCOVERY AND INTEGRATION.  
+(WEBSERVICES REGISTERED HERE,means client can able to get the wsdl using UDDI called as xml based registry..)
+
+exchange the information from application to web services we use xml format..
+
+(soap)simple object acccessprotocol (uses xml format data)
+
+service endpoint interface was able to connect to the service.
+
+WSDL elements:
+------------------------
+
+<defination>
+<types>-->it tells the data type used by webservice
+<message>-->messages used by web service
+<porttype>---->operations performed by web service,abstarct part of wsdl
+<binding>--->communication protocols used in webservices., concrete part of the wsdl
+
+properties used to hold the data................
+
+
+add soap requests in postmen:
+-----------------------------
+1)create a collections in postman
+2)collect a url for the wsdl document.
+3)add url to postmen and set method as POST
+4)Body-->raw and text/xml(choose this option)
+5)provide request data in body
+
+-------------------------
+soap:
+------
+3 layesrs as follows:
+--------------------------
+
+soap envelope
+
+soap header(optional)
+>header block1
+>header block2
+
+soap body
+>>message Block
+------------------------------------------------------
+The SOAP message is nothing but a mere XML document which has the below components.
+
+Soap envelope :
+------------------------------------------------------------------------------------
+An Envelope element that identifies the XML document as a SOAP message – 
+This is the containing part of the SOAP message and is used to encapsulate all the details in the SOAP message. 
+This is the root element in the SOAP message.
+
+
+Soap header:
+---------------
+
+A Header element that contains header information – 
+The header element can contain information such as authentication credentials which can be used by the calling application. 
+It can also contain the definition of complex types which could be used in the SOAP message. 
+By default, the SOAP message can contain parameters which could be of simple types such as strings and numbers, but can also be a complex object type.
+
+
+complex data type :
+-------------------------
+A simple example of a complex type is shown below.
+
+Suppose we wanted to send a structured data type which had a combination of a "Tutorial Name" and a "Tutorial Description," 
+then we would define the complex type as shown below.
+
+The complex type is defined by the element tag <xsd:complexType>. 
+All of the required elements of the structure along with their respective data types are then defined in the complex type collection.
+
+<xsd:complexType>     
+ <xsd:sequence>       
+ 	<xsd:element name="Tutorial Name" type="string"/>         
+  	<xsd:element name="Tutorial Description"  type="string"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+
+----------------------------------------------------
+Soap  Body :-
+-----------------------------------------------------
+A Body element that contains call and response information – 
+This element is what contains the actual data which needs to be sent between the web service and the calling application. 
+Below is an example of the SOAP body which actually works on the complex type defined in the header section. 
+Here is the response of the Tutorial Name and Tutorial Description that is sent to the calling application which calls this web service.
+
+<soap:Body>
+   <GetTutorialInfo>
+		<TutorialName>Web Services</TutorialName> 
+		<TutorialDescription>All about web services</TutorialDescription> 
+   </GetTutorialInfo>
+</soap:Body>
+
+to get all the opetrations in wsdl file:
+-------------------------------------------------
+
+python -mzeep  <wsdl.url>
+
+ 
+
+
+
+

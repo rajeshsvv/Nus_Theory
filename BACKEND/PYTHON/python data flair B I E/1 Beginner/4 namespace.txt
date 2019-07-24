@@ -1,0 +1,137 @@
+import this
+
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren’t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one– and preferably only one –obvious way to do it.
+Although that way may not be obvious at first unless you’re Dutch.
+Now is better than never.
+
+2. What is Python Name?
+Before we move on to namespaces in python, let’s talk about names in python. 
+A Python name is an identifier- something we use to access a Python object and in Python, everything’s an object.
+
+We’ll take an example.
+
+>>> rank=1
+Here, ‘rank’ is the name associated with the Python object 1. 
+To get this object’s address in RAM, we use the id() function.
+
+>>> id(rank)
+492979856
+
+>>> id(1)
+492979856
+
+To take a slightly more complex example, we store 2 in a name ‘a’. 
+Then, we increment it by 1 and associate the name ‘b’ to the object 2. We keep checking the id as we go.
+
+>>> a=2
+>>> id(a)
+492979872
+
+>>> a+=1
+>>> id(a)
+492979888
+
+>>> b=2
+>>> id(b)
+492979872
+
+>>>
+>>> id(2)
+492979872
+
+>>> id(3)
+492979888
+
+Bonus Question- Check the following code and figure out what’s happening.
+
+>>> hi=sayhello()
+Hello
+
+>>> hi
+>>> type(hi)
+<class ‘NoneType’>
+
+Well, since the function does not return anything, we get an object of class ‘NoneType’. 
+Of course, None is an object that indicates no value. 
+Did function sayhello() return a value, things would be different. Let’s take another example.
+
+>>> def func1():
+                print("Hi")
+                return 1
+>>> func2=func1()
+Hi
+
+>>> func2
+1
+
+>>> type(func2)
+<class ‘int’>
+
+					3. What is Python Namespaces?
+
+A namespace in python is a collection of names. 
+So, a namespace is essentially a mapping of names to corresponding objects. 
+At any instant, different python namespaces can coexist completely isolated- 
+the isolation ensures that there are no name collisions. 
+Simply speaking, two namespaces in python can have the same name without facing any problem. 
+A namespace is implemented as a Python dictionary.
+
+When we start the interpreter, a python namespace is created for as long as we don’t exist. 
+This holds all built-in names. It is due to this that python functions like print() and id() are always available. Also, each module creates its own global namespace in python.
+
+When you call a function, a local python namespace is created for all the names in it. 
+A module has a global namespace. The built-in namespace encloses this. 
+Take a look at the following figure to get a clearer understanding.
+
+Built in namespace
+Module Global namespace
+Function local namespace
+
+
+				4. What is Python Variable Scope?
+
+Through various python namespaces, not each can be accessed from every part of the program. 
+A namespace is in variable scope in a part of a program, 
+if it lets you access the python namespace without having to use a prefix.
+
+At any instant, we have at least three nested python scopes:
+
+Current function’s variable scope- has local names
+Module’s variable scope- has global names
+The outermost variable scope- has built-in names
+This in accordance with the three kinds of namespaces in python, we just discussed. 
+This also decides the order of searching for when a reference is made. 
+The order is- the local Python namespace, the global namespace, the built-in namespace. 
+
+>>> a=1
+>>> def func1():
+                b=2
+                def func3():
+                                global a
+                                a=2
+                                nonlocal b
+                                b=3
+                                c=3
+                                print(f"a={a}, b={b}, c={c}")
+                func3()
+                print(f"b={b}")              
+>>> func1()
+a=2, b=3, c=3
+b=3
+>>> a
+2
+Also, a nested function creates a nested variable scope inside the outer function’s scope.

@@ -1,0 +1,284 @@
+2. >>>  			 interpretor
+3. …				for indentation
+4. 2to3				tool available that will help us convert Python 2.x code to Python 3.x.
+
+5. Abstract Base Class		An abstract base class provides a way to define interfaces For this, we have the module abc. 
+				It introduces virtual subclasses (classes that are recognized by isinstance() and issubclass(),	
+				but do not inherit from another class.
+				Python has several built-in ABCs for data structures (use the collections.abc module), 
+				numbers (use the numbers module), or streams (use the io module). 	
+				You can also import finders and loaders (use the importlib.abc module). 
+				And to create our own ABCs, we use the abc module.
+
+6. Python Argument		An argument is a value we pass to a function or a method when calling it. 
+				In Python, we have the following kinds of arguments.
+
+	a. Default Arguments:		When defining a function, we can provide default values for arguments. 
+					This way, when we call it without any missing arguments, 
+					the default values will fill in for them. Default arguments can only follow non-default ones.
+					def sayhello(name='User'):
+
+	b. Keyword Arguments Python:	Keyword arguments pertain to calling a function. 
+					When we then call the function, we can pass it arguments in any order.
+					def subtract(a,b):
+
+	c. Arbitrary Arguments:		When we don’t know how many arguments we’ll get, we use an asterisk to denote an arbitrary argument.
+		
+					def sum_all(*nums):
+    total=0
+    for i in nums:
+         total+=i
+    return total
+         
+print(sum_all(1,2,3,4))
+
+	d. Positional Arguments Python:	These are regular arguments that aren’t keyword arguments. Python Positional Argument Example.
+					We use a * before an iterable if we must pass it as an argument to a function.	
+	 				add(*(3,4))===7
+
+7. Asynchronous Context Manager		ACM is an object that controls the environment observed in an async with statement. 
+					It does so by defining	__aenter__() and __aexit__().
+
+8. Asynchronous Python Generator	We have seen about Generators in Python. They let us yield one object at a time.
+					An asynchronous generator is a function that returns an asynchronous generator iterator. 
+					We define it with ‘async def’, and it contains ‘yield’ expressions to produce a series of values. 
+					We can use these values in an async for loop.
+					"Such an asynchronous generator function may contain await expressions, and async for and async with statements."
+	
+9. Asynchronous Generator Iterator	An asynchronous generator function creates an asynchronous generator iterator.
+					When we call this iterator using the __anext__() method, it returns an awaitable object. 
+					This object executes the function’s body until the next yield expression.
+					Actually, each yield suspends processing temporarily. 
+					It remembers the location execution state, and the local variables and pending try statements. 
+					On resuming with another awaitable returned by __anext__(), the generator iterator picks up where it left off.
+
+10. Asynchronous Iterable		It is an object that we can use in an async for statement. 
+					It must return an asynchronous iterator from its __aiter__() method.
+
+11. Asynchronous Iterator		An asynchronous iterator is an object that implements __aiter__() and __anext__() methods. 
+					__anext__() must return an awaitable object. 
+					async for resolves the awaitable returned from the iterator’s __anext__() method 
+					until it raises a StopAsyncIteration exception.
+
+12. Attribute				An attribute is a value an object holds. We can access an object’s attributes using the dot operator (.). 
+					In our examples, we have done this as following:orange.color
+
+13. Awaitable				Any object in Python that we can use in an await expression is an awaitable. 
+					It can be a coroutine or any object with an __await__() method.
+
+
+14. BDFL				Who other than Guido Van Rossum, the creator of Python, deserves to be called Benevolent Dictator For Life?
+
+15. Binary File				A file object that is able to read and write bytes-like objects is a binary file. 
+					When we open a file in a binary mode, we use the modes ‘rb’, ‘wb’, or ‘rb+’.
+
+
+16. Bytes-like Object			Any object that supports the Buffer Protocol, and is able to export a C-contiguous buffer, is a bytes-like object. 					Examples include bytes, bytearray, and array.array objects. 
+					It also includes many common memoryview objects.
+					We can use such objects for operations that deal with inary data 
+					(compression, saving to a binary file, sending over a socket, and more)
+
+17. Bytecode				As you know, Python compiles its source code into bytecode. 
+					It is the internal representation of a Python program in the CPython interpreter.
+					 When we talked earlier of .pyc files, we mentioned that bytecode is cached into them. 
+					This lets the files execute faster the second time since they don’t need to recompile.
+					In essence, bytecode is like an intermediate language that runs on a virtual machine. 
+					This virtual machine converts it into machine code for the machine to actually execute it on. 
+					However, one bytecode will not run on a different virtual machine.
+					If you’re interested in finding out about bytecode instructions, 
+					you can refer to the official documentation for the dis module.
+
+
+18. Python Class			A class, in Python, is a template for creating user-defined objects. 
+					It is an abstract data type, and acts as a blueprint for objects of a kind while having no values itself.
+
+
+19. Coercion(nirbandam)			When we carry out operations like 2+3.7, the interpreter implicitly converts one data type to another. 
+					Here, it converts 2 to 2.0 (int to float), and then adds, to it, 3.7. This is called coercion, 
+					and without it, we would have to explicitly do it this way:float(2)+3.7
+
+
+20. Complex Number			A complex number is made of real and imaginary parts. In Python, we use ‘j’ to represent the imaginary part.
+					An imaginary number is a real multiple of -1(the imaginary unit). 
+					To work with complex equivalents of the math module, we use cmath. 
+					For more on complex numbers, read up on Python Numbers.
+					These Python Glossary terms are very important to know before you dive into learning Python.
+
+21. Context Manager			The context manager is an object that controls the environment observed in a with-statement. 
+					It does so with the __enter__() and __exit__() methods.
+
+22. Coroutine				A subroutine enters at one point and exits at another. 
+					A coroutine is more generalized, in that it can enter, exit, and resume at many different points. 
+					We implement them with the async def statement.
+
+23.  Coroutine Function			A coroutine function is simply a function that returns a coroutine object. 
+					We may define such a function with the async def statement, 
+					and it may contain the keywords await, async for, and async with.
+
+24. CPython				CPython is the canonical implementation of Python in C. It is the one distributed on python.org
+
+25. Python Decorator			A decorator is a function that returns another function, or wraps it. 
+					It adds functionality to it without modifying it.
+
+26. Descriptor				If an object defines methods __get__(), __set__(), or __delete__(), we can call it a descriptor. 
+					On looking up an attribute from a class, the descriptor attribute’s special binding behavior activates. 
+					Using a.b looks up the object ‘b’ in the class dictionary for ‘a’. 
+					If ‘b’ is a descriptor, then the respective descriptor methods is called.
+
+27. Python Dictionary			A dictionary is an associative array that holds key-value pairs. 
+					Think of a real-life dictionary. Any object with __hash__() and __eq__() methods can be a key.
+
+28. Dictionary View			A dictionary view is an object returned from dict.keys(), dict.values(), or dict.items(). 
+					This gives us a dynamic view on the dictionary’s entries. 
+					So, when the dictionary changes, the view reflects those changes.
+
+29. Docstring				A docstring is a string literal that we use to explain the functionality of a class, function, or module. 
+					It is the first statement in any of these constructs, and while the interpreter ignores them, 
+					it retains them at runtime. We can access it using the __doc__ attribute of such an object.
+
+30. Duck-Typing				We keep saying that Python follows duck-typing. 
+					But what does this mean? 
+					This means that Python does not look at an object’s type to determine if it has the right interface. 
+					It simply calls or uses the method or attribute. “If it looks and quacks like a duck, it must be a duck.”
+					This improves flexibility by allowing polymorphic substitution. 
+					With duck-typing, you don’t need tests like type() or isinstance(); instead, you use hasattr() tests or EAFP.
+
+31. EAFP Programming			EAFP stands for Easier to Ask for Forgiveness than Permission.
+					This means that Python assumes the existence of valid keys or attributes, 
+					and catches exceptions on falsity of the assumption. 
+					When we have too many try and except statements in our code, we can observe this nature of Python.
+					Other languages like C follow LBYL (Look Before You Leap).programming.
+
+32. Python Expression			An expression is a piece of code that we can evaluate to a value. 
+					It is an aggregation of expression elements like literals, names, attribute access, operators, or function calls. 
+					All of these return a value. 
+					An if-statement is not an expression, and neither is an assignment, because these do not return a value.
+
+33. Extension Module			An extension module is one written in C or C++, using Python’s C API to interact with the core, and with user code.
+
+
+34. f-string				An f-string is a formatted string literal. To write these, we precede a string with the letter ‘f’ or ‘F’. 
+					This lets us put in values into a string.
+
+					name,surname='Ayushi','Sharma'
+					print(f"I am {name}, and I am a {surname}")
+
+35. File Object				A file object, in Python, is an object that exposes a file-oriented API to an underlying resource. 
+					Such an API has methods such as read() and write().
+					We also call them file-like objects or streams, and have three categories:
+					Raw binary files Buffered binary files Text files
+					The canonical way to create a file object is to use the open() function. 
+					For help with reading and writing files, refer to Reading and Writing Files in Python.
+
+36. File-Like Object			Like we said earlier, it is a synonym for file objects.
+
+37. Finder				The finder is an object that attempts to find the loader for a module that we are importing.
+					With Python 3.3 and above, we have two types of finders:
+					Meta path finders- to use with sys.meta_path
+					Path entry finders- to use with sys.path_hooks.
+
+38. Floor Division			Floor division is division that rounds the result down to the nearest integer. For this, we use the // operator.
+
+39. Python Function			A function is a sequence of statements that may return a value to the caller. 
+					It may take zero or more arguments.
+
+40. Function Annotation			An annotation to a function is an arbitrary metadata value associated with a parameter or return value. 
+					We can access a function’s annotations using the __annotations__ attribute. 
+					And while Python itself does not assign a meaning to an annotation, third-party libraries or tools make use of them.
+
+
+41. __future__				Interestingly, in Python, we have a pseudo-module available that 
+					lets us enable new language features that aren’t yet compatible with the current interpreter.
+					>>> import __future__	>>> __future__.division
+
+42. Garbage Collection			Memory must be freed when it isn’t needed anymore. 
+					Using reference counting and a cyclic garbage collector that can detect and break reference cycles, 
+					Python collects its garbage. We can use the gc module additionally.
+
+43. Python Generator			A generator is a function that ‘yields’ values one by one.  
+					It returns a generator iterator. We can use this function with a for-loop to retrieve one value at a time.
+
+
+44. Generator Iterator			A generator iterator is an object created by a generator function.
+
+45. Generator Expression		It is an expression that returns an iterator. Below is an example of the same.
+					>>> sum(i**2 for i in range(7))===91
+
+
+46. Generic Function			A generic function is made of multiple functions that implement the same operation for different types. 
+					The dispatch algorithm decides which implementation to use during a call.
+
+47. GIL					GIL stands for Global Interpreter Lock. This is the mechanism that the CPython interpreter uses to assure 
+					that only one thread executes Python bytecode at a time. 
+					This makes the object model implicitly safe against concurrent access, and this simplifies CPython.
+
+48. Hashable				If an object has a fixed hash value for its entire lifetime, and is comparable to other objects, it is hashable. 
+					Two equal hashable objects have the same hash values.
+					While a dictionary itself is unhashable, it cannot hold unhashable types like itself. 									In fact, all immutable types are hashable. Mutables like lists are dictionaries are not. User-defined objects are hashable.
+
+
+49. IDLE				The IDLE is an Integrated DeveLopment Environment for Python. 
+					It is a basic editor and interpreter environment that ships with Python.
+
+50. Immutable				Any object with a fixed value is an immutable. 
+					Examples include numbers, strings, and tuples. 
+					If you must change a value, you need to create a new object. 
+					In places where we need a constant hash value, like a key in a dictionary, we use immutables.
+
+51. Import Path				A list of locations searched by the path-based finder to import modules. 
+					During an import, this list comes from sys.path. 
+					For subpackages, it may come from the parent package’s __path__ attribute.
+
+52. Importing				Importing is the process through which we make the Python code in one module available to another.
+
+53. Importer				The importer is an object that finds and loads a module. Hence, it is both- a finder and a loader object.
+
+54. Interactive				Being of an interpreted nature, Python lets you enter statements/expressions at the integer prompt, 
+					and immediately execute them and see results.
+
+55. Interpreted				We couldn’t highlight this more when we say Python is an interpreted language. 
+					However, because it does have a bytecode compiler, the distinction is a bit blurry. 
+					The source files can run without explicitly creating an executable. 
+					While this makes Python faster to develop/debug, it often results in slower execution.
+
+56. Interpreter Shutdown		When we shut down the interpreter, it gradually releases all allocated resources. 
+					These include modules and different critical internal structures. 
+					Alongside, it makes several calls to the garbage collector. 
+					This may trigger execution of code in user-defined destructors or in weakref callbacks. 
+					Since the resources it relies on may not function anymore during the shutdown phase, 
+					the code executed can encounter various exceptions.
+
+57. Python Iterable			Any object that can return its members one at a time is an iterable. 
+					Examples include lists, strings, tuples, dicts, and file objects.
+
+58. Python Iterator			An iterator is an object that represents a stream of data. 
+					We can define an iterator using the iter() function/method, 
+					and get one object at a time with the next() function/method.
+
+59. Key Function			It is a callable that returns a value that we can use for sorting or ordering. 
+					We also call it a collation function. Functions like max(), min(), and sorted() make use of them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,609 @@
+[1-3 basic]
+[4-20 fresher and experience]
+[21-35 Advance]
+
+Q.1. What are the key features of Python?
+
+If it makes for an introductory language to programming, Python must mean something. These are its qualities:
+
+Interpreted
+Dynamically-typed
+Object-oriented
+Concise and simple
+Free
+Has a large community
+
+Q.2. Differentiate between deep and shallow copy.
+
+A deep copy copies an object into another. 
+This means that if you make a change to a copy of an object, it won’t affect the original object. 
+In Python, we use the function deepcopy() for this, and we import the module copy. We use it like:
+
+>>> import copy
+>>> b=copy.deepcopy(a)
+
+
+A shallow copy, however, copies one object’s reference to another. 
+So, if we make a change in the copy, it will affect the original object. For this, we have the function copy(). We use it like:
+
+>>> b=copy.copy(a)
+
+Q.3. Differentiate between lists and tuples.
+
+The major difference is that a list is mutable, but a tuple is immutable. Examples:
+
+>>> mylist=[1,3,3]
+>>> mylist[1]=2
+
+>>> mytuple=(1,3,3)
+>>> mytuple[1]=2
+
+TypeError: ‘tuple’ object does not support item assignment
+
+
+Q.4. Explain the ternary operator in Python.
+
+Unlike C++, we don’t have ?: in Python, but we have this:
+
+[on true] if [expression] else [on false]
+
+If the expression is True, the statement under [on true] is executed. Else, that under [on false] is executed.
+
+Below is how you would use it:
+
+>>> a,b=2,3
+>>> min=a if a<b else b
+>>> min
+2
+
+>>> print("Hi") if a<b else print("Bye")
+
+
+Q.5. How is multithreading achieved in Python?
+
+A thread is a lightweight process, and multithreading allows us to execute multiple threads at once. 
+As you know, Python is a multithreaded language. It has a multi-threading package.
+
+The GIL (Global Interpreter Lock) ensures that a single thread executes at a time. 
+A thread holds the GIL and does a little work before passing it on to the next thread. 
+This makes for an illusion of parallel execution. 
+But in reality, it is just threaded taking turns at the CPU. Of course, all the passing around adds overhead to the execution.
+
+
+Q.6. Explain inheritance in Python.
+
+When one class inherits from another, 
+it is said to be the child/derived/sub class 
+inheriting from the parent/base/super class. 
+It inherits/gains all members (attributes and methods).
+
+
+
+Inheritance lets us reuse our code, and also makes it easier to create and maintain applications. 
+Python supports the following kinds of inheritance:
+
+Single Inheritance- A class inherits from a single base class.
+Multiple Inheritance- A class inherits from multiple base classes.
+Multilevel Inheritance- A class inherits from a base class, which, in turn, inherits from another base class.
+Hierarchical Inheritance- Multiple classes inherit from a single base class.
+Hybrid Inheritance- Hybrid inheritance is a combination of two or more types of inheritance.
+
+
+
+Q.7. What is Flask?
+
+Python Flask, as we’ve previously discussed, is a web microframework for Python. 
+It is based on the ‘Werkzeug, Jinja 2 and good intentions’ BSD license. 
+Two of its dependencies are Werkzeug and Jinja2. 
+This means it has around no dependencies on external libraries. 
+Due to this, we can call it a light framework.
+
+A session uses a signed cookie to allow the user to look at and modify session contents. 
+It will remember information from one request to another.
+However, to modify a session, the user must have the secret key Flask.secret_key.
+
+Q.8. How is memory managed in Python?
+
+Python has a private heap space to hold all objects and data structures. 
+Being programmers, we cannot access it; 
+it is the interpreter that manages it. 
+But with the core API, we can access some tools. The Python memory manager controls the allocation.
+Additionally, an inbuilt garbage collector recycles all unused memory so it can make it available to the heap space.
+
+
+Q.9. Explain help() and dir() functions in Python.
+
+The help() function displays the documentation string and help for its argument.
+
+>>> import copy
+>>> help(copy.copy)
+
+The dir() function displays all the members of an object(any kind).
+
+>>> dir(copy.copy)
+[‘__annotations__’, ‘__call__’, ‘__class__’, ‘__closure__’, ‘__code__’, ‘__defaults__’, ‘__delattr__’, ‘__dict__’, ‘__dir__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__get__’, ‘__getattribute__’, ‘__globals__’, ‘__gt__’, ‘__hash__’, ‘__init__’, ‘__init_subclass__’, ‘__kwdefaults__’, ‘__le__’, ‘__lt__’, ‘__module__’, ‘__name__’, ‘__ne__’, ‘__new__’, ‘__qualname__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__setattr__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’]
+
+
+Q.10. Whenever you exit Python, is all memory de-allocated?
+
+The answer here is no. 
+The modules with circular references to other objects, or to objects referenced from global namespaces, aren’t always freed on exiting Python.
+
+Plus, it is impossible to de-allocate portions of memory reserved by the C library.
+
+Q.11. What is monkey patching?
+
+Dynamically modifying a class or module at run-time.
+
+>>> class A:
+    def func(self):
+        print("Hi")
+>>> def monkey(self):
+        print "Hi, monkey"
+>>> m.A.func = monkey
+>>> a = m.A()
+>>> a.func()
+Hi, monkey
+
+
+
+Q.12. What is a dictionary in Python?
+
+A python dictionary is something I have never seen in other languages like C++ or Java programming. It holds key-value pairs.
+
+>>> roots={25:5,16:4,9:3,4:2,1:1}
+>>> type(roots)
+
+
+me
+Courses
+Data Science
+Big Data
+Categories
+Interview Questions
+Quizzes
+Job Portal
+DataFlair
+Learn Today. Lead Tomorrow.
+Blog Home » Python Tutorials » Top 35 Python Interview Questions and Answers (Latest)
+
+4
+Top 35 Python Interview Questions and Answers (Latest)
+BY DATAFLAIR TEAM · PUBLISHED MARCH 7, 2018 · UPDATED DECEMBER 11, 2018
+
+1. Python Interview Questions and Answers
+To land a job with Python as a fresher, you must be acquainted with the basics. Here, we discuss some basic Python Interview Questions and answers and some advanced Python Questions and answers to help you ace your interview. There are Python developer interview questions, Python Coding interview questions, data structure interview questions as well as Python Scripting Interview questions. Delve into Python Programming Interview questions one by one.
+So, let’s begin our journey towards acing your next Python interview.
+“PREPARE like you have never won and PERFORM like you have never lost.”
+
+Top 35 Python Interview Questions and Answers (Latest)
+Top 35 Python Interview Questions and Answers (Latest)
+
+Q.1. What are the key features of Python?
+
+If it makes for an introductory language to programming, Python must mean something. These are its qualities:
+
+Interpreted
+Dynamically-typed
+Object-oriented
+Concise and simple
+Free
+Has a large community
+Follow this link to explore more features of Python Programming
+
+Q.2. Differentiate between deep and shallow copy.
+
+A deep copy copies an object into another. This means that if you make a change to a copy of an object, it won’t affect the original object. In Python, we use the function deepcopy() for this, and we import the module copy. We use it like:
+
+>>> import copy
+>>> b=copy.deepcopy(a)
+Deep Copy - Python Interview Questions and Answers
+Deep Copy – Python Interview Questions and Answers
+
+A shallow copy, however, copies one object’s reference to another. So, if we make a change in the copy, it will affect the original object. For this, we have the function copy(). We use it like:
+
+>>> b=copy.copy(a)
+Shallow Copy - Python Interview Questions and Answers
+Shallow Copy – Python Interview Questions and Answers
+
+Refer this link to know more about Deep & Shallow Copy in Python
+
+Q.3. Differentiate between lists and tuples.
+
+The major difference is that a list is mutable, but a tuple is immutable. Examples:
+
+>>> mylist=[1,3,3]
+>>> mylist[1]=2
+>>> mytuple=(1,3,3)
+>>> mytuple[1]=2
+Traceback (most recent call last):
+File “<pyshell#97>”, line 1, in <module>
+mytuple[1]=2
+TypeError: ‘tuple’ object does not support item assignment
+For more insight, refer to Tuples vs Lists.
+
+2. Basic Python Interview Questions for Freshers
+Q.4 to Q.20 are some basic Python Interview question for freshers, however Experience can also refer these questions to revise basic concepts.
+
+Q.4. Explain the ternary operator in Python.
+
+Unlike C++, we don’t have ?: in Python, but we have this:
+
+[on true] if [expression] else [on false]
+
+If the expression is True, the statement under [on true] is executed. Else, that under [on false] is executed.
+
+Below is how you would use it:
+
+>>> a,b=2,3
+>>> min=a if a<b else b
+>>> min
+2
+
+>>> print("Hi") if a<b else print("Bye")
+Hi
+
+Are you familiar with all kinds of Python Operators?
+
+Q.5. How is multithreading achieved in Python?
+
+A thread is a lightweight process, and multithreading allows us to execute multiple threads at once. As you know, Python is a multithreaded language. It has a multi-threading package.
+
+The GIL (Global Interpreter Lock) ensures that a single thread executes at a time. A thread holds the GIL and does a little work before passing it on to the next thread. This makes for an illusion of parallel execution. But in reality, it is just threaded taking turns at the CPU. Of course, all the passing around adds overhead to the execution.
+
+Q.6. Explain inheritance in Python.
+
+When one class inherits from another, it is said to be the child/derived/sub class inheriting from the parent/base/super class. It inherits/gains all members (attributes and methods).
+
+Python Interview Questions - inheritance in Python.
+Python Interview Questions – inheritance in Python.
+
+Inheritance lets us reuse our code, and also makes it easier to create and maintain applications. Python supports the following kinds of inheritance:
+
+Single Inheritance- A class inherits from a single base class.
+Multiple Inheritance- A class inherits from multiple base classes.
+Multilevel Inheritance- A class inherits from a base class, which, in turn, inherits from another base class.
+Hierarchical Inheritance- Multiple classes inherit from a single base class.
+Hybrid Inheritance- Hybrid inheritance is a combination of two or more types of inheritance.
+For more on inheritance, refer to Python Inheritance.
+
+Q.7. What is Flask?
+
+Python Flask, as we’ve previously discussed, is a web microframework for Python. It is based on the ‘Werkzeug, Jinja 2 and good intentions’ BSD license. Two of its dependencies are Werkzeug and Jinja2. This means it has around no dependencies on external libraries. Due to this, we can call it a light framework.
+
+A session uses a signed cookie to allow the user to look at and modify session contents. It will remember information from one request to another.
+
+However, to modify a session, the user must have the secret key Flask.secret_key.
+
+Q.8. How is memory managed in Python?
+
+Python has a private heap space to hold all objects and data structures. Being programmers, we cannot access it; it is the interpreter that manages it. But with the core API, we can access some tools. The Python memory manager controls the allocation.
+
+Additionally, an inbuilt garbage collector recycles all unused memory so it can make it available to the heap space.
+
+Q.9. Explain help() and dir() functions in Python.
+
+The help() function displays the documentation string and help for its argument.
+
+>>> import copy
+>>> help(copy.copy)
+Help on function copy in module copy:
+copy(x)
+Shallow copy operation on arbitrary Python objects.
+See the module’s __doc__ string for more info.
+The dir() function displays all the members of an object(any kind).
+
+>>> dir(copy.copy)
+[‘__annotations__’, ‘__call__’, ‘__class__’, ‘__closure__’, ‘__code__’, ‘__defaults__’, ‘__delattr__’, ‘__dict__’, ‘__dir__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__get__’, ‘__getattribute__’, ‘__globals__’, ‘__gt__’, ‘__hash__’, ‘__init__’, ‘__init_subclass__’, ‘__kwdefaults__’, ‘__le__’, ‘__lt__’, ‘__module__’, ‘__name__’, ‘__ne__’, ‘__new__’, ‘__qualname__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__setattr__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’]
+Let’s explore more Functions in Python
+
+Q.10. Whenever you exit Python, is all memory de-allocated?
+
+The answer here is no. The modules with circular references to other objects, or to objects referenced from global namespaces, aren’t always freed on exiting Python.
+
+Plus, it is impossible to de-allocate portions of memory reserved by the C library.
+
+Q.11. What is monkey patching?
+
+Dynamically modifying a class or module at run-time.
+
+>>> class A:
+    def func(self):
+        print("Hi")
+>>> def monkey(self):
+        print "Hi, monkey"
+>>> m.A.func = monkey
+>>> a = m.A()
+>>> a.func()
+Hi, monkey
+
+Q.12. What is a dictionary in Python?
+
+A python dictionary is something I have never seen in other languages like C++ or Java programming. It holds key-value pairs.
+
+>>> roots={25:5,16:4,9:3,4:2,1:1}
+>>> type(roots)
+<class ‘dict’>
+
+>>> roots[9]
+3
+
+A dictionary is mutable, and we can also use a comprehension to create it.
+
+>>> roots={x**2:x for x in range(5,0,-1)}
+>>> roots
+{25: 5, 16: 4, 9: 3, 4: 2, 1: 1}
+
+
+
+>>> roots[9]
+3
+
+A dictionary is mutable, and we can also use a comprehension to create it.
+
+>>> roots={x**2:x for x in range(5,0,-1)}
+>>> roots
+{25: 5, 16: 4, 9: 3, 4: 2, 1: 1}
+
+
+Q.13. What do you mean by *args and **kwargs?
+
+In cases when we don’t know how many arguments will be passed to a function, 
+like when we want to pass a list or a tuple of values, we use *args.
+
+>>> def func(*args):
+    for i in args:
+        print(i)
+>>> func(3,2,1,4,7)
+3
+2
+1
+4
+7
+**kwargs takes keyword arguments when we don’t know how many there will be.
+
+>>> def func(**kwargs):
+    for i in kwargs:
+        print(i,kwargs[i])
+>>> func(a=1,b=2,c=7)
+a.1
+b.2
+c.7
+
+The words args and kwargs are a convention, and we can use anything in their place.
+
+
+Q.14. Write Python logic to count the number of capital letters in a file.
+
+>>> import os
+>>> os.chdir('C:\\Users\\lifei\\Desktop')
+>>> with open('Today.txt') as today:
+    count=0
+    for i in today.read():
+        if i.isupper():
+            count+=1
+    print(count)
+26
+
+
+
+Q.15. What are negative indices?
+
+Let’s take a list for this.
+
+>>> mylist=[0,1,2,3,4,5,6,7,8]
+A negative index, unlike a positive one, begins searching from the right.
+
+>>> mylist[-3]
+6
+This also helps with slicing from the back:
+
+>>> mylist[-6:-1]
+[3, 4, 5, 6, 7]
+
+
+Q.16. How would you randomize the contents of a list in-place?
+
+For this, we’ll import the function shuffle() from the module random.
+
+>>> from random import shuffle
+>>> shuffle(mylist)
+>>> mylist
+[3, 4, 8, 0, 5, 7, 6, 2, 1]
+
+
+Q.17. Explain join() and split() in Python.
+
+join() lets us join characters from a string together by a character we specify.
+
+>>> ','.join('12345')
+‘1,2,3,4,5’
+
+split() lets us split a string around the character we specify.
+
+>>> '1,2,3,4,5'.split(',')
+[‘1’, ‘2’, ‘3’, ‘4’, ‘5’]
+
+Q.18. Is Python case-sensitive?
+
+A language is case-sensitive if it distinguishes between identifiers like myname and Myname. 
+In other words, it cares about case- lowercase or uppercase. Let’s try this with Python.
+
+>>> myname='Ayushi'
+>>> Myname
+Traceback (most recent call last):
+File “<pyshell#3>”, line 1, in <module>
+Myname
+NameError: name ‘Myname’ is not defined
+
+As you can see, this raised a NameError. This means that Python is indeed case-sensitive.
+
+
+Q.19. How long can an identifier be in Python?
+
+In Python, an identifier can be of any length. Apart from that, there are certain rules we must follow to name one:
+
+It can only begin with an underscore or a character from A-Z or a-z.
+The rest of it can contain anything from the following: A-Z/a-z/_/0-9.
+Python is case-sensitive, as we discussed in the previous question.
+Keywords cannot be used as identifiers. Python has the following keywords:
+and		def		False		import		not		True
+as		del		finally		in		or		try
+assert		elif		for		is		pass		while
+break		else		from		lambda		print		with
+class		except		global		None		raise		yield
+continue	exec		if		nonlocal	return
+
+
+Q.20. How do you remove the leading whitespace in a string?
+
+Leading whitespace in a string is the whitespace in a string before the first non-whitespace character. 
+To remove it from a string, we use the method lstrip().
+
+>>> '   Ayushi '.lstrip()
+‘Ayushi   ‘
+
+As you can see, this string had both leading and trailing whitespaces. 
+lstrip() stripped the string of the leading whitespace. 
+If we want to strip the trailing whitespace instead, we use rstrip().
+
+>>> '   Ayushi '.rstrip()
+‘   Ayushi’
+
+
+Q.21. How would you convert a string into lowercase?
+
+We use the lower() method for this.
+
+>>> 'AyuShi'.lower()
+‘ayushi’
+
+To convert it into uppercase, then, we use upper().
+
+>>> 'AyuShi'.upper()
+‘AYUSHI’
+
+Q.22. What is the pass statement in Python?
+
+There may be times in our code when we haven’t decided what to do yet, 
+but we must type something for it to be syntactically correct. In such a case, we use the pass statement.
+
+>>> def func(*args):
+           pass
+>>>
+Similarly, the break statement breaks out of a loop.
+
+>>> for i in range(7):
+    if i==3: break
+    print(i)
+1
+
+2
+
+Finally, the continue statement skips to the next iteration.
+
+>>> for i in range(7):
+    if i==3: continue
+    print(i)
+1
+2	
+4
+5
+6
+
+
+Q.23. What is a closure in Python?
+
+A closure is said to occur when a nested function references a value in its enclosing scope. 
+sThe whole point here is that it remembers the value.
+
+>>> def A(x):
+    def B():
+        print(x)
+    return B
+>>> A(7)()
+7
+
+
+Q.24. How many kinds of operators do we have in Python? Explain arithmetic operators.
+
+This type of Python Interview Questions and Answers can decide your knowledge in Python. 
+Answer the Python Interview Questions with some good Examples.
+
+Here in Python, we have 7 kinds of operators: 
+arithmetic,assignment,bitwise,identity,logical,membership,relational
+
+
+Q.27. Explain logical operators in Python.
+
+We have three logical operators- and, or, not.
+
+>>> False and True
+False
+
+>>> 7<7 or True
+True
+
+>>> not 2==2
+False
+
+Q.29. Explain identity operators in Python.
+
+This is one of the very commonly asked Python Interview Questions and answers it with examples.
+
+The operators ‘is’ and ‘is not’ tell us if two values have the same identity.
+
+>>> 10 is '10'
+False
+
+>>> True is not False
+True
+
+
+Q.31. How would you work with numbers other than those in the decimal number system?
+
+With Python, it is possible to type numbers in binary, octal, and hexadecimal.
+
+Binary numbers are made of 0 and 1. To type in binary, we use the prefix 0b or 0B.
+>>> int(0b1010)
+10
+
+To convert a number into its binary form, we use bin().
+
+>>> bin(0xf)
+‘0b1111’
+
+Q.32. How do you get a list of all the keys in a dictionary?
+
+Be specific in these type of Python Interview Questions and Answers.
+
+For this, we use the function keys().
+
+>>> mydict={'a':1,'b':2,'c':3,'e':5}
+>>> mydict.keys()
+dict_keys([‘a’, ‘b’, ‘c’, ‘e’])
+
+
+Q.33. Why are identifier names with a leading underscore disparaged?
+
+Since Python does not have a concept of private variables, 
+it is a convention to use leading underscores to declare a variable private. 
+This is why we mustn’t do that to variables we do not want to make private.
+
+
+Q.35. What is tuple unpacking?
+
+First, let’s discuss tuple packing. It is a way to pack a set of values into a tuple.
+
+>>> mytuple=3,4,5
+>>> mytuple
+(3, 4, 5)
+
+This packs 3, 4, and 5 into mytuple.
+
+Now, we will unpack the values from the tuple into variables x, y, and z.
+
+>>> x,y,z=mytuple
+>>> x+y+z
+
+

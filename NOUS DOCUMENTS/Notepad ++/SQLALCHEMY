@@ -1,0 +1,24 @@
+https://www.youtube.com/watch?v=PTZiDnuC86g
+
+which is an object relational mapper its layer that allows us to interact with database without having to write manual sql queries. 
+its abstraction layer for database.
+using marshmallow for serialization.passed to schema and its serializes and deserialises our objects.
+
+use Postman to make request to API.and get data back 
+pipenv is virtual environment and also keep our dependencies in one place similar to how npm works for nodejs.
+
+pip install pipenv
+pipenv shell 				#activate  your virtual environment.
+							#it creates a pip file which holds all of our dependencies all your packages that u install.
+
+pipenv install flask flask-sqlalchemy flask-marshmallow marshamllow-sqlalchemy
+jsonify when u have rest api for the most part you are going to return json data for client.
+
+
+in python shell
+from app import db
+db.create_all()				then it creates db.sqlite file it contians all the fields related to Product Class.
+
+
+
+	

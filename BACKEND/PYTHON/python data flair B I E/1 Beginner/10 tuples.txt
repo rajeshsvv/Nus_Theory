@@ -1,0 +1,284 @@
+2. What is Python Tuple?
+Python Tuples are like a list. 
+It can hold a sequence of items. 
+The difference is that it is immutable. Let’s learn the syntax to create a tuple in Python.
+
+3. How to Create a Python Tuple?
+To declare a Python tuple, you must type a list of items separated by commas, inside parentheses. Then assign it to a variable.
+
+>>> percentages=(90,95,89)
+You should use a tuple when you don’t want to change just an item in future.
+
+a. Python Tuples Packing
+You can also create a Python tuple without parentheses. This is called tuple packing.
+
+>>> b= 1, 2.0, 'three'
+
+b. Python Tuples Unpacking
+Python tuple unpacking is when you assign values from a tuple to a sequence of variables in python.
+
+>>> percentages=(99,95,90,89,93,96)
+>>> a,b,c,d,e,f=percentages
+>>> c
+90
+
+You can do the same to a list.
+
+>>> a=(1)
+>>> type(a)
+<class ‘int’>
+
+Wasn’t the type() method supposed to return class ‘tuple’?
+
+To get around this, we add a comma after the item.
+
+>>> a=(1,)
+>>> type(a)
+<class ‘tuple’>
+
+Problem solved. And as we saw in tuple packing, we can skip the parentheses here.
+
+>>> a=1,
+>>> type(a)
+<class ‘tuple’>
+
+Also, like a list, a Python tuple may contain items of different types.
+
+>>> a=(1,2.0,'three')
+
+
+									
+									a. Positive Indices
+
+percentages=(99,95,90,89,93,96)
+
+When using positive indices, we traverse the list from the left.
+
+>>> percentages[2:4]
+(90, 89)
+
+>>> percentages[:4]
+(99, 95, 90, 89)
+
+This prints out items from the beginning to the item at index 3.
+
+>>> percentages[4:]
+(93, 96)
+
+This prints out items from index 4 to the end of the list.
+
+>>> percentages[2:2]
+()
+
+However, this returns an empty Python tuple
+
+
+This prints out the items from the tuple’s beginning to two items from the end.
+
+>>> percentages[-2:]
+(93, 96)
+
+This prints out items from two items from the end to the end.
+
+>>> percentages[2:-2]
+(90, 89)
+
+This prints out items from index 2 to two items from the end.
+
+>>> percentages[-2:2]
+()
+
+
+So, deleting a single element didn’t work. Let’s try deleting a slice
+
+>>> del percentages[2:4]
+Traceback (most recent call last):
+
+File “<pyshell#20>”, line 1, in <module>
+
+del percentages[2:4]
+
+TypeError: ‘tuple’ object does not support item deletion
+
+As you can see, that didn’t work either. Now, let’s try deleting the entire tuple.
+
+
+my_tuple=(1,2,3,[4,5])
+
+>>> my_tuple[3][0]=6
+>>> my_tuple
+(1, 2, 3, [6, 5])
+
+This worked without a flaw. 
+So we can see that while tuples are immutable, a mutable item that it holds may be reassigned.
+
+
+
+				8. Python Tuple Functions
+
+len()			max() 			min() 			sum()
+
+any() 			all() 			sorted() 		tuple()
+
+
+
+							a. len()
+
+Like a list, a Python tuple is of a certain length. The len() function returns its length.
+
+>>> my_tuple
+(1, 2, 3, [6, 5])
+
+>>> len(my_tuple)
+4
+
+It returned 4, not 5, because the list counts as 1.
+
+
+But you can’t compare an int and a string.
+
+>>> max(('Hi',9))
+Traceback (most recent call last):
+
+File “<pyshell#59>”, line 1, in <module>
+
+max((‘Hi’,9))
+
+TypeError: ‘>’ not supported between instances of ‘int’ and ‘str’
+
+
+							d. sum()
+
+
+This function returns the arithmetic sum of all the items in the tuple.
+
+>>> sum(a)
+21
+
+However, you can’t apply this function on a tuple with strings.
+
+>>> sum(('1','2','3'))
+Traceback (most recent call last):
+
+File “<pyshell#57>”, line 1, in <module>
+
+sum((‘1',’2',’3’))
+
+TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
+
+
+							e. any()
+
+If even one item in the tuple has a Boolean value of True, then this function returns True. Otherwise, it returns False.
+
+>>> any(('','0',''))
+True
+
+The string ‘0’ does have a Boolean value of True. If it was rather the integer 0, it would’ve returned False.
+
+>>> any(('',0,''))
+False
+
+
+							g. sorted()
+
+This function returns a sorted version of the tuple. The sorting is in ascending order, and it doesn’t modify the original tuple in Python.
+
+>>> sorted(a)
+[1, 2, 3, 4, 5, 6]
+							h. tuple()
+
+This function converts another construct into a Python tuple. Let’s look at some of those.
+
+>>> list1=[1,2,3]
+>>> tuple(list1)
+(1, 2, 3)
+
+>>> string1="string"
+>>> tuple(string1)
+(‘s’, ‘t’, ‘r’, ‘i’, ‘n’, ‘g’)
+
+How well would it work with sets?
+
+>>> set1={2,1,3}
+>>> tuple(set1)
+(1, 2, 3)
+
+>>> set1
+{1, 2, 3}
+
+As we can see, when we declared a set as 2,1,3, it automatically reordered itself to 1,2,3. 
+Furthermore, creating a Python tuple from it returned the new tuple in the new order, that is, ascending order.
+
+
+
+9. Python Tuple Methods
+A method is a sequence of instructions to perform on something. 
+Unlike a function, it does modify the construct on which it is called. 
+You call a method using the dot operator in python. Let’s learn about the two in-built methods of Python.
+
+a. index()
+This method takes one argument and returns the index of the first appearance of an item in a tuple. Let’s take a new tuple.
+
+>>> a=(1,2,3,2,4,5,2)
+>>> a.index(2)
+1
+
+As you can see, we have 2s at indices 1, 3, and 6. But it returns only the first index.
+
+b. count()
+This method takes one argument and returns the number of times an item appears in the tuple.
+
+>>> a.count(2)
+3
+
+
+						10. Python Tuple Operations
+
+Now, we will look at the operations that we can perform on tuples in Python.
+
+							a. Membership
+
+We can apply the ‘in’ and ‘not in’ operators on items. This tells us whether they belong to the tuple.
+
+>>> 'a' in tuple("string")
+False
+
+>>> 'x' not in tuple("string")
+True
+
+							b. Concatenation
+
+Like we’ve previously discussed on several occasions, concatenation is the act of joining. We can join two tuples using the concatenation operator ‘+’.
+
+>>> (1,2,3)+(4,5,6)
+(1, 2, 3, 4, 5, 6)
+
+Other arithmetic operations do not apply on a tuple.
+
+							c. Logical
+
+All the logical operators (like >,>=,..) can be applied on a tuple.
+
+>>> (1,2,3)>(4,5,6)
+False
+
+>>> (1,2)==('1','2')
+False
+
+As is obvious, the ints 1 and aren’t equal to the strings ‘1’ and ‘2’. Likewise, it returns False.
+
+
+12. Nested Tuples in Python
+Finally, we will learn about nesting tuples. You may remember how we can nest lists. 
+Due to the similarities of a tuple to a list, we do the same with tuples.
+
+>>> a=((1,2,3),(4,(5,6)))
+Suppose we want to access the item 6. For that, since we use indices, we write the following code.
+
+>>> a[1][1][1]
+6
+
+
+
+

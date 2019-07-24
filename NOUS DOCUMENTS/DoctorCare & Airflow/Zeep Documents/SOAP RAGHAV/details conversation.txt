@@ -1,0 +1,68 @@
+
+
+
+Technical Specifications for EBS 		http://www.health.gov.on.ca/en/pro/publications/ohip/docs/techspec_ebs.pdf   
+ 
+Technical Specifications for EDT 		http://www.health.gov.on.ca/en/pro/publications/ohip/docs/techspec_mcedt_ebs.pdf  
+
+
+ 
+Information on designee functionality		http://www.health.gov.on.ca/en/pro/publications/ohip/docs/mc_edt_reference_manual.pdf
+
+
+
+For conformance testing you will be using the following addresses or the attached files:
+
+ 
+The Conformance WSDL location is:		 https://ws.conf.ebs.health.gov.on.ca:1443/EDTService/EDTService?wsdl 
+ 
+The Conformance MCEDT service endpoint is:	 https://ws.conf.ebs.health.gov.on.ca:1443/EDTService/EDTService 
+
+
+ 
+The following information can be referenced to commence your Conformance testing.
+
+User Name                                        : confsu+356@gmail.com 
+Password                                         : Password0!	
+MOH ID                                           : 614300
+Vendor Conformance Key                 		 : 840ca40a-32df-4df1-9541-58a901bb8a85
+
+
+Please keep in mind that MCEDT uses IDP and not the MSA authentication model.
+
+
+conversation 2:
+
+PFA estimation & Proposal.
+Please update the warranty & other updates as required in the estimation. 
+
+In proposal added the below,
+•	Assumptions 
+•	Any collaboration required with Ministry of Health will be performed by DoctorCare.
+•	Any changes to the scope and delays to the responses beyond 2 (two) days will impact the timeline and cost 
+•	The EDT test App developed will be a console application that can be leveraged for Testing activities 
+•	Any support required beyond the project duration will be considered as Change Request
+•	Nous will provide a warranty support for 15 days after project completion 
+
+•	In slide#5: Updated the weeks to 10 weeks.
+•	In slide #10: update the timeline.
+•	In slide #14: updated commercials as per the current Number.
+
+
+
+convrsation 3:
+
+Update
+
+From these latest email attachment, following assertion can be made
+
+?	It is going to be python library (No Java, No Node etc). There is no UI work involved.
+?	There is no REST call. It will be SOAP Request with Authentication Header.
+?	Based on SOAP Authentication Header, Ministry Health Website will send SOAP Response (i.e Doctor’s Data)
+?	Going forward this python library will be integrated with existing Product called PracticeCare (Out of scope as per document)
+?	PracticeCare is an existing Analytical product which will generate leads based on SOAP Response.
+
+
+look into python, SOAP, Self-Generated Certificate, public private key terminology.
+
+

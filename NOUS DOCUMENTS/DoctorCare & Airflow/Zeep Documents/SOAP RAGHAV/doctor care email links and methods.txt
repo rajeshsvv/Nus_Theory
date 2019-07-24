@@ -1,0 +1,31 @@
+S:
+Links:
+
+http://ohip-ebs-edt-web-service.blogspot.com/2014/01/ohip-ebs-edt-soap-web-service-consuming.html
+http://webservices20.blogspot.com/2013/12/consuming-ebs-edt-soap-service-from-wcf.html
+https://stackoverflow.com/questions/18989773/wcf-client-for-web-service-with-ws-security-signed-headers-authentication-toke
+https://oscaremr.atlassian.net/wiki/spaces/OS/pages/85727078/MCEDT
+
+
+
+
+V:
+https://ws.conf.ebs.health.gov.on.ca:1443/EDTService/EDTService?wsdl
+https://www.soapui.org/soap-and-wsdl/working-with-wsdls.html
+https://www.soapui.org/soapui-projects/ws-security.html
+https://python-zeep.readthedocs.io/en/master/client.html					python zeep code
+
+
+
+
+Methods in WSDL documents:
+
+delete
+download
+getTypeList
+info
+list
+submit
+update
+upload
+

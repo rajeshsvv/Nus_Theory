@@ -1,0 +1,216 @@
+we will learn different types of Python Operators: 
+ 
+Arithmetic 	(Addition,Subtraction,Multiplication,Division,Exponentiation,Floor Division,Modulus)
+
+Assignment	(Assign(=),Add and Assign(+=),Subtract and Assign(-=),Divide and Assign(/=),Multiply and Assign				(*=),Modulus and Assign(%=),Exponent and Assign(**=),Floor-Divide and Assign(//=))
+
+Bitwise		(Binary AND(&),Binary OR(|),Binary XOR(^),Binary One’s Complement(~),Binary Left-Shift(<<),Binary 		Right-Shift(>>))
+
+Identity	(is,is not)
+
+Logical		(and,or,not)
+
+Membership	(in,not in)
+
+Relational	(Less than(<),Greater than(>),Less than or equal to(<=),Greater than or equal to(>=),Equal to(= 			=),Not equal to(!=))
+
+
+
+Python operator is a symbol that performs an operation on one or more operands. 
+An operand is a variable or a value on which we perform the operation.
+
+
+Arithmetic 	(Addition,Subtraction,Multiplication,Division,Exponentiation,Floor Division,Modulus)
+
+Division	3/4---0.75
+
+Exponentiation(**)
+3**4
+Output: 81
+
+Floor Division(//)
+Divides and returns the integer value of the quotient. It dumps the digits after the decimal.
+
+
+>>> 4//3
+Output: 1
+
+>>> 10//3
+Output: 3
+
+g. Modulus(%)
+
+Divides and returns the value of the remainder.
+
+>>> 3%4
+Output: 3
+
+>>> 4%3
+Output: 1
+
+>>> 10%3
+Output: 1
+
+>>> 10.5%3
+Output: 1.5
+
+Relational	(Less than(<),Greater than(>),Less than or equal to(<=),Greater than or equal to(>=),Equal to(= 			=),Not equal to(!=))
+
+
+carries out the comparison between operands. 
+They tell us whether an operand is greater than the other, lesser, equal, or a combination of those.
+
+ 1==True
+Output: True
+0==False
+Output: True
+
+
+
+Assignment	(Assign(=),Add and Assign(+=),Subtract and Assign(-=),Divide and Assign(/=),Multiply and Assign				(*=),Modulus and Assign(%=),Exponent and Assign(**=),Floor-Divide and Assign(//=))
+
+An assignment operator assigns a value to a variable. 
+It may manipulate the value by a factor before assigning it. 
+We have 8 assignment operators- one plain, and seven for the 7 arithmetic python operators.
+
+Logical		(and,or,not)
+
+These are conjunctions that you can use to combine more than one condition. 
+We have three Python logical operator – and, or, and not that come under python operators.
+
+a. and
+
+If the conditions on both the sides of the operator are true, then the expression as a whole is true.
+
+>>> a=7>7 and 2>-1
+>>> print(a)
+Output: False
+
+b. or
+
+The expression is false only if both the statements around the operator are false. Otherwise, it is true.
+
+>>> a=7>7 or 2>-1
+>>> print(a)
+Output: True
+
+c. not
+
+This inverts the Boolean value of an expression. It converts True to False, and False to True. As you can see below, the Boolean value for 0 is False. So, not inverts it to True.
+
+>>> a=not(0)
+>>> print(a)
+Output: True
+
+Membership	(in,not in)
+These operators test whether a value is a member of a sequence. 
+The sequence may be a list, a string, or a tuple. 
+We have two membership python operators- ‘in’ and ‘not in’.
+
+a. in
+This checks if a value is a member of a sequence. 
+In our example, we see that the string ‘fox’ does not belong to the list pets. 
+But the string ‘cat’ belongs to it, so it returns True. 
+Also, the string ‘me’ is a substring to the string ‘disappointment’. Therefore, it returns true.
+
+Must Read – Python Tuples vs Lists
+
+>>> pets=[‘dog’,’cat’,’ferret’]
+>>> ‘fox’ in pets
+Output: False
+
+>>> ‘cat’ in pets
+Output: True
+
+>>> ‘me’ in ‘disappointment’
+Output: True
+
+b. not in
+
+Unlike ‘in’, ‘not in’ checks if a value is not a member of a sequence.
+
+>>> ‘pot’ not in ‘disappointment’
+Output: True
+
+Identity	(is,is not)
+
+These operators test if the two operands share an identity. We have two identity operators- ‘is’ and ‘is not’.
+
+a. is
+
+If two operands have the same identity, it returns True. 
+Otherwise, it returns False. 
+Here, 2 is not the same as 20, so it returns False. 
+Also, ‘2’ and “2” are the same. The difference in quotes does not make them different. So, it returns True.
+
+>>> 2 is 20
+Output: False
+
+>>> ‘2’ is “2”
+Output: True
+
+b. is not
+
+2 is a number, and ‘2’ is a string. So, it returns a True to that.
+
+>>> 2 is not ‘2’
+Output: True
+
+
+Bitwise		(Binary AND(&),Binary OR(|),Binary XOR(^),Binary One’s Complement(~),Binary Left-Shift(<<),Binary 			Right-Shift(>>))
+
+a. Binary AND(&)
+
+It performs bit by bit AND operation on the two values. Here, binary for 2 is 10, and that for 3 is 11. 
+&-ing them results in 10, which is binary for 2. 
+Similarly, &-ing 011(3) and 100(4) results in 000(0).
+
+>>> 2&3
+Output: 2
+
+>>> 3&4
+Output: 0
+
+b. Binary OR(|)
+
+It performs bit by bit OR on the two values. Here, OR-ing 10(2) and 11(3) results in 11(3).
+
+>>> 2|3
+Output: 3
+
+c. Binary XOR(^)
+
+It performs bit by bit XOR(exclusive-OR) on the two values. Here, XOR-ing 10(2) and 11(3) results in 01(1).
+
+>>> 2^3
+Output: 1
+
+d. Binary One’s Complement(~)
+
+It returns the one’s complement of a number’s binary. 
+It flips the bits. Binary for 2 is 00000010. Its one’s complement is 11111101. 
+This is binary for -3. So, this results in -3. Similarly, ~1 results in -2.
+
+>>>~-3
+Output: 2
+
+Again, one’s complement of -3 is 2.
+
+e. Binary Left-Shift(<<)
+
+It shifts the value of the left operand the number of places to the left that the right operand specifies. 
+Here, binary of 2 is 10. 2<<2 shifts it two places to the left. This results in 1000, which is binary for 8.
+
+>>> 2<<2
+Output: 8
+
+f. Binary Right-Shift(>>)
+
+It shifts the value of the left operand the number of places to the right that the right operand specifies. 
+Here, binary of 3 is 11. 3>>2 shifts it two places to the right. 
+This results in 00, which is binary for 0. Similarly, 3>>1 shifts it one place to the right. 
+This results in 01, which is binary for 1.
+
+>>> 3>>2
+>>> 3>>1
+Output: 1

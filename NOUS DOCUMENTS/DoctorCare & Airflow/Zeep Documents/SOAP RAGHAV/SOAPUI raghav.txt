@@ -1,0 +1,541 @@
+SOAP UI 	RAGHAV PAL
+
+
+1 	SoapUI Beginner Tutorial 1 - What is SoapUI | SoapUi Introduction | Getting Started			8	
+	
+2	SoapUI Beginner Tutorial 2 - SoapUI Features and GUI							10
+
+3	SoapUI Beginner Tutorial 3 - First SoapUI Project | SOAP | How to create Project in SoapUI		18
+
+4	SoapUI Beginner Tutorial 4 - First SoapUI Project | REST						13
+
+5	SoapUI Beginner Tutorial 5 - How to use PROPERTIES							15
+
+6	SoapUI Beginner Tutorial 6 - How to Get and Set Properties through GROOVY scripts			19
+
+7	SoapUI Beginner Tutorial 7 - How to do Property Transfer | Values Transfer				11
+
+8 	SoapUI Beginner Tutorial 8 - GROOVY Scripting in SoapUI | Getting Started				22
+
+9	SoapUI Beginner Tutorial 9 - How to run a Request | from GUI, Groovy and Command Line			12
+
+10	SoapUI Beginner Tutorial 10 - How to run a Test Case - from GUI, Groovy and Command Line		14
+
+11	SoapUI Beginner Tutorial 11 - How to run a Test Suite - From GUI, Groovy and Command Line		10
+
+12	SoapUI Beginner Tutorial 12 - How to run PROJECT - From GUI, Groovy and Command Line			10
+
+13	SoapUI Beginner Tutorial 13 - How to check LOGS in SoapUI | Troubleshooting tips in SoapUI		5
+
+14	SoapUI Beginner Tutorial 14 - How to create SetUp and TearDown in SoapUI				12
+
+15	SoapUI Beginner Tutorial 15 - What are Assertions | How to create assertions in SoapUI			7
+	
+16	SoapUI Beginner Tutorial 16 - How to add ASSERTIONS | XPath | XQuery | Json Assertions in SoapUI	13
+
+17	SoapUI Beginner Tutorial 17 - How to create Script Assertions						18
+
+18	SoapUI Beginner Tutorial 18 - How to run SoapUI tests on Jenkins | SoapUI with Jenkins			17
+
+19	SoapUI Beginner Tutorial 19 - How to create API MONITORS | AlertSite					11
+
+20	SoapUI Beginner Tutorial 20 - How to add SoapUI Projects to GIT (version control system)		12
+
+
+
+
+
+
+
+
+
+video 1:
+
+What is SoapUI
+software application for testing web services.
+------------------------
+API Testing Tool
+For manual and automation testing of SOAP and REST APIs
+
+
+Why to use SoapUI
+------------------------------
+1. To create quick and efficient API tests
+2. To create API functional, performance and security tests
+3. To create API Testing automation framework
+
+
+
+
+video 2:
+
+Project>Test suite>Test case>Test Step			hirarchy followed in soapui 
+
+
+video 3:
+
+In this viode we will learn
+
+1. How to create a SOAP API Project
+2. How to add WSDL
+3. How to create Test Suite - Test Cases
+4. How to add Assertions
+5. Run Test Step - Test Case - Test Suite
+6. How to run in sequence and in parallel
+7. How to create API Documentation 
+
+
+webservices.oorsprong.org/websamples.countryinfo/CountryInfoServices.wso?wsdl[block by administrator]
+http://www.dneonline.com/calculator.asmx?wsdl(use this wsdl for example)
+
+
+
+video 4:
+
+1. Create a REST Project
+2. Add a REST request 
+3. How to add request parameters
+4. Create a Test Case
+5. Add assertions
+6. Run and Validate
+
+different endpoints:
+https://restcountries.eu/rest/v2/all
+https://restcountries.eu/rest/v2/name/united
+
+
+
+Video 5:
+
+How to use properties:
+
+1. What is property in soapui
+2. Why do we use it
+3. How to create properties at different levels
+4. How to refer properties
+
+Properties can be used as variables to store values that can be referred in testing
+In Soap Ui properties are used to parameterize the execution and functionality of the tests.
+
+
+Example:
+properties can be used to 
+
+hold the endpoints of your services, making it easy to change the actual end points used during text execution.
+
+hold authentication details making it easy to manage these in a central place or external file.
+
+transfer and share session ids during text execution. so multiple teststeps or testcases can share the same sessions
+
+Properties can be accessed at following levels:
+Project     	 -  ${#Project#PropertyName}
+TestSuite   	 -  ${#TestSuite#PropertyName}
+TestCase   	 -  ${#TestCase#PropertyName}
+TestStep   	 -  ${TestStepName#PropertyName}
+
+System       	-    ${#System#PropertyName}
+Env             -     ${#Env#PropertyName}
+Global    	-     ${#Global#PropertyName} 
+
+Grrovy example code
+
+log.info "Hello world.."
+log.info "Hi SOAP UI TEST PROJECT FOR CALCULATOR"
+
+//def name=context.expand('${#TestSuite#name}')
+def name=context.expand('${#Project#name}')
+
+log.info("Property name is : " +name)
+
+//def name=context.expand('${#System#user.home}')
+def name=context.expand('${#System#user.language}')
+
+
+
+Video 6:
+How to get and set properties through GROOVY script:
+
+Today we will learn:
+
+1. How to get property
+2. How to set property
+3. How to add property
+4. How to remove property
+5. How to loop through all properties
+
+to get the properties at different levels like below:
+
+/************* Get property at project level *************/
+
+//Project
+
+test runner is an interface which provides an entry point to the soap ui api.
+
+/************* Get property at Different level *************/
+/************* SET property at Different level *************/
+
+//Project
+//def projectProp=testRunner.testCase.testSuite.project.getPropertyValue("Name")			#get
+//log.info ("Project Property = "+projectProp)
+testRunner.testCase.testSuite.project.setPropertyValue("Name","I am in Project")			#set
+log.info(testRunner.testCase.testSuite.project.getPropertyValue("Name"))			
+testRunner.testCase.testSuite.project.addProperty("DOB")						#add
+testRunner.testCase.testSuite.project.removeProperty("DOB")						#remove
+
+
+//TestSuite:
+//def testSuiteProp=testRunner.testCase.testSuite.getPropertyValue("Name")
+//log.info ("Project Property = "+projectProp)
+testRunner.testCase.testSuite.setPropertyValue("Name","I am in TestSuite")				//set
+
+
+
+//Test Case:
+//def testCaseProp=testRunner.testCase.getPropertyValue("Name")
+//log.info ("Test Case Property = "+testCaseProp)
+testRunner.testCase.setPropertyValue("Name","I am in TestCase")						//set
+
+
+//Test Step:
+//def testStepProp=testRunner.testCase.getTestStepByName("Name")
+//log.info("Test Step Property "+testStepProp)
+
+
+//Global Property:
+//def globalProperty=com.eviware.soapui.SoapUI.globalProperties.getPropertyValue("Name")
+//log.info ("Global Property = "+globalProperty)
+com.eviware.soapui.SoapUI.globalProperties.setPropertyValue("Name","Iam in Global")			//set
+
+Remember onething with add property we can only add key value.but set property we can add key and value at the same time.
+
+//line comment
+
+/****line comment****/
+
+/*
+ *
+ *
+ *Block comment
+ *
+ */
+
+
+// loop through the elements
+ 
+testRunner.testCase.properties.each
+{
+	key,value ->
+	log.info(testRunner.testCase.getPropertyValue(key))
+//	log.info (key+"-"+value)
+}
+
+
+
+
+
+Viode 7:
+
+How to do Property Trnasfer|Values Transfer
+
+how to send values from response of one api to request of another api?
+
+
+
+Video 8:
+
+Grrovy Scripting in SOAP UI:
+
+location for SOAP UI path in c drive program files(x86):
+
+C:\Program Files (x86)\SmartBear\SoapUI-5.5.0\bin\ext
+
+log.info testRunner.metaClass.methods*.name.unique().sort()			#this will give all the test methods in testrunner.
+
+
+Grrovy script is invoked with log,context and testRunner variables. these are global variables for SOAP UI.
+
+log.info is for printing the ruby output.
+
+
+basic groovy script example:
+log.info" Hello world"
+ log.info(" Hello world")
+ log.info(" Hello world");
+
+
+
+
+Video 9: 
+
+How to run a Request | from GUI, Groovy and Command Line:
+
+1. How to run a request or step from GUI
+2. How to run a request or step from Groovy
+3. Options for command line runs
+
+without assertions 
+
+
+
+
+within the same test suite
+//def status=testRunner.runTestStepByName("Add")
+//log.info(" >>> "+status)
+//def result=status.getStatus().toString();
+//log.info(" >>> "+result)
+//
+//if(result=="OK")
+//{
+//	log.info("Test Passed")
+//}
+//else
+//{
+//	log.info("Test Failed")
+//}
+
+
+5:30
+UNKNOWN:we dont have any assertions in our requests or test steps.
+
+without assertions we dont know whether it is pass or fail. 
+
+
+
+call groovy script from other test case in test suite
+
+ a=10
+ b=20
+ c=a+b
+ log.info(c)
+
+
+
+
+from other different test suite:
+
+project=testRunner.testCase.testSuite.project;
+tcase=project.testSuites["TestSuite3"].testCases["TestCase2"];
+tstep=tcase.getTestStepByName("Add");
+def status=tstep.run(testRunner,context)
+def result=status.getStatus().toString();
+log.info(" >>> "+result)
+
+
+
+at a request level or step level you cant able to see launch Test Runner option.
+only in case of test case or test suit level you can able to see launch testrunner option.
+
+
+
+VIDEO 10
+
+-------------------------
+1. How to run a Test Case from GUI
+2. How to run a Test Case from Groovy
+3. How to run a Test Case from CommandLine 
+
+Useful TIPS
+---------------
+How to get list of all TCs in a test suite
+Get TestCaseName - testRunner.testCase.name
+
+
+
+Notes:
+groovy code to run test case
+=====================
+def tCase = testRunner.testCase.testSuite.testCases["TestCaseName"]
+runner = tCase.run(new com.eviware.soapui.support.types.StringToObjectMap(), false);
+
+groovy code to loop test cases in a test suite
+==================================
+def testCases = context.testCase.testSuite.getTestCaseList() 
+testCases.each{
+log.info(it.name)
+}
+
+
+command line run
+==============
+cd C:\Program Files\SmartBear\SoapUI-5.4.0\bin\
+testrunner.bat -sTestSuite3 -cTestCase2 "C:\Users\Raghav Pal\OneDrive\Projects\SoapUIProjects\CountryInfoService-soapui-project1.xml"
+
+
+code practice:
+def tCase=testRunner.testCase.testSuite.testCases["TestCase2"]
+def prop=new com.eviware.soapui.support.types.StringToObjectMap()
+//runner=tCase.run(prop,true);
+runner=tCase.run(null,false);
+
+
+log.info(" >>> "+runner.getStatus().toString())
+
+
+def testCases=context.testCase.testSuite.getTestCaseList()
+testCases.each{
+log.info(" >>> "+it.name)
+
+if(it.name=="TestCase4")
+{
+	log.info(" >> This is TestCase4")
+}
+}
+
+log.info(" TestCase name is: "+testRunner.testCase.name);
+
+C:\Users\rajeshvs			actual path
+
+launch runner path for testcase2 in testsuite3:
+cd C:\Program Files (x86)\SmartBear\SoapUI-5.5.0\bin\
+testrunner.bat -sTestSuite3 -cTestCase2 "C:\Users\rajeshvs\Documents\Calculator-soapui-project.xml"
+SoapUI 5.5.0 TestCase Runner
+
+from commandline iit is not working check this thing  11:00 onwards
+
+
+
+Video 11:
+
+1. How to run a TestSuite from GUI
+2. How to run a TestSuite from Groovy
+3. How to run a TestSuite from CommandLine
+
+
+Groovy script
+-------------------
+def suite = context.testCase.testSuite.project.testSuites["TestSuiteName"]
+suite.run(null,false)
+// null can be replaced with : new com.eviware.soapui.support.types.StringToObjectMap()
+log.info ("   ===   "+suite.getName().toString()+" - Executed successfully")
+
+
+raghav
+command line run
+----------------------------
+cd  C:\Program Files\SmartBear\SoapUI-5.4.0\bin\
+testrunner.bat -sTestSuite2 -j -f"C:\Users\Raghav Pal\Desktop" "C:\Users\Raghav Pal\OneDrive\Projects\SoapUIProjects\CountryInfoService-soapui-project1.xml"
+
+
+
+mine
+C:\Program Files (x86)\SmartBear\SoapUI-5.5.0\bin\
+testrunner.bat -sTestSuite2 -f"C:\Users\rajeshvs\Desktop" "C:\Users\rajeshvs\Documents\Calculator-soapui-project.xml"
+SoapUI 5.5.0 TestCase Runner
+
+
+
+Video 12:
+How to run PROJECT - From GUI, Groovy and Command Line
+
+1. How to run a Project from GUI
+2. How to run a Project from Groovy
+3. How to run a Project from CommandLine
+
+
+groovy script
+------------------
+def projectName=testRunner.getTestCase().getTestSuite().getProject().getWorkspace().getProjectByName("REST Project 1")
+projectName.run(null,true)
+//projectName.run(new com.eviware.soapui.support.types.StringToObjectMap(), false)
+
+
+raghav:
+command line run
+--------------------------
+cd C:\Program Files\SmartBear\SoapUI-5.4.0\bin\
+testrunner.bat -j -f"C:\Users\Raghav Pal\Desktop" "C:\Users\Raghav Pal\OneDrive\Projects\SoapUIProjects\CountryInfoService-soapui-project1.xml"
+
+rajesh:
+C:\Program Files (x86)\SmartBear\SoapUI-5.5.0\bin\.
+testrunner.bat C:\Users\rajeshvs\Documents\Calculator-soapui-project.xml
+SoapUI 5.5.0 TestCase Runner
+
+
+
+VIdeo 13:
+
+How to check logs in SOAP UI:
+
+1. Different types of logs in SoapUI
+2. How to view soapui general and error log files
+
+Most important logs are
+
+SOAP UI logs
+error logs
+http logs
+
+
+
+Video 14:
+
+How to create Setup and Teardown in SOAP UI
+
+1. What is SetUp and TearDown
+2. Why to use it
+3. How to use SetUp and TearDown scripts in SoapUI
+4. How to set SetUp and TearDown with groovy scripts
+
+Setup - runs before running the element in context
+Teardown - runs after running the element in context
+
+
+groovy code to set and get setup and teardown scripts 
+--------------------------------------------------------------------------
+testRunner.testCase.testSuite.project.getTestSuiteByName('TestSuite1').getTestCaseByName('TestCase1').setSetupScript('log.info "setup"')
+testRunner.testCase.testSuite.project.getTestSuiteByName('TestSuite1').getTestCaseByName('TestCase1').setTearDownScript('log.info "teardown"')
+
+log.info ("  --  "+testRunner.testCase.getSetupScript());
+log.info ("  --  "+testRunner.testCase.getTearDownScript());
+
+
+groovy code can be given at project load script to load setup and teardown scritps from file
+--------------------------------------------------------------------------------------------------------------------------
+def su = new File("setup.txt").text
+def td  = new File("teardown.txt").text
+
+project.getTestSuiteList().each { testSuite -
+ testSuite.getTestCaseList().each { testCase -
+  testCase.setSetupScript(su)
+  testCase.setTearDownScript(td)
+ }
+}
+
+
+Setup script	:it will run before running any test suite in current project.(test suite or test case level ok)
+Teardown script	:it will run after all test suites in current project.
+
+setup and teardown is at test suite level also.......
+
+the general use of setup is beore running a test case or test suite or before running a project do some settings you might want to have some variables,
+you might want to delete some rows in database.
+
+the general use of teardown is after running a test case or test suite or before running a project do some settings you might want to have some variables,you might want to delete some values in database, you might want to change the values in the environment,send an email at the end of running of all test suites or test cases that code put in tear down.
+
+
+
+Video 15:
+
+What are Assertions | How to create assertions in SoapUI:
+
+1. What are assertions 				validations on response.			expected vs actual
+
+are used to validate the message received by a Teststep during execution.
+used to compare response data to some expected value.
+A test step can contain any number of assertions.
+ 
+2. Why do we add assertions
+3. Diff types of assertions in SoapUI
+
+
+
+Video 16:
+
+
+How to add different assertions in SoapUI
+
+Contains 
+XPath Match
+XQuery Match
+Compliance
+JSON Path assertions

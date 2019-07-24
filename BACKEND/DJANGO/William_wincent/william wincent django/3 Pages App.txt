@@ -1,0 +1,146 @@
+https://djangoforbeginners.com/pages-app/
+
+
+In this chapter we’ll build, test, and deploy a Pages app that has a homepage and an about page. 
+We’ll also learn about Django’s class-based views and templates which are the building blocks 
+for the more complex web applications built later on in the book.
+
+
+How to exit from current virtual environment?
+On the command line make sure you’re not working in an existing virtual environment. 
+You can tell if there’s anything in parentheses before your command line prompt. If you are simply type exit to leave it.
+
+We will again create a new directory pages for our project on the Desktop 
+but you can put your code anywhere you like on your computer. It just needs to be in its own directory.
+
+Within a new command line console start by typing the following:
+
+$ cd ~/Desktop
+$ mkdir pages
+$ cd pages
+$ pipenv install django==2.1.5
+$ pipenv shell
+(pages) $ django-admin startproject pages_project .
+(pages) $ python manage.py startapp pages
+
+
+Templates
+Every web framework needs a convenient way to generate HTML files. 
+In Django, the approach is to use templates so that individual HTML files can be served by a view to a web page specified by the URL.
+
+It’s worth repeating this pattern since you’ll see it over and over again in Django development: 
+Templates, Views, and URLs. 
+The order in which you create them doesn’t much matter since all three are required and work closely together. 
+The URLs control the initial route, the entry point into a page, such as /about, 
+the views contain the logic or the “what”, and the template has the HTML. 
+For web pages that rely on a database model, it is the view that does much of the work to decide what data is available to the template.
+
+
+Fortunately there’s another often-used approach to structuring the templates in a Django project. 
+And that is to instead create a single, project-level templates directory that is available to all apps. 
+This is the approach we’ll use. 
+By making a small tweak to our settings.py file we can tell Django to also look in this project-level folder for templates.
+
+First quit our server with Control-c. Then create a project-level folder called templates and an HTML file called home.html.
+
+(pages) $ mkdir templates
+(pages) $ touch templates/home.html
+Next we need to update settings.py to tell Django to look at the project-level for templates. 
+This is a one-line change to the setting 'DIRS' under TEMPLATES.
+
+# pages_project/settings.py
+TEMPLATES = [
+    {
+        ...
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # new
+        ...
+    },
+]
+
+
+Class-Based Views
+Early versions of Django only shipped with function-based views, 
+but developers soon found themselves repeating the same patterns over and over again. 
+Write a view that lists all objects in a model. Write a view that displays only one detailed item from a model. And so on.
+
+Function-based generic views were introduced to abstract these patterns and streamline development of common patterns. 
+However there was no easy way to extend or customize these views. 
+As a result, Django introduced class-based generic views that make it easy to use and also extend views covering common use cases.
+
+
+
+Note that we’ve capitalized our view since it’s now a Python class. 
+Classes, unlike functions, should always be capitalized. 
+The TemplateView already contains all the logic needed to display our template, we just need to specify the template’s name.
+
+
+URLs
+The last step is to update our URLConfs. 
+Recall from Chapter 2 that we need to make updates in two locations. 
+First we update the project-level urls.py file to point at our pages app and then within pages we match the views to routes.
+
+This pattern is almost identical to what we did in Chapter 2 with one major difference. 
+When using Class-Based Views, you always add as_view() at the end of the view name.
+
+
+Extending Templates
+The real power of templates is their ability to be extended. 
+If you think about most web sites, there is content that is repeated on every page (header, footer, etc). 
+Wouldn’t it be nice if we, as developers, could have one canonical place for our header code that would be inherited by all other templates?
+
+Well we can! Let’s create a base.html file containing a header with links to our two pages. First Control+c and then type the following.
+
+(pages) $ touch templates/base.html
+
+
+Tests
+
+Finally we come to tests. Even in an application this basic, it’s important to add tests and get in the habit of always adding them to our Django projects. In the words of Jacob Kaplan-Moss, one of Django’s original creators, “Code without tests is broken as designed.”
+
+Writing tests is important because it automates the process of confirming that the code works as expected. 
+In an app like this one, we can manually look and see that the home page and about page exist and contain the intended content. 
+But as a Django project grows in size there can be hundreds if not thousands of individual web pages 
+and the idea of manually going through each page is not possible. 
+Further, whenever we make changes to the code–adding new features, updating existing ones, deleting unused areas of the site–
+we want to be sure that we have not inadvertently broken some other piece of the site. 
+Automated tests let us write one time how we expect a specific piece of our project to behave and then let the computer do the checking for us.
+
+Fortunately Django comes with robust, built-in testing tools for writing and running tests.
+
+We’re using SimpleTestCase here since we aren’t using a database. 
+If we were using a database, we’d instead use TestCase. 
+Then we perform a check if the status code for each page is 200, which is the standard response for a successful HTTP request. 
+That’s a fancy way of saying it ensures that a given web page actually exists, but says nothing about the content of said page.
+
+
+# pages/tests.py
+from django.test import SimpleTestCase
+
+
+class PagesTests(SimpleTestCase):
+    def test_home_page_status_code(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_about_page_status_code(self):
+        response = self.client.get('/about/')
+        self.assertEqual(response.status_code, 200)
+
+
+Git and Bitbucket
+
+Local vs Production:
+Up to this point we’ve been using Django’s own internal web server to power our Pages application locally on our computer. 
+But you can’t share a localhost address with someone else. 
+To make our site available on the Internet where everyone can see it, we need to deploy our code to an external server that anyone can use to see our site. This is called putting our code into production. 
+
+			"Local code lives only on our computer; production code lives on an external server."
+
+There are many server providers available but we will use Heroku.
+because it is free for small projects, widely-used, and has a relatively straightforward deployment process.
+
+Heroku
+You can sign up for a free Heroku account on their website. 
+After you confirm your email Heroku will redirect you to the dashboard section of the site.
+
+

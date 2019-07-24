@@ -1,0 +1,256 @@
+Doctorcare
+EDTPortBinding
+
+									delete:
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+resourceIDs=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>?</ServiceUserMUID>
+      </idp:IDP>
+      <msa:MSA>
+         <ServiceUserMUID>?</ServiceUserMUID>
+         <UserID>?</UserID>
+      </msa:MSA>
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:delete>
+         <!--1 to 100 repetitions:-->
+         <resourceIDs>?</resourceIDs>
+      </edt:delete>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+									download:
+
+
+ServiceUserMUID		=614300
+SoftwareConformanceKey  =840ca40a-32df-4df1-9541-58a901bb8a85
+AuditId			=4
+resourceIDs		=6
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>614300</ServiceUserMUID>
+      </idp:IDP>
+<!--      <msa:MSA>-->
+<!--         <ServiceUserMUID>?</ServiceUserMUID>-->
+<!--         <UserID>?</UserID>-->
+<!--      </msa:MSA>-->
+      <ebs:EBS>
+         <SoftwareConformanceKey>840ca40a-32df-4df1-9541-58a901bb8a85</SoftwareConformanceKey>
+         <AuditId>4</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:download>
+         <!--1 to 5 repetitions:-->
+         <resourceIDs>6</resourceIDs>
+      </edt:download>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+								getTypeList:
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>?</ServiceUserMUID>
+      </idp:IDP>
+<!--      <msa:MSA>-->
+<!--         <ServiceUserMUID>?</ServiceUserMUID>-->
+<!--         <UserID>?</UserID>-->
+<!--      </msa:MSA>-->
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:getTypeList/>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+								info:
+
+
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+resourceIDs=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID></ServiceUserMUID>
+      </idp:IDP>
+<!--      
+
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:info>
+         <!--1 to 100 repetitions:-->
+         <resourceIDs>215987</resourceIDs>
+      </edt:info>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+								list:
+
+ServiceUserMUID		=1111222
+SoftwareConformanceKey	=840ca40a-32df-4df1-9541-58a901bb8a85
+AuditId			=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>1111222</ServiceUserMUID>
+      </idp:IDP>
+<!--      <msa:MSA>-->
+<!--         <ServiceUserMUID>?</ServiceUserMUID>-->
+<!--         <UserID>?</UserID>-->
+<!--      </msa:MSA>-->
+      <ebs:EBS>
+         <SoftwareConformanceKey>840ca40a-32df-4df1-9541-58a901bb8a85</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:list>
+         <!--Optional:-->
+         <resourceType>CL</resourceType>
+         <!--Optional:-->
+         <status>200</status>
+         <!--Optional:-->
+         <pageNo>9</pageNo>
+      </edt:list>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+								submit:
+
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+resourceIDs=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>?</ServiceUserMUID>
+      </idp:IDP>
+      <msa:MSA>
+         <ServiceUserMUID>?</ServiceUserMUID>
+         <UserID>?</UserID>
+      </msa:MSA>
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:submit>
+         <!--1 to 100 repetitions:-->
+         <resourceIDs>?</resourceIDs>
+      </edt:submit>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+								update:
+
+
+
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+resourceID=
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>?</ServiceUserMUID>
+      </idp:IDP>
+      <msa:MSA>
+         <ServiceUserMUID>?</ServiceUserMUID>
+         <UserID>?</UserID>
+      </msa:MSA>
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:update>
+         <!--1 to 5 repetitions:-->
+         <updates>
+            <content>cid:748597455022</content>
+            <resourceID>?</resourceID>
+         </updates>
+      </edt:update>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+								upload:
+
+
+
+ServiceUserMUID=
+SoftwareConformanceKey=
+AuditId=
+resourceType=
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:idp="http://idp.ebs.health.ontario.ca/" xmlns:msa="http://msa.ebs.health.ontario.ca/" xmlns:ebs="http://ebs.health.ontario.ca/" xmlns:edt="http://edt.health.ontario.ca/">
+   <soapenv:Header>
+      <idp:IDP>
+         <ServiceUserMUID>?</ServiceUserMUID>
+      </idp:IDP>
+      <msa:MSA>
+         <ServiceUserMUID>?</ServiceUserMUID>
+         <UserID>?</UserID>
+      </msa:MSA>
+      <ebs:EBS>
+         <SoftwareConformanceKey>?</SoftwareConformanceKey>
+         <AuditId>?</AuditId>
+      </ebs:EBS>
+   </soapenv:Header>
+   <soapenv:Body>
+      <edt:upload>
+         <!--1 to 5 repetitions:-->
+         <upload>
+            <content>cid:150089765286</content>
+            <!--Optional:-->
+            <description>?</description>
+            <resourceType>?</resourceType>
+         </upload>
+      </edt:upload>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+

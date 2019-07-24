@@ -1,0 +1,238 @@
+﻿2. What is Python List?
+Unlike C++ or Java, Python Programming Language doesn’t have arrays. 
+To hold a sequence of values, then, it provides the ‘list’ class. 
+A Python list can be seen as a collection of values.
+
+
+
+
+#                                   13. Built-in List Functions
+
+# sum()          max()       min()              any()
+# all()         list()      sorted()            len()
+
+
+
+
+										sum()
+d. sum()
+It returns the sum of all the elements in the list.
+
+
+>>> sum(even)
+36
+
+However, for this, the Python list must hold all numeric values.
+
+>>> a=['1','2','3']
+>>> sum(a)
+Traceback (most recent call last):
+
+File “<pyshell#112>”, line 1, in <module>
+
+sum(a)
+
+TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
+
+It works on floats.
+
+>>> sum([1.1,2.2,3.3])
+6.6
+     
+     
+
+										max()
+b. max()
+It returns the item from the list with the highest value.
+
+>>> max(even)
+18
+
+If all the items in your list are strings, it will compare.
+
+>>> max(['1','2','3'])
+‘3’
+
+But it fails when some are numeric, and some are strings in python.
+
+>>> max([2,'1','2'])
+Traceback (most recent call last):
+
+File “<pyshell#116>”, line 1, in <module>
+
+max([2,’1′,’2′])
+
+TypeError: ‘>’ not supported between instances of ‘str’ and ‘int’
+       
+
+
+
+										min()
+
+It returns the item from the Python list with the lowest value.
+
+>>> min(even)
+              
+
+
+										any()
+It returns True if even one item in the Python list has a True value.
+
+>>> any(['','','1'])
+True
+
+
+
+										all()
+
+It returns True if all items in the list have a True value.
+
+>>> all(['','','1'])
+False
+         
+										list()      
+
+It converts a different data type into a list.
+
+>>> list("abc")
+[‘a’, ‘b’, ‘c’]
+It can’t convert a single int into a list, though, it only converts iterables.
+
+>>> list(2)
+Traceback (most recent call last):
+
+File “<pyshell#122>”, line 1, in <module>
+
+list(2)
+
+TypeError: ‘int’ object is not iterable
+
+
+										sorted()
+It returns a sorted version of the list, but does not change the original one.
+
+>>> a=[3,1,2]
+>>> sorted(a)
+[1, 2, 3]
+>>> a
+[3, 1, 2]
+If the Python list members are strings, it sorts them according to their ASCII values.
+
+>>> sorted(['hello','hell','Hello'])
+[‘Hello’, ‘hell’, ‘hello’]
+Here, since H has an ASCII value of 65, it appears first.
+
+            
+
+										len():
+It calculates the length of the list.
+len(a)
+
+
+
+a=[1,2,3,9,5,6]
+
+# print(sum(a))
+# print(max(a))
+# print(min(a))
+# print(any(a))
+# print(all(a))
+# print(list(a))
+# print(sorted(a))
+# print(len(a))
+
+
+b=['1','2','3']
+
+print(sum(b))
+# print(max(b))
+# print(min(b))
+# print(any(b))
+# print(all(b))
+# print(list(b))
+# print(sorted(a))
+
+
+
+14. Built-in Methods
+
+append()		insert()		pop()			clear()
+index()			count()			sort()			reverse()		
+
+
+
+										a. append()
+It adds an item to the end of the list.
+
+>>> a
+[2, 1, 3]
+>>> a.append(4)
+>>> a[/php]
+[2, 1, 3, 4]
+
+
+										b. insert()
+It inserts an item at a specified position.
+
+>>> a.insert(3,5)
+>>> a
+[2, 1, 3, 5, 4]
+This inserted the element 5 at index 3.
+
+
+										d. pop()
+It removes the element at the specified index, and prints it to the screen.
+
+>>> a.pop(3)
+2
+
+>>> a
+[1, 3, 5, 4]
+
+
+										e. clear()
+It empties the Python list.
+
+>>> a.clear()
+>>> a
+[]
+It now has a False value.
+
+>>> bool(a)
+False
+
+
+
+										f. index()
+It returns the first matching index of the item specified.
+
+>>> a=[1,3,5,3,4]
+>>> a.index(3)
+1
+
+										g. count()
+It returns the count of the item specified.
+
+>>> a.count(3)
+2
+
+										h. sort()
+It sorts the list in an ascending order.
+
+>>> a.sort()
+>>> a
+[1, 3, 3, 4, 5]
+
+
+										i. reverse()
+It reverses the order of elements in the Python lists.
+
+>>> a.reverse()
+>>> a
+[5, 4, 3, 3, 1]
+This was all about the Python lists
+
+					
+
+
+

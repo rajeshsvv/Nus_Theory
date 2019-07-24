@@ -1,0 +1,203 @@
+node is runtime environment for javascript code.
+variables are important concepts in javascript.
+we use variable to store data temporarily in computer memory.
+
+
+//  to declare the variable we use like this
+//  var  before  es6 javascript version
+//  let after   es6 javascript version
+
+//  rules for declaring variables:
+//  variables cannot be a reserved keyword  example let if else var true false typeof 
+//  should be meaningful names
+//  they cannot start with number
+//  cannot contain space or hyphen(  - )
+// Are case sensitive(firstName or FirstName)
+
+
+22:00
+constants:
+
+value of the variable as the name implies can change the value      let interestRate=.3
+value of constant as tthe name implies cannot change the value      const interestRate=.3
+
+
+23:38
+primitive types
+
+
+26:59
+javascript is dynamic language
+
+static:we declare a variable the type of that variable is set and cannot be changed in the future.
+dynamic:we declare a variable the type of that variable is set and it  can also be changed in the future.
+
+
+
+30:11
+objects
+
+35:22
+arrays:
+
+
+
+					https://www.youtube.com/watch?v=b1ieJtIx1NY
+					How Javascript works in the browser
+
+javascript engine work was to take the javascript files that are download from the web server 
+and interpret them and compile them into bytecode that can be run on users computer.thats why we called client side
+
+
+below three combinely called JIT compilers:
+
+1)DOM interpretor(HTML)
+2)css interpretor
+3)javascript engines(different names for different browsers)
+
+google chrome		-v8 engine
+safari			-nitro		
+firefox			-spider monkey
+ie(internet explorer)	-chikara
+
+
+
+						https://www.youtube.com/watch?v=PFmuCDHHpwk
+						OOPS in JAVASCRIPT
+
+
+00:00 : What is OOP?
+01:46 : Four Pillars of OOP
+08:50 : Setting Up the Development Environment 11:07: Objects
+11:53 : Object Literals
+14:58 :  Factories
+17:50 : Constructors
+23:27 : Constructor Property
+25:53 : Functions are Objects
+31:09 : Value vs Reference Types
+37:00 : Adding or Removing Properties
+40:54 : Enumerating Properties
+43:45 : Abstraction
+47:48 : Private Properties and Methods
+51:55 : Getters and Setters
+57:32 : Exercise
+59:42 : Solution
+
+
+encapsulation	:we group related variables and functions together.
+abstraction	:we hide the deails and complexity and show only the essentials.
+inheritance	:eliminate redundant code.
+polymorphism:	refactor ugly switch case statements
+
+
+
+12:34
+
+var	 to declare a variable but with var it has some issues to declare a variable (before es6 its used)   .
+let	to delcare a variable(from js6).
+const   to declare a constant variable.
+
+{}-object literal syntax.
+an object in javascript is essentially a collection of key value pairs.
+
+property is used to hold the value
+methods or functions are used to perform some logic 
+
+object literal is simple way to define an object.
+
+we can also define objects using factiories and constructors.
+
+
+20:05
+
+if u run the existing code inside the browser the global object is the window object.
+if u run the existing code insode the node environment then the global object is the global.
+
+
+
+23:35
+	Constructor Property:
+
+
+25:54:
+Functions are Objects:
+
+
+26:11:
+purple icons are members methods	like call bind apply
+blue icons are property         	like arguments caller length name prototype
+
+every object in javascript has a constructor property and that references the function was used to create an object.
+
+31:18:
+Two types we have in javascript
+
+Value Tpye and Reference Type
+
+Value Type:						Reference Tpye:	
+	
+Number							Object
+String							Function
+Boolean							Array
+undefined
+symbol(new in js6)
+	
+
+Primitives are copied by their value
+objects are copied by their references
+
+
+37:03
+adding and removing the properties:
+
+objects in javascript are dynamic in the sense after you create them you can add extra properties in them or delete some properties from them
+
+
+
+41:02
+
+enumarate the properties:
+
+somtimes you may need to iterate over or enumerate the properties in an object.
+we can do that using for in loop.
+
+
+
+43:27
+to enumerate all the members and an object we can use for in loop
+to get all the keys and an object use object.keys
+and to check for an existance of an property or a method in an object use the in operator.
+
+
+
+43:46
+Abstraction 45:30:
+we should hide the details and complexity and show or expose only the essentials.
+
+
+49:25
+
+closure:
+closure determines what variables will be accessible to an inner function.
+
+scope is temporary that means its destroyed once function in inner function execution completes.
+but closure stay there preserve their state in case of closure .
+ 
+
+57:25:
+
+
+use Object.defineProperty to define getters and setters.
+
+
+57:34:
+
+Excersize:
+
+
+
+
+
+
+
+

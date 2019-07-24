@@ -1,0 +1,301 @@
+Interview Questions for Python Freshers – Q. 2,3,4,5,7,8,10
+
+Interview Questions for Python Experienced – Q. 1,6,9
+
+
+
+Interview Questions for Python Freshers – Q. 11,12,15,16,19,20
+
+Interview Questions for Python Experienced – Q. 13,14,18
+
+
+
+Interview Questions for Python Freshers – Q. 21, 23, 26, 29
+
+Interview Questions for Python Experienced – Q. – 22, 24, 25,27,28,30
+
+
+
+
+Q.2. Differentiate between split(), sub(), and subn() methods of the re module.
+
+Ans. The re module is what we have for processing regular expressions with Python. Let’s talk about the three methods we mentioned-
+
+split()- This makes use of a regex pattern to split a string into a list.
+sub()- This looks for all substrings where the regex pattern matches, and replaces them with a different string
+subn()- Like sub(), this returns the new string and the number of replacements made.
+
+
+
+
+Q.3. Differentiate between Django, Pyramid, and Flask.
+
+Ans. These are three major frameworks in Python. Here are the differences:
+
+We can also use Django for larger applications. It includes an ORM.
+
+Flask is a microframework for a small platform with simpler requirements. 
+It is ready to use and you must use external libraries.
+
+The pyramid is for larger applications. 
+It is flexible and you can choose the database, the URL structure, the templating style, and much more.
+It is also heavily configurable.
+
+Q.4. Explain the Inheritance Styles in Django.
+
+Ans. Talking on inheritance styles, we have three possible-
+
+Abstract Base Classes- 			For the parent class to hold information so we don’t have to type it out for each child model
+Multi-table Inheritance- 		For subclassing an existing model and letting each model have its own database
+Proxy Models- 				For modifying the model’s Python-level behavior without having to change its fields
+
+
+Q.5. Explain Python List Comprehension.
+
+The list comprehension is a way to declare a list in one line of code. Let’s take a look at one such example.
+
+>>> [i for i in range(1,11,2)]
+[1, 3, 5, 7, 9]
+
+>>> [i*2 for i in range(1,11,2)]
+[2, 6, 10, 14, 18]
+
+Q.6. How will you locally save an image using its URL address?
+
+Ans. For this, we use the urllib module.
+
+>>> import urllib.request
+>>> urllib.request.urlretrieve('https://yt3.ggpht.com/a-/ACSszfE2YYTfvXCIVk4NjJdDfFSkSVrLBlalZwYsoA=s900-mo-c-c0xffffffff-rj-k-no','dataflair.jpg')
+
+
+
+Q.7. What does the map() function do?
+
+Ans. map() executes the function we pass to it as the first argument; 
+it does so on all elements of the iterable in the second argument. 
+Let’s take an example, shall we?
+
+>>> for i in map(lambda i:i**3, (2,3,7)):
+print(i)
+8
+27
+343
+
+Q.8. How will you share global variables across modules?
+
+Ans. To do this for modules within a single program, 
+we create a special module, then import the config module in all modules of our application. 
+This lets the module be global to all modules.
+
+This gives us the cubes of the values 2, 3, and 7.
+
+
+Q.9. What is the process to calculate percentiles with NumPy?
+
+Ans. Refer to the code below.
+
+>>> import numpy as np
+>>> arr=np.array([1,2,3,4,5])
+>>> p=np.percentile(arr,50)
+>>> p
+3.0
+
+
+
+Q.10. What is Flask- WTF? Explain its features.
+
+Ans. Flask-WTF supports simple integration with WTForms. It has the following features-
+
+Integration with wtforms
+Global csrf protection
+Recaptcha supporting
+Internationalization integration
+Secure form with csrf token
+File upload compatible with Flask uploads
+
+
+Q.12. What is the Dogpile effect?
+
+Ans. In case the cache expires, what happens when a client hits a website with multiple requests is what we call the dogpile effect. 
+To avoid this, we can use a semaphore lock. 
+When the value expires, the first process acquires the lock and then starts to generate the new value
+
+
+Q.13. How do you insert an object at a given index in Python?
+
+Ans. Let’s build a list first.
+
+>>> a=[1,2,4]
+Now, we use the method insert. The first argument is the index at which to insert, the second is the value to insert.
+
+>>> a.insert(2,3)
+>>> a
+[1, 2, 3, 4]
+
+
+Q.14. And how do you reverse a list?
+
+Ans. Using the reverse() method.
+
+>>> a.reverse()
+>>> a
+[4, 3, 2, 1]
+
+
+Q.15. What is a Python module?
+
+Ans. A module is a script in Python that defines import statements, functions, classes, and variables. 
+It also holds runnable Python code. 
+ZIP files and DLL files can be modules too. 
+The module holds its name as a string that is in a global variable
+
+
+Q.16. What is the with statement in Python?
+
+Ans. Using the with statement, we open files, process data in files, and even close them without having to make a call to the close() method.
+This makes exception-handling simpler with the cleanup activities. Here’s a demonstration-
+
+>>> with open('data.txt') as data:
+#processing statements
+
+
+
+Q.17. What are the different file-processing modes with Python?
+
+Ans. We have the following modes-
+
+read-only – ‘r’
+write-only – ‘w’
+read-write – ‘rw’
+append – ‘a’
+We can open a text file with the option ‘t’. 
+
+So to open a text file to read it, we can use the mode ‘rt’. 
+read-only – ‘rt’
+write-only – ‘wt’
+read-write – ‘rw+’
+append – ‘at’
+
+Similarly, for binary files, we use ‘b’.
+read-only – ‘rb’
+write-only – ‘wb’
+read-write – ‘rw+’
+append – ‘ab’
+
+Q.18. What are the file-related modules we have in Python?
+
+Ans. We have the following libraries and modules that let us manipulate text and binary files on our file systems-
+
+os
+
+os.path
+
+shutil
+
+
+Q.19. What makes Python object-oriented?
+
+Ans. Python is object-oriented because it follows the Object-Oriented programming paradigm.
+This is a paradigm that revolves around classes and their instances (objects). 
+With this kind of programming, we have the following features:
+
+Encapsulation
+
+Abstraction
+
+Inheritance
+
+Polymorphism
+
+Data hiding
+
+
+Q.20. Does Python support interfaces like Java does?
+
+Ans. No. However, Abstract Base Classes (ABCs) are a feature from the abc module 
+that let us declare what methods subclasses should implement. 
+Python supports this module since version 2.7.
+
+Q.21. Explain the output of the following piece of code-
+
+x=[‘ab’,’cd’]
+
+print(len(map(list,x)))
+
+Ans. This actually gives us an error- a TypeError. This is because map() has no len() attribute in their dir().
+
+
+Q.22. So what is the output of the following piece of code?
+
+x=[‘ab’,’cd’]
+
+print(len(list(map(list,x))))
+
+Ans. This outputs 2 because the length of each string is 2.
+
+Q.23. How can you keep track of different versions of code?
+
+Ans. To make this happen, we implement version control. For this, one tool you can use is Git.
+
+Q.24. Explain garbage collection with Python.
+
+Ans. The following points are worth nothing for the garbage collector with CPython-
+
+Python maintains a count of how many references there are to each object in memory
+When a reference count drops to zero, it means the object is dead and Python can free the memory it allocated to that object
+The garbage collector looks for reference cycles and cleans them up.
+Python uses heuristics to speed up garbage collection
+Recently created objects might as well be dead
+The garbage collector assigns generations to each object as it is created
+It deals with the younger generations first.
+
+
+
+Q.25. How is Python different from Java?
+
+Ans. Following is the comparison of Python vs Java – 
+
+a. Java is faster than Python
+
+b. Python mandates indentation. Java needs braces.
+
+c. Python is dynamically-typed; Java is statically typed.
+
+d. Python is simple and concise; Java is verbose
+
+e. Python is interpreted
+
+f. Java is platform-independent
+
+g. Java has stronger database-access with JDBC
+
+
+Q.26. How do we execute Python?
+
+Ans. Python files first compile to bytecode. Then, the host executes them.
+
+Q.27. What is the Python interpreter prompt?
+
+Ans. This is the following sign for Python Interpreter:
+
+>>>
+If you have worked with the IDLE, you will see this prompt.
+
+
+Q.28. Explain try, raise, and finally.
+
+Ans. These are the keywords we use with exception-handling. 
+We put risky code under a try block, use the raise statement to explicitly raise an error,
+ and use the finally block to put code that we want to execute anyway.
+
+
+Q.29. What happens if we do not handle an error in the except block?
+
+Ans. If we don’t do this, the program terminates. Then, it sends an execution trace to sys.stderr.
+
+Q.30. How does a function return values?
+
+Ans. A function uses the ‘return’ keyword to return a value. Take a look:
+
+>>> def add(a,b):
+       return a+b

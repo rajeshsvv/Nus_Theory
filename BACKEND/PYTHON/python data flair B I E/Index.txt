@@ -1,0 +1,65 @@
+Beginner					InterMediate								Expert
+
+
+variable scope					classes								Errors and Exceptions
+
+Python Data Structures				Methods								Exception Handling
+
+lists						Methods vs Functions						Python tools
+
+tuples						Constructors							Sending Mail with Python 3
+
+dictionaries					Python Inheritance & Multiple Inheritance			Python Multi-threading
+
+sets and booleans				Python operator Overloading					Multi Processing
+	
+tuple vs list					OS and SYS Module						Regular Expressions
+
+sequence and collections			Zipping files							Accessing database with Python
+
+switch case					Python FIle I/O	& Reading and Writing Files			Unit testing
+
+Loops						List Comprehension & Iterable and Iterators			Logging
+
+functions					Decorators and Generators					Serialization
+
+Built in fucntion 				Generators vs Iterators						Python virtual Environments and packages
+
+Range function 					Closures & Python Array Module					Python Django
+
+Zip						Modules-Counter.Defaultdict,Ordereddict,Namedtuple		Python Flask
+
+Eval						Python Packages
+
+Exec						Module vs Packages
+
+Function Arguments				itertools Module
+
+Recursion in Python				Datetime object and Calender Module
+
+
+						Lambda Expression and Assert statement 
+								
+						Terinary Operators
+
+						Shallow copy vs deep copy
+									
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

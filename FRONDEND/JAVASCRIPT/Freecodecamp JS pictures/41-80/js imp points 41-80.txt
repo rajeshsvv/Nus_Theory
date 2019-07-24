@@ -1,0 +1,175 @@
+						42)write reusable code with functions 51:43
+
+functions allow us to create reusable code in javascript.
+
+function reuse()
+{
+    console.log("reuse the code");
+}
+
+reuse()
+
+						43)passing values to functions with arguments 53:41
+
+function add(a,b)
+{
+	console.log(a+b)
+}
+add(2,2)
+
+						44)global scope and functions 55:44
+
+scope refers to the visibility of the variables.
+variables which are defined outside of function block have global scope
+global scope means they can be seen anywhere in the javascript code. 
+
+
+with var it refers to  paricular function
+without var it refers to globally anywhere e can access that variable.
+
+
+			
+
+						45)local scope and functions 59:32
+
+variables which are declared within the function and function parameters belongs to that particular functions.not accessible to outer side.
+
+
+function localScope()
+{
+     a=2;
+    console.log(a);
+}
+localScope();		//2
+
+console.log(a)		//this is wrong because a scope limited to localScope you cannot accesss from outside within localScope u can call that var.
+
+
+
+					46)understand undefined value returned from a function(Global vs Local) 1:03:56
+
+it is posssible to have both local and global variables with same name.
+in this case local variable takes precedence(priority) over the global variable.
+
+
+var outerWear="T-shirt";
+
+function myOutfit()
+{
+    outerWear="Sweater";
+    return outerWear;
+    
+}
+
+console.log(myOutfit());			// Sweater
+
+
+
+
+					47)assignment with a returned value 1:04:53
+
+
+you can return a value from defined function using return statement.
+
+
+if u dont specify the return value the return value is just undefined in the function.
+
+
+
+
+					48)stand in line 1:05:53
+
+
+queue is an abstract data structure where items are kept in order.
+new items can be added to the back of the queue.and old items are taken off from the front of the queue.
+
+JSON.stringify is just a way to change an array into a string that can be easily printed out to the screen.
+
+
+
+					49)boolean values 1:08:41
+
+true 			1
+false 			0
+
+		
+					50)use conditional logic with if statements 1:09:24
+
+
+if statement is used to make decisions in code.	
+
+function trueOrFalse(isitTrue)
+{
+    if(isitTrue)
+    {
+        return "Yes that was true";
+    }
+    return "No, that was false";
+}
+
+console.log(trueOrFalse(1))			//true
+
+
+function testEqual(val)
+{
+    if(val==12)
+    {
+        return "Equal";   
+    }
+    return "Not Equal";
+}
+
+console.log(testEqual(120))			//Not Equal
+
+
+			
+
+					51)comparison with the strict equality operator 1:13:20
+
+
+
+Equal operator is commonly used in if statement 
+
+== is equality operator
+=  is assignment operator
+=== strict equality operator
+
+
+
+=== strict equality operator
+
+
+==attempts to convert both values being compared to a common type 
+===while the strict equality operator does not do the type conversion.
+
+
+Equality operator
+3==3			true
+3=="3"			true
+
+3===3			true
+3==="3"			fasle
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

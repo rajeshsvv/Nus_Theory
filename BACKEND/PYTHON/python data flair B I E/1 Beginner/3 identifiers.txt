@@ -1,0 +1,127 @@
+					2. Ways to Define Identifiers in Python 
+
+We can define identifiers in Python in a few ways:
+“An identifier is a user-defined name to represent a variable, a function, a class, a module, or any other object.”
+“It is a programmable entity in Python- one with a name.”
+“It is a name given to the fundamental building blocks in a program.”
+
+a. A Python identifier can be a combination of lowercase/ uppercase letters, digits, or an underscore. 
+The following characters are valid:
+
+Lowercase letters (a to z)
+Uppercase letters (A to Z)
+Digits (0 to 9)
+Underscore (_)
+
+Have a look at Python Number Types
+Some valid names are:
+
+myVar
+var_3
+this_works_too
+
+b. An identifier cannot begin with a digit.
+
+Some valid names:
+_9lives
+lives9
+
+An invalid name:
+9lives
+
+c. We cannot use special symbols in the identifier name. Some of these are:
+!
+@
+#
+$
+%
+
+
+d. We cannot use a keyword as an identifier. Keywords are reserved names in Python and using one of those as a name for an identifier will result in a SyntaxError.
+
+True=3
+cant assinged to keyword
+
+e. An identifier can be as long as you want. 
+According to the docs, you can have an identifier of infinite length. 
+However, the PEP-8 standard sets a rule that you should limit all lines to a maximum of 79 characters.
+
+			4. Best Practices in Identifiers in Python
+
+While it’s mandatory to follow the rules, it is also good to follow some recommended practices:
+
+Begin class names with an uppercase letter, begin all other identifiers with a lowercase letter
+Begin private identifiers with an underscore (_); 
+Note that this doesn’t make a variable private, but discourages the user from attempting to access it
+Put __ around names of magic methods (use leading and trailing double underscores), avoid doing this to anything else. Also, built-in types already use this notation.
+Use leading double underscores only when dealing with mangling.
+
+
+Prefer using names longer than one character- index=1 is better than i=1
+Use underscores to combine words in an identifier, like in this_is_an_identifier
+Since Python is case-sensitive, name and Name are two different identifiers.
+Use camel case for naming. 
+Let’s just clear the air here by saying camel case is myVarOne and Pascal case is MyVarOne.
+
+
+
+While it is great to follow the rules and guidelines, we can test an identifier’s validity just to be sure. 
+For this, we make use of the keyword.iskeyword() function.
+Have a look at Python Network Programming
+The keyword module lets us determine whether a string is a keyword. It has two functions:
+
+keyword.iskeyword(s)- If s is a Python keyword, return true
+Keyword.kwlist- Return a sequence holding all keywords the interpreter understands. 
+This includes even those that are active only when certain __future__ statements are in effect.
+Coming back to iskeyword(s), it returns True if the string s is a reserved keyword. 
+Else, it returns False. Let’s import this module.
+
+>>> import keyword
+>>> keyword.iskeyword('_$$_')
+False
+
+>>> keyword.iskeyword('return')
+True
+
+
+Also, the str.isidentifier() function will tell us if a string is a valid identifier. This is available since Python 3.0.
+
+>>> '__$$__'.isidentifier()
+False
+
+>>> '__99__'.isidentifier()
+True
+
+>>> '9lives'.isidentifier()
+False
+
+>>> '9.5okay'.isidentifier()
+False
+>>> '9lives'.isidentifier()
+False
+
+>>> '9.5okay'.isidentifier()
+False
+
+					6. Reserved Classes of Python Identifiers
+
+Finally, let us talk about classes of identifiers. 
+Some classes have special meanings and to identify them, we use patterns of leading and trailing underscores:
+
+a. Single Leading Underscore (_*)
+We use this identifier to store the result of the last evaluation in the interactive interpreter. 
+This result is stored in the __builtin__ module. 
+Importing a module as from module import * does not import such private variables.
+
+b. Leading and Trailing Double Underscores (__*__)
+These are system-defined names (by the interpreter). 
+A class can implement operations to be invoked by special syntax using methods with special names. 
+Consider this an attempt at operator overloading in a Pythonic fashion. 
+One such special/ magic method is __getitem__(). 
+Then, x[i] is equivalent to x.__getitem__(i). 
+In the near future, the set of names of this class by Python may be extended.
+Have a look at Python SciPy Tutorial
+
+c. Leading Double Underscores (__*)
+These are class-private names. 
+Within a class definition, the interpreter rewrites (mangles) such a name to avoid name clashes between the private attributes of base and derived classes.

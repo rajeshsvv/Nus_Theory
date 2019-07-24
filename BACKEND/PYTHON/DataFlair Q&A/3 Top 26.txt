@@ -1,0 +1,525 @@
+[1-15 basic]
+[16-26 advance]
+
+
+
+Q.1. What does the following code output?
+
+>>> def extendList(val, list=[]):
+      list.append(val)
+      return list
+>>> list1 = extendList(10)
+>>> list2 = extendList(123,[])
+>>> list3 = extendList('a')
+>>> list1,list2,list3
+Ans. ([10, ‘a’], [123], [10, ‘a’])
+
+You’d expect the output to be something like this:
+
+([10],[123],[‘a’])
+
+Well, this is because the list argument does not initialize to its default value ([]) every time we make a call to the function. 
+Once we define the function, it creates a new list. 
+Then, whenever we call it again without a list argument, it uses the same list. 
+This is because it calculates the expressions in the default arguments when we define the function, not when we call it.
+
+
+Q.2. What is a decorator?
+
+Ans. A decorator is a function that adds functionality to another function without modifying it. 
+It wraps another function to add functionality to it. Take an example.
+
+>>> def decor(func):
+    def wrap():
+        print("$$$$$$$$$$$$$$$$$")
+        func()
+        print("$$$$$$$$$$$$$$$$$")
+return wrap
+
+>>> @decor
+def sayhi():
+    print("Hi")
+>>> sayhi()
+$$$$$$$$$$$$$$$$$
+
+Hi
+
+$$$$$$$$$$$$$$$$$
+
+Decorators are an example of metaprogramming, where one part of the code tries to change another
+
+
+Q.3. Write a regular expression that will accept an email id. Use the re module.
+
+Ans.
+
+>>> import re
+>>> e=re.search(r'[0-9a-zA-Z.]+@[a-zA-Z]+\.(com|co\.in)$','ayushiwashere@gmail.com')
+>>> e.group()
+‘ayushiwashere@gmail.com’
+
+
+Q.4. How many arguments can the range() function take?
+
+Ans. The range() function in Python can take up to 3 arguments. Let’s see this one by one.
+
+a. One argument
+
+When we pass only one argument, it takes it as the stop value. Here, the start value is 0, and the step value is +1.
+
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+
+>>> list(range(-5))
+[]
+
+>>> list(range(0))
+[]
+
+
+b. Two arguments
+When we pass two arguments, the first one is the start value, and the second is the stop value.
+
+>>> list(range(2,7))
+[2, 3, 4, 5, 6]
+
+>>> list(range(7,2))
+[]
+
+>>> list(range(-3,4))
+[-3, -2, -1, 0, 1, 2, 3]
+
+
+c. Three arguments
+
+Here, the first argument is the start value, the second is the stop value, and the third is the step value.
+
+>>> list(range(2,9,2))
+[2, 4, 6, 8]
+
+>>> list(range(9,2,-1))
+[9, 8, 7, 6, 5, 4, 3]
+
+Q.5. Does Python have a switch-case statement?
+
+Ans.  In languages like C++, we have something like this:
+
+switch(name)
+{
+    case ‘Ayushi’:
+        cout<<”Monday”;
+        break;
+
+
+    case ‘Megha’:
+        cout<<”Tuesday”;
+        break;
+    default:
+        cout<<”Hi, user”;
+}
+But in Python, we do not have a switch-case statement. 
+Here, you may write a switch function to use. 
+Else, you may use a set of if-elif-else statements. 
+To implement a function for this, we may use a dictionary.
+
+>>> def switch(choice):
+    switcher={
+        'Ayushi':'Monday',
+        'Megha':'Tuesday',
+       print(switcher.get(choice,'Hi, user'))
+return
+
+>>> switch('Megha')
+Tuesday
+
+>>> switch('Ayushi')
+Monday
+
+>>> switch('Ruchi')
+Hi, user
+
+Here, the get() method returns the value of the key. When no key matches, the default value (the second argument) is returned.
+
+
+Q.6. How do you debug a program in Python? Answer in brief.
+
+Ans.  To debug a Python program, we use the pdb module. 
+This is the Python debugger
+If we start a program using pdb, it will let us step through the code.
+
+
+Q.7. List some pdb commands.
+
+Some pdb commands include-
+
+<b> — Add breakpoint
+
+<c> — Resume execution
+
+<s> — Debug step by step
+
+<n> — Move to next line
+
+<l> — List source code
+
+<p> — Print an expression
+
+
+Q.8. What command do we use to debug a Python program?
+
+Ans.  To start debugging, we first open the command prompt, and get to the location the file is at.
+
+C:\Users\lifei\Desktop>
+
+Then, we run the following command (for file try.py):
+
+C:\Users\lifei\Desktop>python -m pdb try.py
+> c:\users\lifei\desktop\try.py(1)<module>()
+-> for i in range(5):
+
+(Pdb)
+
+Then, we can start debugging.
+
+
+Q.9. What is a Counter in Python?
+
+Ans.  The function Counter() from the module ‘collections’. It counts the number of occurrences of the elements of a container.
+
+>>> from collections import Counter
+>>> Counter([1,3,2,1,4,2,1,3,1])
+Counter({1: 4, 3: 2, 2: 2, 4: 1})
+
+Python provides us with a range of ways and methods to work with a Counter.
+
+Q.10. What is NumPy? Is it better than a list?
+
+Python Programming Interview Questions - Numpy vs List
+Python Programming Interview Questions – Numpy vs List
+
+Ans.  NumPy, a Python package, has made its place in the world of scientific computing. 
+It can deal with large data sizes, and also has a powerful N-dimensional array object along with a set of advanced functions.
+
+Yes, a NumPy array is better than a Python list. This is in the following ways:
+
+It is more compact.
+It is more convenient.
+It Is more efficiently.
+It is easier to read and write items with NumPy.
+
+
+Q.11. How would you create an empty NumPy array?
+
+Ans.  To create an empty array with NumPy, we have two options:
+
+a. Option 1
+
+>>> import numpy
+>>> numpy.array([])
+array([], dtype=float64)
+
+b. Option 2
+
+>>> numpy.empty(shape=(0,0))
+array([], shape=(0, 0), dtype=float64)
+
+Q.12. What is PEP 8?
+
+Ans.  PEP 8 is a coding convention that lets us write more readable code. 
+In other words, it is a set of recommendations.
+
+
+Q.13. What is pickling and unpickling?
+
+Ans.  To create portable serialized representations of Python objects, we have the module ‘pickle’. 
+It accepts a Python object (remember, everything in Python is an object). 
+It then converts it into a string representation and uses the dump() function to dump it into a file. 
+We call this pickling. In contrast, retrieving objects from this stored string representation is termed ‘unpickling’.
+
+
+Q.14. What is a namespace in Python?
+
+Ans.  A namespace is a collection of names. 
+It maps names to corresponding objects. 
+When different namespaces contain objects with the same names, this avoids any name collisions. 
+Internally, a namespace is implemented as a Python dictionary.
+
+On starting the interpreter, it creates a namespace for as long as we don’t exit. 
+We have local namespaces, global namespaces, and a built-in namespace.
+
+
+local namespaces:	specific to the current function or class method
+global namespaces:	specific to the current module
+built in namespaces:	global to all modules
+
+
+Q.15. How would you perform unit-testing on your Python code?
+
+Ans. For this purpose, we have the module unittest in Python. It has the following members:
+FunctionTestCase
+SkipTest
+TestCase
+TestLoader
+TestResult
+TestSuite
+TextTestResult
+TextTestRunner
+defaultTestLoader
+expectedFailure
+findTestCases
+getTestCaseNames
+installHandler
+main
+makeSuite
+registerResult
+removeHandler
+removeResult
+skip
+skipIf
+skipUnless
+
+
+Q.16. Explain the use of the ‘nonlocal’ keyword in Python.
+
+Ans.  First, let’s discuss the local and global scope. 
+By example, a variable defined inside a function is local to that function. 
+Another variable defined outside any other scope is global to the function.
+
+Suppose we have nested functions. 
+We can read a variable in an enclosing scope from inside the inner function, but cannot make a change to it. 
+
+For that, we must declare it nonlocal inside the function. First, let’s see this without the nonlocal keyword.
+
+>>> def outer():
+    a=7
+    def inner():
+        print(a)
+    inner()
+>>> outer()
+7 
+
+>>> def outer():
+    a=7
+    def inner():
+        print(a)
+        a+=1
+        print(a)
+    inner()
+>>> outer()
+Traceback (most recent call last): 
+File “<pyshell#462>”, line 1, in <module> 
+outer()
+File “<pyshell#461>”, line 7, in outer
+inner() 
+File “<pyshell#461>”, line 4, in inner 
+print(a)
+
+UnboundLocalError: local variable ‘a’ referenced before assignment
+
+So now, let’s try doing this with the ‘nonlocal’ keyword:
+
+>>> def outer():
+    a=7
+    def inner():
+        nonlocal a
+        print(a)
+        a+=1
+        print(a)
+inner()
+
+>>> outer()
+7
+8
+
+
+Q.17. So, then, what is the global keyword?
+
+Ans.  Like we saw in the previous question, the global keyword lets us deal with, inside any scope, the global version of a variable.
+
+The problem:
+
+>>> a=7
+>>> def func():
+    print(a)
+    a+=1
+    print(a)
+The solution:
+
+>>> a=7
+>>> def func():
+    global a
+    print(a)
+    a+=1
+    print(a)
+>>> func()
+7
+8
+
+Q.18. How would you make a Python script executable on Unix?
+
+Ans. For this to happen, two conditions must be met:
+
+The script file’s mode must be executable
+The first line must begin with a hash(#). An  example of this will be: #!/usr/local/bin/python
+
+
+Q.19. What functions or methods will you use to delete a file in Python?
+
+Ans. For this, we may use remove() or unlink().
+
+>>> import os
+>>> os.chdir('C:\\Users\\lifei\\Desktop')
+>>> os.remove('try.py')
+>>>
+When we go and check our Desktop, the file is gone. Let’s go make it again so we can delete it again using unlink().
+
+>>> os.unlink('try.py')
+>>>
+Both functions are the same, but unlink is the traditional Unix name for it.
+
+Q.20. What are accessors, mutators, and @property?
+
+Ans. What we call getters and setters in languages like Java, we term accessors and mutators in Python. 
+In Java, if we have a user-defined class with a property ‘x’, we have methods like getX() and setX(). 
+In Python, we have @property, which is syntactic sugar for property(). 
+This lets us get and set variables without compromising on the conventions. 
+
+
+Q.21. Explain a few methods to implement Functionally Oriented Programming in Python.
+
+Ans. Sometimes, when we want to iterate over a list, a few methods come in handy.
+
+
+
+a. filter()
+
+Filter lets us filter in some values based on conditional logic.
+
+>>> list(filter(lambda x:x>5,range(8)))
+[6, 7]
+
+b. map()
+
+Map applies a function to every element in an iterable.
+
+>>> list(map(lambda x:x**2,range(8)))
+[0, 1, 4, 9, 16, 25, 36, 49]
+
+c. reduce()
+
+Reduce repeatedly reduces a sequence pair-wise until we reach a single value.
+
+>>> from functools import reduce
+>>> reduce(lambda x,y:x-y,[1,2,3,4,5])
+-13
+
+
+Q.22. Differentiate between the append() and extend() methods of a list.
+
+Ans. The methods append() and extend() work on lists. 
+While append() adds an element to the end of the list, extend adds another list to the end of a list.
+
+Let’s take two lists.
+
+>>> list1,list2=[1,2,3],[5,6,7,8]
+This is how append() works:
+
+>>> list1.append(4)
+>>> list1
+[1, 2, 3, 4]
+
+And this is how extend() works:
+
+>>> list1.extend(list2)
+>>> list1
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+Q.23. Consider multiple inheritances here. Suppose class C inherits from classes A and B as class C(A,B). Classes A and B both have their own versions of method func(). If we call func() from an object of class C, which version gets invoked?
+
+Ans. In our article on Multiple Inheritance in Python, we discussed Method Resolution Order (MRO). 
+C does not contain its own version of func(). 
+Since the interpreter searches in a left-to-right fashion, it finds the method in A, 
+and does not go to look for it in B.
+
+
+Q.24. Which methods/functions do we use to determine the type of instance and inheritance?
+
+Ans. Here, we talk about three methods/functions- type(), isinstance(), and issubclass().
+a. type()
+
+This tells us the type of object we’re working with.
+
+>>> type(3)
+<class ‘int’>
+
+>>> type(False)
+<class ‘bool’>
+
+>>> type(lambda :print("Hi"))
+<class ‘function’>
+
+>>> type(type)
+<class ‘type’>
+
+b. isinstance()
+
+This takes in two arguments- a value and a type. 
+If the value is of the kind of the specified type, it returns True. Else, it returns False.
+
+>>> isinstance(3,int)
+True
+
+>>> isinstance((1),tuple)
+False
+
+>>> isinstance((1,),tuple)
+True
+c. issubclass()
+
+This takes two classes as arguments. If the first one inherits from the second, it returns True. Else, it returns False.
+
+>>> class A: pass
+>>> class B(A): pass
+>>> issubclass(B,A)
+True
+
+>>> issubclass(A,B)
+False
+
+
+Q.25. What do you mean by overriding methods?
+
+Ans. Suppose class B inherits from class A. 
+Both have the method sayhello()- to each, their own version. 
+B overrides the sayhello() of class A. So, when we create an object of class B, it calls the version that class B has.
+
+>>> class A:
+    def sayhello(self):
+        print("Hello, I'm A")
+>>> class B(A):
+   def sayhello(self):
+       print("Hello, I'm B")
+>>> a=A()
+>>> b=B()
+>>> a.sayhello()
+Hello, I’m A
+
+>>> b.sayhello()
+Hello, I’m B
+
+
+
+Q.26. What is JSON? Describe in brief how you’d convert JSON data into Python data?
+
+Ans. JSON stands for JavaScript Object Notation. 
+It is a highly popular data format, and it stores data into NoSQL databases. 
+JSON is generally built on the following two structures:
+
+A collection of <name,value> pairs
+An ordered list of values.
+
+Python supports JSON parsers. 
+In fact, JSON-based data is internally represented as a dictionary in Python. 
+To convert JSON data into Python data, we use the load() function from the JSON module.

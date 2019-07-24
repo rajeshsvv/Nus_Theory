@@ -1,0 +1,301 @@
+setting chrome in sublime text
+
+tools--build system--new build system--
+
+{
+	// "shell_cmd": "make"
+	"cmd":["C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe","$file"]
+}
+
+
+
+and save Chrome.sublime-build
+
+
+C:\Users\rajeshvs\Downloads\Sublime Text Build 3207 x64\Data\Packages\User
+
+
+to open the console in chrome control+shift+j
+
+codepen and scrimba also used for javascript run 
+
+
+
+codepen account credentials:
+
+veerurajesh.s@gmail.com
+codepen143
+
+
+scrimba account credentials:
+
+veerurajesh.s@gmail.com
+scrimba143
+
+								1 comments in javascript(4:23)
+
+comments are lines of code that javascript will intensionally ignore the things
+
+// single line
+
+/*
+
+for 
+multi linw
+
+*/
+
+
+								2 Data types and variables(5:58)
+
+undefined=has not been defined variable not set anything yet
+null	=nothing
+boolean =true or false
+string	=immutable primitive value that is unique
+symbol
+number=number
+object=can store lot of differnet key value pairs
+
+variable like a box we can fill with data in that.
+
+
+8:20
+to declare variables in three ways:
+
+var myName="code"	  to be used through out the program
+myName=6
+let ourName="code"	will be used within the scope of where u declare that
+const pi=3.14		is variable that should never change
+
+
+							3 storing values with assignment operator(9:18)
+
+declaring variables and assigning variables
+var a; 		declaring variable
+var b=2; 	assigning variable
+
+
+console.log allows to you to see things in console.
+
+index.pack.js create name like this
+
+scrimba account
+
+create aa file
+
+assign.js
+
+and mention in index.html as assgin.pack.js  ok
+
+		
+
+						4 initialise variables assignment operator(11:31)
+
+var a=9;
+
+						5 uninitialised variables (11:57)
+
+var a=6
+var b=4
+
+console.log(a)=6
+
+						6 case sensitivity in variables(12:40)
+
+varialbe names and function names in javascript are case sensitive.
+
+var study;
+
+study=name
+
+use same case ok	
+
+		
+
+						7 Adding Numbers(14:06)
+
+var sum=10+10;
+console.log(sum)==20
+
+
+						8 subtract numbers(14:34)
+
+
+
+var differnece=45-33;
+console.logdiffernece)==12
+	
+						9 Multiply numbers
+
+var prodcut=8*0;
+console.log(product)
+	
+						10  divide numbers
+
+
+var devide=8/0;
+console.log(devide)
+						11 incremeneting numbers
+
+
+var number=11
+number++
+
+
+var number=11
+number --
+
+						21  declare string variables(21:29)
+
+1)use backslash to escape from the quotation mark symbols
+2)use single quotes inside the double quotes or use 
+3)use double quotes inside the single quotes
+
+
+
+						24)escape sequences in strings 25:19
+
+\n			 new line
+\r 			carriage return
+\t 			tab
+\b			backspace
+\f			form feeed
+
+						28)find a length of string 31:12
+
+
+var name=0;
+var firstname="codecamp"
+
+name=firstname.length;
+console.log(name)
+
+
+			
+						29)bracket notation to find first character in string 32:01
+
+
+
+
+
+var firstletter=0;
+var firstname="codecamp"
+
+
+
+firstletter=firstname[0]
+console.log(firstletter)
+
+
+						String Immutablility(33:28)
+
+strings are immutable means they cannot altered once created this does not mean they cannot be changed 
+just that individual characters of a string literal cannot be changed.
+
+we cannot change individual letters but we can change entire srting ok	
+
+
+						30)bracket notation to find last character in string 34:54
+
+var lastName="Harinath";
+var lastetterOfLastName=lastName[lastName.length-1];			h
+
+
+
+
+						31)bracket notation to find nth to third character in string 34:54
+
+
+var lastName="Harinath";
+var lastetterOfLastName=lastName[lastName.length-3];
+
+
+
+						33)store multiple values with arrays 40:45
+
+
+arrays allow you to store several pieces of data in one place.
+
+var ourArray=["John",23];
+
+var myArray=["Quincy",1];
+
+			
+						34)nested arrays 41:44
+
+when one of the elements in an array is another array that is called nested array.or multi dimensional array.
+
+var multiArray=[["the universe",42],["everything":10101]]
+
+						
+
+						36)modify array data with indexes 43:37
+
+we can modify the array elements but we cannot modify the string characters by index position k 
+
+
+var myArr=[1,2,3];
+
+myArr[1]=20
+
+console.log(myArr)
+
+[1, 20, 3]
+
+						37)access multi-dimensional arrays with indexes 44:47
+
+
+var multidimen=[[1,2,3],[4,5,6],[7,8,9],[[10,11,12],13,14]];
+
+var data=multidimen[3][1];
+console.log(data)
+
+
+
+						38)manipulate arrays with pop() 47:28
+
+
+var myArray=[["John",23],["cat",2]];
+myArray.push(["dog",4])
+console.log(myArray)
+myArray.pop()
+console.log(myArray)
+
+
+		
+
+						39)manipulate arrays with shift() 48:35
+
+
+shift is same as the pop
+
+pop removes the last item						shift removes the first element 
+
+
+
+var outArray=["Stimpson","J",["cat"]];
+var removedArray=outArray.shift();
+
+console.log(removedArray)  //Stimpson
+console.log(outArray)       //["J", ["cat"]]
+
+			
+
+						40)manipulate arrays with unshift() 49:23
+
+
+unshift is similar to push
+
+push adds the elements to the end of the array				unshift adds the elements to the begining of the array.
+
+
+
+
+						41)shopping list 50:37
+
+created array of arrays
+
+var shopping=[["fruits",banana],["milk",2],["juice",2]]
+
+
+						

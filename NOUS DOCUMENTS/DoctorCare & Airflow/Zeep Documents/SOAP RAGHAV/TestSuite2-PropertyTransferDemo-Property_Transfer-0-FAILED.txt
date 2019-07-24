@@ -1,0 +1,24 @@
+Status: FAILED
+Time Taken: 136
+Size: 0
+Timestamp: Thu Apr 11 19:29:44 IST 2019
+TestStep: Property Transfer
+Error:com.eviware.soapui.impl.wsdl.teststeps.PropertyTransferException: net.sf.saxon.trans.XPathException: XPath syntax error at char 1 on line 3 in {\n//*:stem:intA\n//*:}:
+    Local name [stem:intA] contains invalid characters
+
+----------------- Messages ------------------------------
+Error performing transfer [AddOperation] - net.sf.saxon.trans.XPathException: XPath syntax error at char 1 on line 3 in {\n//*:stem:intA\n//*:}:
+    Local name [stem:intA] contains invalid characters
+----------------------------------------------------
+AddOperation transferred [[net.sf.saxon.trans.XPathException: XPath syntax error at char 1 on line 3 in {\n//*:stem:intA\n//*:}:
+    Local name [stem:intA] contains invalid characters]] from [Add.Response] to [Multiply.Request]
+------------ source path -------------
+declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://tempuri.org/';
+//*:sAddResult
+
+------------ target path -------------
+declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://tempuri.org/';
+//*:stem:intA
+//*:stem:intB

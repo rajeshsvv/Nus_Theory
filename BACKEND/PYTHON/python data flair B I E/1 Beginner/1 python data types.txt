@@ -1,0 +1,197 @@
+							Variables and datatypes:
+	
+Python is a dynamically-typed language, we don’t specify the type of a variable when declaring one.
+
+A variable is a container for a value. 
+It can be assigned a name, you can use it to refer to it later in the program. 
+Based on the value assigned, the interpreter decides its data type. 
+You can always store a different type in a variable
+
+Python variables can only begin with a letter(A-Z/a-z) or an underscore(_).
+
+Python is case-sensitive, and so are Python identifiers. Name and name are two different identifiers
+
+Python Variable Scope – Local, Global, Built-in, Enclosed
+
+Reserved words (keywords) cannot be used as identifier names.
+
+and		def		False		import		not	 	True
+as		del		finally		in		or	 	try
+assert		elif		for		is		pass	 	while
+break		else		from		lambda		print	 	with
+class		except		global		None		raise	 	yield
+continue	exec		if		nonlocal	return	
+
+e. Deleting variables
+You can also delete python variables using the keyword ‘del’.
+
+>>> a='red'
+>>> del a
+>>> a
+
+There are four numeric Python data types.
+
+1. int– int stands for integer. This Python Data Type holds signed integers. We can use the type() function to find which class it belongs to.
+
+>>> a=-7
+>>> type(a)
+<class ‘int’>
+
+2. float– This Python Data Type holds floating point real values. An int can only store the number 3, but float can store 3.25 if you want.
+
+>>> a=3.0
+>>> type(a)
+<class ‘float’>
+
+3. long – This Python Data Types holds a long integer of unlimited length. But this construct does not exist in Python 3.x.
+
+4. complex- This Python Data Types holds a complex number. 
+   A complex number looks like this: a+bj Here, a and b are the real parts of the number, and j is imaginary.
+
+>>> a=2+3j
+>>> type(a)
+<class ‘complex’>
+
+Use the isinstance() function to tell if python variables belong to a particular class. It takes two parameters- the variable/value, and the class.
+
+>>> print(isinstance(a,complex))
+
+A string is a sequence of characters. 
+Python does not have a char data type, unlike C++ or Java. 
+You can delimit a string using single quotes or double quotes.
+
+>>> city='Ahmedabad'
+>>> city
+
+2. Displaying part of a string– You can display a character from a string using its index in the string. Remember, indexing starts with 0
+
+>>> lesson='disappointment'
+>>> lesson[0]
+‘d’
+
+You can also display a burst of characters in a string using the slicing operator [].
+
+>>> lesson[5:10]
+‘point’
+
+This prints the characters from 5 to 9.
+
+
+3. String Formatters– String formatters allow us to print characters and values at once. You can use the % operator.
+
+>>> x=10;
+>>>  printer=”Dell”
+>>> print(“I just printed %s pages to the printer %s” % (x, printer))
+
+Or you can use the format method.
+>>> print(“I just printed {0} pages to the printer {1}”.format(x, printer))
+>>> print(“I  just printed {x} pages to the printer {printer}”.format(x=7, printer=Dell))
+
+A third option is to use f-strings.
+>>>print(f”I just printed {x} pages to the printer {printer}”)
+
+
+								c. Python Lists
+
+A list is a collection of values. Remember, it may contain different types of values. 
+To define a list, you must put values separated with commas in square brackets. You don’t need to declare a type for a list either.
+
+>>> days=['Monday','Tuesday',3,4,5,6,7]
+>>> days
+[‘Monday’, ‘Tuesday’, 3, 4, 5, 6, 7]
+
+
+Indexing for a list begins with 0, like for a string. A Python doesn’t have arrays.
+
+
+4. Multidimensional lists– A list may have more than one dimension. 
+We will look further into this in the tutorial on Python Lists.
+
+>>> a=[[1,2,3],[4,5,6]]
+>>> a
+[[1, 2, 3], [4, 5, 6]]
+
+3. List of keys– Use the keys() function to get a list of keys in the dictionary.
+
+>>> person.keys()
+dict_keys([‘city’, ‘age’])
+
+									g. Sets
+
+A set can have a list of values. Define it using curly braces.
+
+>>> a={1,2,3}
+>>> a
+{1, 2, 3}
+
+It returns only one instance of any value present more than once.
+
+>>> a={1,2,2,3}
+>>> a
+{1, 2, 3}
+
+However, a set is unordered, so it doesn’t support indexing.
+
+>>> a[2]
+Traceback (most recent call last):
+File “<pyshell#127>”, line 1, in <module>
+a[2]
+TypeError: ‘set’ object does not support indexing.
+
+Also, it is mutable. You can change its elements or add more. Use the add() and remove() methods to do so.
+
+>>> a={1,2,3,4}
+>>> a
+{1, 2, 3, 4}
+
+>>> a.remove(4)
+>>> a
+{1, 2, 3}
+
+>>> a.add(4)
+>>> a
+{1, 2, 3, 4}
+
+However, you cannot turn a string into an int. It throws an error.
+
+>>> int("a")
+Traceback (most recent call last):
+File “<pyshell#135>”, line 1, in <module>;
+int(“a”)
+ValueError: invalid literal for int() with base 10: ‘a’
+However, if the string has only numbers, then you can.
+
+d. bool()
+It converts the value into a boolean.
+
+>>> bool(3)
+True
+
+>>> bool(0)
+False
+
+
+When you declare a variable in a function, class, or so, it is only visible in that scope. 
+If you call it outside of that scope, you get an ‘undefined’ error.
+
+>>> def func1():</pre>
+uvw=2
+print(uvw)
+>>> func1()
+2
+
+>>> uvw
+
+
+You can use the ‘global’ keyword when you want to treat a variable as global in a local scope.
+
+>>> foo=1
+>>> def func2():
+global foo
+foo=3
+print(foo)
+>>> func2()
+3
+
+>>> foo
+3

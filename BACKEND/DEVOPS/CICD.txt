@@ -1,0 +1,98 @@
+
+continuous integration systems are a vital part of any Agile team because they help enforce the ideals of Agile development
+
+Jenkins, a continuous build tool, enables teams to focus on their work by automating the build, artifact management, and deployment processes
+ 
+Jenkins’ core functionality and flexibility allow it to fit in a variety of environments and can help streamline the
+development process for all stakeholders involved 
+
+ “Continuous Integration is a software development practice where members of a team integrate their work frequently,
+usually each person integrates at least daily - leading to multiple integrations per day. 
+Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible” – Martin Fowler 
+
+
+CI – What does it really mean?
+ At a regular frequency (ideally at every commit), the system is:
+
+ Integrated
+ All changes up until that point are combined into the project
+
+ Built
+ The code is compiled into an executable or package.
+
+ Tested
+ Automated test suites are run.
+
+ Archived
+ Versioned and stored so it can be distributed as is, if desired
+
+ Deployed
+ Loaded onto a system where the developers can interact with it.
+
+CI – Benefits
+ Immediate bug detection
+ No integration step in the lifecycle
+ A deployable system at any given point
+ Record of evolution of the project 
+
+
+CI – The tools
+ Code Repositories
+ SVN, Mercurial, Git
+
+ Continuous Build Systems
+ Jenkins, Bamboo, Cruise Control
+
+ Test Frameworks
+ JUnit,Cucumber, CppUnit
+
+ Artifact Repositories
+ Nexus, Artifactory, Archiva
+
+
+Why Jenkins? Flexibility!
+ Jenkins is a highly configurable system by itself.The additional community developed plugins provide even more flexibility
+By combining Jenkins with Ant, Gradle, or other Build Automation tools, the possibilities are limitless.
+
+
+Why Jenkins? Free/OSS
+Jenkins is released under the MIT License  There is a large support community and thorough documentation
+It’s easy to write plugins.Think something is wrong with it? You can fix it! 
+
+What can Jenkins do?
+ Generate test reports.
+ Integrate with many different Version Control Systems.
+ Push to various artifact repositories.
+ Deploys directly to production or test environments.
+ Notify stakeholders of build status.
+
+
+
+Putting it all together
+ While an integral part of a CI system, Jenkins is by no means the only component
+ In order for a CI system to function, a common repository for the codebase needs to exist.
+
+ A database of artifacts needs to exist, so deliveries can be made at past iterations.
+ The last step in a CI process is the deployment of the components built
+ …and none of this matters if the developers don’t use the system; procedures need to ensure the system is used as intended 
+
+
+Conclusion
+ Continuous integration is a necessity on complex projects due to the benefits it provides regarding early detection of problems
+ A good continuous build system should be flexible enough to fit into pre-existing development environments and provide
+all the features a team expects from such a system  Jenkins, a continuous build system, can be an integral part of
+any continuous integration system due to it’s core feature set and extensibility through a plugin system 
+
+
+Jenkins is the number one open-source project for automating your projects. 
+With thousands of plugins to choose from, Jenkins can help teams to automate any task that would otherwise put a time-consuming strain on your software team. Common uses include building projects, running tests, bug detection, code analysis, and project deployment.
+
+Key Features:
+
+Jenkins works as a standalone CI server, or you can turn it into a continuous delivery platform for virtually any of your projects
+Pre-built packages for Unix, Windows, and OS X ensures an easy installation process
+A web interface that can be used to quickly configure your server.
+Custom plugins for build and source code management, administrative tasks, user interface, and platforms
+Deployable across a network of machines, improving performance of builds and tests
+Large community with leading software brands involved in development
+Cost: Open Source

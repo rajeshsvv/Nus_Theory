@@ -1,0 +1,386 @@
+Latest Python Interview Questions for freshers – Q. 2,3,5,6,9,10
+
+Latest Python Interview Questions for experienced – Q. 1,4,7,8
+
+
+
+
+Latest Python Interview Questions for freshers – Q. 11,14,15,17,19,20
+
+Latest Python Interview Questions for experienced – Q. 12,13,16,18
+
+
+Latest Python Interview Questions for freshers – Q. 21,23,24,25
+
+Latest Python Interview Questions for experienced – Q. 22,26,27
+
+
+
+
+Q.1. Is there a way to remove the last object from a list?
+
+Yes, there is. Try running the following piece of code-
+
+>>> list=[1,2,3,4,5
+>>> list.pop(-1)
+5
+
+Let’s read more about Python List
+
+>>> list
+[1, 2, 3, 4]
+
+
+Q.2. How do you open a file for writing?
+
+Let’s create a text file on our Desktop and call it tabs.txt. 
+To open it to be able to write to it, use the following line of code-
+
+>>> file=open('tabs.txt','w')
+This opens the file in writing mode. You should close it once you’re done.
+
+Have a look at Python Read and Write File
+
+>>> file.close()
+
+Q.3. Can you explain the filter(), map(), and reduce() functions?
+
+Let’s see these Python Functions.
+
+
+
+filter()- This function lets us keep the values that satisfy some conditional logic. Let’s take an example.
+>>> set(filter(lambda x:x>4, range(7)))
+{5, 6}
+
+This filters in the elements from 0 to 6 that are greater than the number 4.
+
+map()- This function applies a function to each element in the iterable.
+>>> set(map(lambda x:x**3, range(7)))
+{0, 1, 64, 8, 216, 27, 125}
+
+This calculates the cube for each element in the range 0 to 6 and stores them in a set.
+
+reduce()- This function reduces a sequence pair-wise, repeatedly until we arrive at a single value.
+>>> reduce(lambda x,y:y-x, [1,2,3,4,5])
+3
+
+Let’s understand this:
+
+2-1=1
+
+3-1=2
+
+4-2=2
+
+5-2=3
+
+Hence, 3
+
+
+
+Q.4. What do you know about palindromes? Can you implement one in Python?
+
+A palindrome is a phrase, a word, or a sequence that reads the same forward and backward. 
+One such example will be pip! An example of such a phrase will be ‘nurses run’. Let’s implement it, shall we?
+
+>>> def isPalindrome(string):
+      left,right=0,len(string)-1
+      while right>=left:
+              if not string[left]==string[right]:
+                       return False
+              left+=1;right-=1
+              return True
+<span style="font-weight: 400">>>> isPalindrome('redrum murder')</span>
+True
+
+>>> isPalindrome('CC.')
+False
+
+Q.5. How will you use Python to read a random line from a file?
+
+We can borrow the choice() method from the random module for this.
+
+>>> import random
+>>> lines=open('tabs.txt').read().splitlines()
+>>> random.choice(lines)
+‘https://data-flair.training/blogs/category/python/’
+
+Let’s restart the IDLE and do this again.
+
+>>> import random
+>>> lines=open('tabs.txt').read().splitlines()
+>>> random.choice(lines)
+‘https://data-flair.training/blogs/’
+
+>>> random.choice(lines)
+‘https://data-flair.training/blogs/category/python/’
+
+Q.6. How would you define a block in Python?
+
+For any kind of statements, we possibly need to define a block of code under them. 
+However, Python does not support curly braces. 
+This means we must end such statements with colons and then indent the blocks under those with the same amount.
+
+>>> if 3>1:
+        print("Hello")
+        print("Goodbye")
+Hello
+
+
+Q.7. Why do we need the __init__() function in classes? What else helps?
+
+__init__() is what we need to initialize a class when we initiate it. Let’s take an example.
+
+>>> class orange:
+       def __init__(self):
+               self.color='orange'
+               self.type='citrus'
+       def setsize(self,size):
+               self.size=size
+       def show(self):
+             print(f"color: {self.color}, type: {self.type}, size: {self.size}")
+>>> o=orange()
+>>> o.setsize(7)
+>>> o.show()
+color: orange, type: citrus, size: 7
+
+In this code, we see that it is necessary to pass the parameter ‘self’ to tell Python it has to work with this object.
+
+
+Q.8. Explain the output of the following piece of code-
+
+>>> tuple=(123,'John')
+>>> tuple*=2
+>>> tuple
+(123, ‘John’, 123, ‘John’)
+
+In this code, we multiply the tuple by 2. 
+This duplicates its contents, hence, giving us (123, ‘John’, 123, ‘John’).
+
+
+
+
+Q.9. How do you get all values from a Python dictionary?
+
+We saw previously, to get all keys from a dictionary, we make a call to the keys() method. 
+Similarly, for values, we use the method values().
+
+>>> 'd' in {'a':1,'b':2,'c':3,'d':4}.values()
+False
+
+>>> 4 in {'a':1,'b':2,'c':3,'d':4}.values()
+True
+
+>>> 'ba'+'na'*2
+‘banana’
+Goodbye
+
+Q.10. How will you convert an integer to a Unicode character?
+
+This is simple. All we need is the chr(x) built-in function. See how.
+
+>>> chr(52)
+‘4’
+
+>>> chr(49)
+‘1’
+
+>>> chr(67)
+‘C
+
+
+Q.11. Where will you use while rather than for?
+
+Although we can do with for all that we can do with while, there are some places where a while loop will make things easier-
+
+For simple repetitive looping
+When we don’t need to iterate through a list of items- like database records and characters in a string.
+
+
+Q.12. In one line, show us how you’ll get the max alphabetical character from a string.
+
+For this, we’ll simply use the max function.
+
+>>> max('flyiNg')
+‘y’
+
+The following are the ASCII values for all the letters of this string-
+
+f- 102
+
+l- 108
+
+y- 121
+
+i- 105
+
+N- 78
+
+g- 103
+
+By this logic, try to explain the following line of code-
+
+>>> max('fly{}iNg')
+‘}’
+
+(Bonus: } – 125)
+
+
+Q.13. Why do we need break and continue in Python?
+
+Both break and continue are statements that control flow in Python loops. 
+break stops the current loop from executing further and transfers the control to the next block. 
+continue jumps to the next iteration of the loop without exhausting it.
+
+
+Q.14. Will the do-while loop work if you don’t end it with a semicolon?
+
+Trick question! Python does not support an intrinsic do-while loop. 
+Secondly, to terminate do-while loops is a necessity for languages like C++
+
+
+Q.15. What if you want to toggle case for a Python string?
+
+We have the swapcase() method from the str class to do just that.
+
+>>> 'AyuShi'.swapcase()
+‘aYUsHI’
+
+
+Let’s apply some concepts now, shall we? Questions 16 through 18 assume the string ‘I love Python’. You need to do the needful.
+
+Q.16. Write code to print only upto the letter t.
+
+>>> i=0
+>>> while s[i]!='t':
+      print(s[i],end=’’)
+      i+=1
+I love Py
+
+
+Q.17. Write code to print everything in the string except the spaces.
+
+>>> for i in s:
+        if i==' ': continue
+        print(i,end='')
+IlovePython
+
+
+Q.19. Is del the same as remove()? What are they?
+
+del and remove() are methods on lists/ ways to eliminate elements.
+
+>>> list=[3,4,5,6,7]
+>>> del list[3]
+>>> list
+[3, 4, 5, 7]
+
+>>> list.remove(5)
+>>> list
+[3, 4, 7]
+
+While del lets us delete an element at a certain index, remove() lets us remove an element by its value.
+
+
+Q.20. What is Python good for?
+
+Python is a jack of many trades, check out Applications of Python to find out more.
+
+Meanwhile, we’ll say we can use it for:
+
+Web and Internet Development
+Desktop GUI
+Scientific and Numeric Applications
+Software Development Applications
+Applications in Education
+Applications in Business
+Database Access
+Network Programming
+Games, 3D Graphics
+Other Python Applications
+
+Q.22. What is the purpose of bytes() in Python?
+
+bytes() is a built-in function in Python that returns an immutable bytes object. Let’s take an example.
+
+>>> bytes([2,4,8])
+b’\x02\x04\x08'
+
+>>> bytes(5)
+b’\x00\x00\x00\x00\x00'
+
+>>> bytes('world','utf-8')
+b’world’
+
+
+Q.23. Explain, in brief, the uses of the modules sqlite3, ctypes, pickle, traceback, and itertools.
+
+sqlite3- Helps with handling databases of type SQLite
+ctypes- Lets create and manipulate C data types in Python
+pickle- Lets put any data structure to external files
+traceback- Allows extraction, formatting, and printing of stack traces
+itertools– Supports working with permutations, combinations, and other useful iterables.
+
+Q.24. What is speech_recognition? Does this ship with Python by default?
+
+Speech_recognition is a library for performing the task of recognizing speech with Python. 
+This forms an integral part of AI. 
+No, this does not ship with Python by default. We must download it from the PyPI and install it manually using pip
+
+
+Q.25. You mentioned PyPI in your previous answer. Can you elaborate?
+
+Sure. PyPI is the Python Package Index. 
+This is a repository of software for Python. 
+It has a large collection of packages and their binaries for a wide range of uses
+
+
+
+Q.27. Optionally, what statements can you put under a try-except block?
+
+We have two of those:
+
+else- To run a piece of code when the try-block doesn’t create an exception.
+finally- To execute some piece of code regardless of whether there is an exception.
+>>> try:
+       print("Hello")
+except:
+       print("Sorry")
+else:
+       print("Oh then")
+finally:
+       print("Bye")
+Hello
+Oh then
+Bye
+
+
+Q.28. If you installed a module with pip but it doesn’t import in your IDLE, what could it possibly be?
+
+Well, for one, it could be that I installed two versions of Python on my system- possibly, both 32-bit and 64-bit.
+
+The Path variable in my system’s environment variables is probably set to both, but one of them prior to the other- say, the 32-bit.
+This made the command prompt use the 32-bit version of pip to install the module I chose.
+
+When I ran the IDLE, I ran the 64-bit version.
+As this sequence of events unlapped, I couldn’t import the module I just installed.
+
+
+Q.29. Based on your previous answer, how will you solve this issue?
+
+I could do two things.
+
+The temporary solution- I will add the path to sys manually every time I work on a new session of the interpreter.
+>>> sys.path.append('C:\\Users\\Ayushi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts')
+The permanent solution- I will update the value of Path in my environment variables to hold the location of the Scripts folder 
+for the 64-bit version first.
+
+
+Q.30. If while installing a package with pip, you get the error No matching installation found, what can you do?
+
+In such a situation, one thing I can do is to download the binaries for that package from the following location:
+
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+Then, I can install the wheel using pip.

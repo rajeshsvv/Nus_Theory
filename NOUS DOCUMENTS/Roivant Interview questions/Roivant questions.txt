@@ -1,0 +1,36 @@
+Garbage collector 
+Decorator, what is the use 
+Flask, Jango difference 
+Diff types of modules used in flask 
+Database knowledge? 
+Tupple vs Lists 
+Anaconda - any knowledge 
+Datatypes in Python 
+manage version control? 
+Debugger how to use which IDE preferred 
+Source code control, which one you have used 
+Continuous integration how it was achieved 
+Virtualization when to use and what are the advantages. 
+Machine language- knowledge 
+Json, Xml when to use and advantages
+
+
+How would do build and deploy using Django framework? 
+Development, unit testing, building, and deployment - What is the best practice you would follow in Python environment? 
+Jenkins - any usage in the process step? 
+functions or classes 
+decorators in Python – what are they ? 
+static method and classmethod - what is the difference and how would you use them? 
+Generators in regular Python - very large data to work with - 
+REST service in any platform
+microservices
+
+
+cicd jenkins 
+decorators and generators
+unit testing
+restful services
+
+django tutorial link
+https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc
+

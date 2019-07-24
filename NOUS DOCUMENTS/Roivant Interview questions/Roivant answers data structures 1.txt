@@ -1,0 +1,50 @@
+									Decorator, what is the use 
+
+A decorator in Python is any callable Python object that is used to modify a function or a class. 
+A reference to a function "func" or a class "C" is passed to a decorator and the decorator returns a modified function or class.
+By definition, a decorator is a function that takes another function and extends the behavior of the later function without explicitly modifying it.
+
+Decorators provide a simple syntax for calling higher-order functions. 
+In object-oriented programming, the decorator pattern is a design pattern 
+that allows behavior to be added to an individual object, dynamically, without affecting the behavior of other objects from the same class.
+
+							
+										Tupple vs Lists 
+Tuples: 	values cannot be modified 
+Lists:		values can be modified
+
+A tuple1 is a sequence of values much like a list. 
+The values stored in a tuple can be any type, and they are indexed by integers. 
+The important difference is that tuples are immutable. 
+Tuples are also comparable and hashable so we can sort lists of them and use tuples as key values in Python dictionaries
+
+Python Lists vs Tuples. ... A tuple is an assortment of data, separated by commas, which makes it similar to the Python list, 
+but a tuple is fundamentally different in that a tuple is "immutable." 
+This means that it cannot be changed, modified, or manipulated. 
+A tuple is typically used specifically because of this property
+
+							Debugger how to use which IDE preferred 
+
+PyCharm. PyCharm is a powerful, cross-platform, highly customizable and pluggable Python IDE, 
+which integrates all developments tools in one place.
+
+Which server is best for Python?
+The Apache HTTP Server has been the most commonly deployed web server on the Internet for 20+ years. 
+Nginx is the second most commonly used server for the top 100,000 websites and often serves as a reverse proxy for Python WSGI servers
+
+
+Can a list be declared inside a tuple in Python if so what is the result of the same?
+
+You can declare a list inside a tuple and vice versa but you need to know their key differences to use it effectively. 
+Tuples are immutable while lists are mutable. 
+You can modify the contents of lists but not of tuples. 
+
+And according to your question you should also know that only a reference of the list is stored into a tuple so let's say,
+ list1 = ["age",5]
+ tuple = ("john",list1)
+Now the tuple will contain,
+ ("john",["age",5])
+You cannot modify the elements in a tuple but you are allowed to modify the list which will reflect in the tuple. 
+ list.append(10)
+Now the tuple will contain,
+ ("john",["age", 5, 10])

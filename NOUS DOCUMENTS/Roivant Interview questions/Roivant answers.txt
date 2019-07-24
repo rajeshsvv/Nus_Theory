@@ -1,0 +1,202 @@
+									Garbage collector 
+
+Maintain reference count. 
+For every object, there is a count of the total number of references to that object. 
+If that count ever falls to 0, then you can immediately deallocate that object because it is no longer live.
+
+
+									Flask, Jango difference
+
+Django is commonly called a “batteries-included” framework approach—or the
+“framework for perfectionists with deadlines.” 
+This means that Django makes it easy for Python developers to dive into web applications quickly without requiring forethought
+into the app’s infrastructure ahead of time. 
+Basically, build better web apps, more quickly, with less code. 
+Django is established, has excellent documentation, and a large online community.
+
+Pros
+
+Well-established software with many plugins			Admin area out of the box makes dev and production of CMS very easy
+ORM support							Clear and defined MVC organization
+Highly customizable						Forms framework
+Simple database management
+
+Cons
+
+Feels like too much software for small projects			Template errors fail silently by default
+A process only handles a single request at a time		Deep learning curve
+
+
+
+Flask is a relatively young framework, only in use since 2010. 
+Flask is considered more “Pythonic” than Django is simply because Flask web application code is, in most cases, more explicit. 
+Flask is the choice of most beginners due to the lack of roadblocks to getting a simple app up and running.
+
+
+
+Pros
+
+Extremely flexible					Minimalist without sacrificing power
+Simple to learn and use					Routing URLs is easy
+Small core and easily extensible
+
+Cons
+
+Not async-friendly					Limited support and documentation
+Lack of database/ORM/forms				Truly limited in features
+Overwhelming features 
+
+
+Diff types of modules used in flask 
+
+							Database knowledge? 
+
+There are four structural types of database management systems:
+
+Hierarchical databases	.(The IBM Information Management System (IMS) and the RDM Mobile)
+
+Network databases	.[ (Integrated Data Store (IDS), IDMS (Integrated Database Management System), Raima Database Manager.TurboIMAGE, Univac DMS-1100.)
+
+Relational databases	.(Oracle, IBM DB2 and Microsoft SQL Server,free and open-source RDBMS,MySQL, mSQL (mini-SQL),embedded JavaDB (Apache Derby).)
+
+Object-oriented databases .(Versant Object Database by Actian,Objectivity/DB by Objectivity,ObjectStore by Ignite Technologies,Caché by Intersystems.
+ZODB by Zope.)
+
+	
+							Anaconda - any knowledge 
+
+Anaconda:
+
+Anaconda is a python distribution, with installation and package management tools.
+It provides large selection of packages and commercial support. 
+It is an environment manager, which provides the facility to create different python environments, each with their own settings.
+It also provides much greater advantages in the data science platform.
+
+Conda:
+
+“Conda”, the Anaconda’s own package manager, is used for updating anaconda and its packages.
+Conda is a cross platform package and environment manager. 
+It provides installing, executing and updating different packages along with their dependencies.
+It helps in switching between environments in our local machine.
+
+Anaconda is a Python distribution by Continuum org. 
+It comes with large set of Python librabries and sophisticated package management tool conda.
+
+Conda package manager is better than Python's native package management tool Pip as conda resolves non-python dependencies as well.
+
+There is a smaller version of anaconda available called miniconda. 
+It comes with relatively less number of preinstalled libraries. Anaconda also have other tools like Jupyter Notebook.
+
+Anaconda is a set of python libraries which has the standard python programming language libraries as well as 
+numerous third party scipy libraries like numpy, pandas, scikit-learn.
+
+There are two types of distribution
+
+Mini conda - least initial packages and vscode as editor tool
+
+Anaconda -comes with more installed packages and tools used by data scientist.
+
+
+							manage version control
+
+
+There are two types of version control: centralized and distributed
+Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. 
+For the examples in this book, you will use software source code as the files being version controlled, 
+though in reality you can do this with nearly any type of file on a computer.
+
+Best Version Control Systems:
+Beanstalk. ...
+PerForce. ...
+Apache Subversion. ...
+AWS CodeCommit. ...
+Microsoft Team Foundation Server. ...
+Mercurial. ...
+CVS Version Control (Concurrent Versions System) ...
+Bitbucket
+
+Git has the advantage that it's MUCH better suited if some developers are not always connected to the master repository. 
+Also, it's much faster than SVN. 
+And from what I hear, branching and merging support is a lot better (which is to be expected, as these are the core reasons it was written).
+
+What is the purpose of a version control system?
+A component of software configuration management, version control, also known as revision control or source control, 
+is the management of changes to documents, computer programs, large web sites, and other collections of information.
+
+
+						Source code control, which one you have used 
+
+What is source control software?
+A component of software configuration management, version control, also known as revision control or source control, 
+is the management of changes to documents, computer programs, large web sites, and other collections of information.
+
+What is a version control system Explain with examples?
+Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. 
+For the examples in this book, you will use software source code as the files being version controlled, 
+though in reality you can do this with nearly any type of file on a computer
+
+
+							Continuous integration how it was achieved 
+
+Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. 
+Each check-in is then verified by an automated build, allowing teams to detect problems early.
+
+
+Part 2: A deeper dive into Continuous Integration and Continuous Delivery
+Maintain a code repository.
+Automate your build.
+Make your build self-testing.
+Daily commits to the baseline by everyone on the team.
+Every commit (to the baseline) should be built.
+Keep your builds fast.
+Clone the production environment and test there
+
+Why is continuous integration so important? Continuous integration, or just CI, 
+is a software development practice of integrating code continuously (at least once a day — per developer), and in an automated way. ... 
+One of the important points of using CI is about having less conflicts when integrating code.
+
+
+Jenkins is an open source automation tool written in Java with plugins built for Continuous Integration purpose. 
+Jenkins is an leading open source continuous integration server built with Java. 
+It is used to build and test software projects continuously making it easier to integrate changes to the project.
+Jenkins is used to drive many industry-leading companies' continuous integration and continuous delivery pipelines.
+Jenkins is an open-source automation tool with a powerful plugin architecture that helps development teams automate their software lifecycle.
+Jenkins is used to build and test your software projects continuously making it easier for developers to integrate changes to the project, 
+and making it easier for users to obtain a fresh build.
+It saves time and also helps in to make release to production faster as issues found as soon as code broken.
+
+
+						Virtualization when to use and what are the advantages.
+
+Python Forensics - Virtualization. Virtualization is the process of emulating IT systems such as servers, workstations, networks, and storage. 
+It is nothing but the creation of a virtual rather than actual version of any operating system, a server, a storage device or network processes 
+
+
+						Json, Xml when to use and advantages
+
+
+How would do build and deploy using Django framework? 
+Development, unit testing, building, and deployment - What is the best practice you would follow in Python environment? 
+Jenkins - any usage in the process step? 
+functions or classes 
+decorators in Python – what are they ? 
+static method and classmethod - what is the difference and how would you use them? 
+Generators in regular Python - very large data to work with - 
+REST service in any platform
+microservices
+cicd jenkins 
+decorators and generators
+unit testing
+restful services
+
+
+To download Python 3, go to the downloads section of the official Python website. 
+Download the installer and make sure to click the Add Python to PATH option, which will let use use python directly from the command line. 
+Otherwise we’d have to enter our system’s full path and modify our environment variables manually.
+
+cd (change down a directory)
+cd .. (change up a directory)
+ls (list files in your current directory)
+pwd (print working directory)
+mkdir (make directory)
+touch (create a new file)

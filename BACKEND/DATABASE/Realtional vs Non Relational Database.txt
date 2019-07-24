@@ -1,0 +1,18 @@
+Relational databases. Relational databases like MySQL, PostgreSQL and SQLite3 represent and store data in tables and rows. 
+They're based on a branch of algebraic set theory known as relational algebra. 
+
+
+Meanwhile, non-relational databases like MongoDB represent data in collections of JSON documents.Cassendra CoachDB.
+
+MongoDB is a document-oriented database. 
+Instead of storing your data in tables made out of individual rows, like a relational database does, it stores your data in collections made out of individual documents. 
+In MongoDB, a document is a big JSON blob with no particular format or schema
+
+The key difference is that RDBMS (relational database management system) applications store data in a tabular form, 
+while DBMS applications store data as files. ... 
+In a RDBMS, the tables will have an identifier called primary key. Data values will be stored in the form of tables.
+
+Key Differences Between MySQL and PostgreSQL. 
+The architectural difference between MySQL and PostgreSQL is that MySQL is a relational database management system 
+whereas, PostgresSQL is object-relational database management system. ... 
+MySQL provides temporary tables but does not provide materialized view.

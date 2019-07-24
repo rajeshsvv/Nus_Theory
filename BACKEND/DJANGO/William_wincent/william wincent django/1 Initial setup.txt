@@ -1,0 +1,88 @@
+https://djangoforbeginners.com/initial-setup/
+
+
+While there are many possible commands we can use, in practice there are six used most frequently in Django development.
+
+cd (change down a directory)
+cd .. (change up a directory)
+ls (list files in your current directory)
+pwd (print working directory)
+mkdir (make directory)
+touch (create a new file)
+
+
+Let’s create a new directory folder with mkdir, cd into it, and add a new file index.html.
+
+~/Desktop $ mkdir new_folder
+~/Desktop $ cd new_folder
+~/Desktop/new_folder $ touch index.html
+
+
+Virtual Environments
+Virtual environments are an indispensable part of Python programming. 
+They are an isolated container containing all the software dependencies for a given project. 
+This is important because by default software like Python and Django is installed in the same directory. 
+This causes a problem when you want to work on multiple projects on the same computer.
+What if ProjectA uses Django 2.1 but ProjectB from last year is still on Django 1.10? 
+Without virtual environments this becomes very difficult; with virtual environments it’s no problem at all.
+
+
+we will use Pipenv to manage virtual environments. 
+Pipenv is similar to npm and yarn from the Node ecosystem: 
+it creates a Pipfile containing software dependencies and a Pipfile.lock for ensuring deterministic builds. 
+“Determinism” means that each and every time you download the software in a new virtual environment, you will have exactly the same configuration
+
+
+
+Now use Pipenv to install Django.
+
+$ pipenv install django==2.1.5
+
+
+django-admin startproject test_project
+
+python manage.py runserver
+
+To stop our local server type Control-c. Then exit our virtual environment using the command exit.
+
+(django) $ exit
+
+We can always reactivate the virtual environment again using 		pipenv shell 
+at any time.
+
+
+It’s worth noting that only one virtual environment can be active in a command line tab at a time.
+The basic pattern is to install new packages with pipenv, activate them with pipenv shell, and then exit when done with exit.
+
+
+									Install Git
+
+
+Git is an indispensable part of modern software development. 
+It is a version control system which can be thought of as an extremely powerful version of track changes in Microsoft Word or Google Docs. 
+With git, you can collaborate with other developers, track all your work via commits, and revert to any previous version of your code even if you accidentally delete something important!
+
+
+On Windows you should download Git from Git for Windows. Click the “Download” button and follow the prompts for installation.
+
+Once installed, we need to do a one-time system setup to configure it by declaring the name and email address 
+you want associated with all your Git commits (more on this shortly).
+
+Within the command line console type the following two lines. Make sure to update them your name and email address.
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "yourname@email.com"
+
+Once installed, we need to do a one-time system setup to configure it by declaring the name and email address 
+you want associated with all your Git commits (more on this shortly).
+
+The final step is our text editor. 
+While the command line is where we execute commands for our programs, a text editor is where the actual code is written. 
+The computer doesn’t care what text editor you use–the end result is just code–
+but a good text editor can provide helpful hints and catch typos for you.
+
+Experienced developers often prefer using either Vim or Emacs, both decades-old, text-only editors with loyal followings. 
+However each has a steep learning curve and requires memorizing many different keystroke combinations. I don’t recommend them for newcomers.
+
+Modern text editors combine the same powerful features with an appealing visual interface. 
+My current favorite is Visual Studio Code which is free, easy to install, and enjoys widespread popularity

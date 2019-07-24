@@ -1,0 +1,154 @@
+https://djangoforbeginners.com/hello-world/
+
+
+Make sure you’re not already in an existing virtual environment at this point. 
+If you see text in parentheses () before the dollar sign $ then you are. 
+To exit it, type exit and hit Return. 
+The parentheses should disappear which means that virtual environment is no longer active.\
+
+We’ll use pipenv to create a new virtual environment, install Django and then activate it.
+
+$ pipenv install django==2.1.5
+$ pipenv shell
+If you are on a Mac you should see parentheses now at the beginning of your command line prompt in the form (helloworld).
+ If you are on Windows you will not see a visual prompt at this time.
+
+
+Create a new Django project called helloworld_project making sure to include the period. 
+at the end of the command so that it is installed in our current directory.
+
+(helloworld) $ django-admin startproject helloworld_project .
+
+
+settings.py 		file controls our project’s settings, 
+urls.py			tells Django which pages to build in response to a browser or url request.
+manage.py		is used to execute various Django commands such as running the local web server or creating a new app.
+wsgi.py 		which stands for web server gateway interface, helps Django serve our eventual web pages.
+
+
+Django uses the concept of projects and apps to keep code clean and readable.
+A single Django project contains one or more apps within it that all work together to power a web application.
+
+
+For example, a real-world Django e-commerce site might have one app for user authentication, 
+another app for payments, 
+and a third app to power item listing details.
+Each focuses on an isolated piece of functionality.
+
+We need to create our first app which we’ll call pages. 
+From the command line, quit the server with Control+c. Then use the startapp command
+
+
+(helloworld) $ python manage.py startapp pages
+
+
+If you look again inside the directory with the tree command you’ll see Django has created a pages directory with the following files:
+
+admin.py 		is a configuration file for the built-in Django Admin app
+apps.py 		is a configuration file for the app itself
+migrations/ 		keeps track of any changes to our models.py file so our database and models.py stay in sync
+models.py 		is where we define our database models, which Django automatically translates into database tables
+tests.py 		is for our app-specific tests
+views.py 		is where we handle the request/response logic for our web app
+
+
+We should always add our own local apps at the bottom because Django will read our INSTALLED_APPS in top down order. 
+Therefore the internal admin app is loaded first, then auth, and so on. 
+We want the core Django apps to be available since it’s quite likely our own apps will rely on their functionality
+
+
+# helloworld_project/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'pages.apps.PagesConfig', # new
+]
+
+
+								Views and URLConfs
+
+In Django, Views determine what content is displayed on a given page 
+while URLConfs determine where that content is going.
+
+When a user requests a specific page, like the homepage, 
+the URLConf uses a regular expression to map that request to the appropriate view function which then returns the correct data.
+
+In other words, our view will output the text “Hello, World” 
+while our url will ensure that when the user visits the homepage they are redirected to the correct view.
+
+
+URL -> View -> Model (typically) -> Template
+
+Let’s start by updating the views.py file in our pages app to look as follows:
+
+# pages/views.py
+from django.http import HttpResponse
+
+def homePageView(request):
+    return HttpResponse('Hello, World!')
+
+Basically we’re saying whenever the view function homePageView is called, return the text “Hello, World!” 
+More specifically, we’ve imported the built-in HttpResponse method so we can return a response object to the user. 
+Our function homePageView accepts the request object and returns a response with the string Hello, World!.
+
+Now we need to configure our urls. Within the pages app, create a new urls.py file.
+
+(helloworld) $ touch pages/urls.py
+Then update it with the following code:
+
+
+# pages/urls.py
+from django.urls import path
+from .views import homePageView
+
+urlpatterns = [
+    path('', homePageView, name='home')
+]
+On the top line we import path from Django to power our URLpattern and on the next line we import our views. 
+By using the period .views we reference the current directory, 
+which is our pages app containing both views.py and urls.py. Our URLpattern has three parts:
+
+a Python regular expression for the empty string ''
+specify the view which is called homePageView
+add an optional url name of 'home'
+In other words, if the user requests the homepage, represented by the empty string '' then use the view called homePageView.
+
+We’re almost done. 
+The last step is to configure our project-level urls.py file too. 
+Remember that it’s common to have multiple apps within a single Django project, so they each need their own route.
+
+Update the existing helloworld_project/urls.py file as follows:
+
+# helloworld_project/urls.py
+from django.contrib import admin
+from django.urls import path, include # new
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('pages.urls')), # new
+]
+
+
+Bitbucket
+It’s a good habit to create a remote repository of your code for each project. 
+This way you have a backup in case anything happens to your computer and 
+more importantly, it allows for collaboration with other software developers. 
+The two most popular choices are Bitbucket and Github.
+
+In this book we will use Bitbucket because it allows private repositories for free. 
+Github charges a fee. 
+Public repositories are available for anyone on the internet to use; 
+private repositories are not. 
+When you’re learning web development, 
+it’s best to stick to private repositories so you don’t inadvertently post critical information such as passwords online.
+
+
+git remote add origin git@bitbucket.org:<USER>/hello-world.git
+
+After running this command to configure git with this Bitbucket repository, we must “push” our code into it.
+
+(helloworld) $ git push -u origin master

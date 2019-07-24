@@ -1,0 +1,235 @@
+
+									Zeep documentation
+
+3rd page
+
+
+wsdl=http://www.webservicex.net/ConvertSpeed.asmx?WSDL
+
+Parsing the XML documents is done by using the lxml library. 
+This is the most performant and compliant Python XML library currently available. 
+This results in major speed benefits when processing large SOAP responses.
+
+6th page onwards
+
+pip install zeep
+
+
+first install lxml 4.2.5 since that release should have the wheel files for all platforms:
+
+pip install lxml==4.3.1 zeep
+
+
+When you want to use wsse.Signature() you will need to install the python xmlsec module
+
+pip install zeep[xmlsec]
+
+
+For the asyncio support in Python 3.5+ the aiohttp module is required
+
+pip install zeep[async]
+
+
+For the tornado support in Python 2.7+ the tornado module is required
+
+pip install zeep[tornado]
+
+
+The first thing you generally want to do is inspect the wsdl file you need to implement
+
+python -mzeep <wsdl>
+python -mzeep https://ws.conf.ebs.health.gov.on.ca:1443/EDTService/EDTService?wsdl
+
+
+for help 
+python -mzeep --help
+
+
+
+9 page
+To give you an idea how zeep works a basic example.
+import zeep
+wsdl = 'http://www.soapclient.com/xml/soapresponder.wsdl'
+client = zeep.Client(wsdl=wsdl)
+print(client.service.Method1('Zeep', 'is cool'))
+
+
+To get an overview of the services available on the endpoint you can run the following command in your terminal
+python -mzeep http://www.soapclient.com/xml/soapresponder.wsdl
+
+
+
+
+11 page
+5.1 Using Zeep
+
+
+WSDL documents provide a number of operations (functions) per binding. 
+A binding is collection of operations which are called via a specific protocol.
+These protocols are generally Soap 1.1 or Soap 1.2.
+
+
+5.2 The Client object
+The Client is the main interface for interacting with a SOAP server. 
+It provides a service attribute which references the default binding of the client (via a ServiceProxy object). 
+The default binding can be specified when initiating the client by passing the service_name and port_name. 
+Otherwise the first service and first port within that service are used as the default.
+
+5.2.1 Caching of WSDL and XSD files
+When the client is initialized it will automatically retrieve the WSDL file passed as argument. 
+This WSDL file generally references various other WSDL and XSD files. 
+By default Zeep doesn’t cache these files but it is however advised to enable this for performance reasons.
+Please see Caching how to enable this. To make it easy to use the zeep.CachingClient() automatically creates a Transport object with SqliteCache enabled.
+
+5.2.2 Configuring the client
+The Client class accepts a settings argument to configuring the client. You can initialise the object using the following
+code:
+from zeep import Client, Settings
+settings = Settings(strict=False, xml_huge_tree=True)
+client = Client('http://my-wsdl/wsdl', settings=settings)
+
+The settings object is always accessible via the client using client.settings. For example:
+with client.settings(raw_response=True):
+response = client.service.myoperation()
+
+5.2.3 The ServiceProxy object
+The ServiceProxy object is a simple object which will check if an operation exists for attribute or item requested. 
+If the operation exists then it will return an OperationProxy object (callable) which is responsible for calling the operation on the binding.
+
+
+13 page
+5.2.4 Using non-default bindings
+As mentioned by default Zeep picks the first binding in the WSDL as the default. 
+This binding is available via client.service. To use a specific binding you can use the bind() method on the client object:
+
+5.2.5 Creating new ServiceProxy objects
+There are situations where you either need to change the SOAP address from the one which is defined 
+within the WSDL or the WSDL doesn’t define any service elements. 
+This can be done by creating a new ServiceProxy using the Client.create_service() method.
+
+	from zeep import Client
+from zeep import xsd
+client = Client('http://my-endpoint.com/production.svc?wsdl')
+service = client.create_service(
+'{http://my-target-namespace-here}myBinding',
+'http://my-endpoint.com/acceptance/')
+service.submit('something')
+
+
+5.2.6 Creating the raw XML documents
+When you want zeep to build and return the XML instead of sending it to the server you can use the Client.
+create_message() call. It requires the ServiceProxy as the first argument and the operation name as the second
+argument.
+from zeep import Client
+client = Client('http://my-endpoint.com/production.svc?wsdl')
+node = client.create_message(client.service, 'myOperation', user='hi')
+
+
+5.3.1 Context manager
+
+with client.settings(raw_response=True):
+response = client.service.myoperation()
+# response is now a regular requests.Response object
+assert response.status_code == 200
+assert response.content
+
+
+
+5.3.2 API
+class zeep.settings.Settings(strict=True, raw_response=False, force_https=True, extra_http_headers=None, xml_huge_tree=False, forbid_dtd=False, forbid_entities=True, forbid_external=True,
+xsd_ignore_sequence_order=False, tls=NOTHING)
+
+
+
+
+5.4 Transports
+If you need to change options like cache, timeout or TLS (or SSL) verification you will need to create an instance of the Transport class yourself.
+Note: Secure Sockets Layer (SSL) has been deprecated in favor of Transport Layer Security (TLS). 
+SSL 2.0 was prohibited in 2011 and SSL 3.0 in June 2015.
+
+5.4.1 TLS verification
+If you need to verify the TLS connection (in case you have a self-signed certificate for your host), the best way is to
+create a requests.Session instance and add the information to that Session, so it keeps persistent:
+
+Hint: Make sure that the certificate you refer to is a CA_BUNDLE, meaning it contains a root CA and an intermediate
+CA. Accepted are only X.509 ASCII files (file extension .pem, sometimes .crt). If you have two different files, you
+must combine them manually into one.
+Alternatively, instead of using session.verify you can use session.cert if you just want to use an TLS
+client certificate.
+To disable TLS verification (not recommended!) you will need to set verify to False.
+session = Session()
+session.verify = False
+Or even simpler way:
+client.transport.session.verify = False
+
+
+5.4.3 Using HTTP or SOCKS Proxy
+By default, zeep uses requests as transport layer, which allows to define proxies using the proxies attribute of
+requests.Session:
+
+
+
+16 page
+In order to use SOCKS proxies, requests needs to be installed with additional packages (for example
+pip install -U requests[socks]
+
+5.4.4 Caching
+By default zeep doesn’t use a caching backend. 
+For performance benefits it is advised to use the SqliteCache backend.
+It caches the WSDL and XSD files for 1 hour by default. To use the cache backend init the client with:
+
+from zeep import Client
+from zeep.cache import SqliteCache
+from zeep.transports import Transport
+transport = Transport(cache=SqliteCache())
+client = Client('http://www.webservicex.net/ConvertSpeed.asmx?WSDL',transport=transport)
+
+Changing the SqliteCache settings can be done via:
+from zeep import Client
+from zeep.cache import SqliteCache
+from zeep.transports import Transport
+
+
+5.4.5 HTTP Authentication
+While some providers incorporate security features in the header of a SOAP message, others use the HTTP Authentication header. 
+In the latter case, you can just create a requests.Session object with the auth set and pass it to the Transport class.
+from requests import Session
+from requests.auth import HTTPBasicAuth # or HTTPDigestAuth, or OAuth1, etc.
+
+
+5.4.6 Debugging
+To see the SOAP XML messages which are sent to the remote server and the response received 
+you can set the Python logger level to DEBUG for the 
+zeep.transports module. Since 0.15 this can also be achieved via the HistoryPlugin.
+
+17 page
+5.5 SOAP headers
+SOAP headers are generally used for things like authentication. The header elements can be passed to all operations
+using the _soapheaders kwarg
+
+There are multiple ways to pass a value to the soapheader.
+1. When the SOAP header expects a complex type you can either pass a dict or an object created via the client.
+get_element() method.
+2. When the header expects a simple type value you can pass it directly to the _soapheaders kwarg. (e.g.:
+client.service.Method(_soapheaders=1234))
+
+4. Another option is to pass an lxml Element object. This is generally useful if the wsdl doesn’t define a soap
+header but the server does expect it.
+
+
+18page
+
+5.6 Datastructures
+5.6.1 Creating objects
+Most of the times you need to pass nested data to the soap client. 
+These Complex types can be retrieved using the	client.get_type() method.
+
+However instead of creating an object from a type defined in the XSD you can also pass in a dictionary. 
+Zeep will automatically convert this dict to the required object (and nested child objects) during the call.
+
+from zeep import Client
+client = Client('http://my-enterprise-endpoint.com')
+client.service.submit_order(user_id=1, order={
+'number': '1234',
+'price': 99,
+})

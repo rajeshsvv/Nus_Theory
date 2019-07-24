@@ -1,0 +1,150 @@
+eIn this Python Unittest tutorial, we will learn how to set up unit tests for our Python code. 
+For this, we will use the module Unittest in Unit Testing with Python. 
+Right before leaving, we will also introduce you to pytest
+another module for the same thing. Moreover, we will discuss Python Unittest example and the working. 
+Also, we will see Python Unit Testing Framework and assert.
+
+2. What is Python Unittest?
+Python Unittest is a Python Unit-Testing framework. 
+Inspired by JUnit, it is much like the unit testing frameworks we have with other languages. Here are some features it supports-
+
+Test automation
+Sharing setup and shutdown code for tests
+Aggregating tests into collections
+Independence of tests from the framework
+
+
+a. Concepts in an object-oriented way for Python Unittest
+
+Test fixture		- the preparation necessary to carry out test(s) and related cleanup actions.
+Test case		- the individual unit of testing.
+A Test suite		- collection of test cases, test suites, or both.
+Test runner		- component for organizing the execution of tests and for delivering the outcome to the user.
+
+In this Python Unittest tutorial, we will use the unittest module to demonstrate our examples to you.
+
+3. Python Unittest Example
+In the following example of Unittest in Python, we will take a simple function that calculates the modulus 3 of a value.
+
+>>> import unittest
+>>> def modthree(x):                             #defining the function
+      return x%3
+>>> class Tests(unittest.TestCase):
+      def test(self):                                  #test method
+               self.assertEqual(modthree(4),1)
+>>> if __name__=='__main__':
+      unittest.main()
+.
+———————————————————————-
+Ran 1 test in 0.010s
+OK
+Did you see the output?
+
+
+a. One More Example of Python Unittest
+Now let’s try testing for string methods; we won’t need a function for this.
+
+>>> class TestStringMethods(unittest.TestCase):
+        def test_lstrip(self): #testing for left stripping
+                 self.assertEqual('   hello '.lstrip(),'hello ')
+        def test_isupper(self): #testing for isupper
+                 self.assertTrue('HELLO'.isupper())
+                 self.assertFalse('HELlO'.isupper())
+        def test_split(self): #testing for split
+                 self.assertEqual('Hello World'.split(),['Hello','World'])
+                 with self.assertRaises(TypeError):
+                         'Hello World'.split(2)
+>>> if __name__=='__main__':
+        unittest.main()
+….
+———————————————————————-
+Ran 4 tests in 0.031s
+OK
+
+
+4. How Python Unittest Works?
+So we’ve seen this Unit Testing with Python works without much effort. 
+But how does this happen behind the scenes? Let’s find out.
+
+a. Subclassing unittest.TestCase
+Consider the following line-
+
+class TestStringMethods(unittest.TestCase):
+Here, we subclass unittest.
+TestCase. What we mean is we make our class TestStringMethods inherit from the class unittest.
+TestCase. Then, we define three methods, the names for which begin with ‘test’:
+Let’s learn about Python String
+test_lstrip()
+test_isupper()
+test_split()
+
+b. Python Unittest Assert Methods
+Now, let’s take a look at what methods we can call within Unit testing with Python:
+
+assertEqual()- Tests that the two arguments are equal in value.
+assertNotEqual()- Tests that the two arguments are unequal in value.
+
+assertTrue()- Tests that the argument has a Boolean value of True.
+assertFalse()- Tests that the argument has a Boolean value of False.
+
+assertIs()- Tests that the arguments evaluate to the same object.
+assertIsNot()- Tests that the arguments do not evaluate to the same object.
+
+assertIsNone()- Tests that the argument evaluates to none.
+assertIsNotNone()- Tests that the argument does not evaluate to none.
+
+assertIn()- Tests that the first argument is in the second.
+assertNotIn()- Tests that the first argument is not in the second.
+
+assertIsInstance()- Tests that the first argument (object) is an instance of the second (class).
+assertRaises()- Tests that Python raises an exception when we call the callable with positional/ keyword arguments we also passed to this method.
+
+
+You must read Python Assert Statements:
+
+assertRaisesRegex()- Tests that regex matches on the string representation of the exception raised; similar to assertRaises().
+assertWarns()- Tests that Python triggers a warning when we call the callable with positional/ keyword arguments we also passed to this method.
+
+assertWarnsRegex()- Tests that regex matches on the message for the triggered warning; similar to assertWarns().
+assertLogs()- Tests that Python has logged at least one message on the logger or a child of the logger; ensures this is with at least the level we mention.
+
+assertAlmostEqual()- Tests that the first and second arguments have approximately equal values.
+assertNotAlmostEqual()- Tests that the first and second arguments do not have approximately equal values.
+
+assertGreater()- Tests that the first argument is greater than the second.
+assertGreaterEqual()- Tests that the first argument is greater than or equal to the second.
+
+assertLess()- Tests that the first argument is lesser than the second.
+assertLessEqual()- Tests that the first argument is lesser than or equal to the second.
+
+assertRegex()- Tests that a regex search matches the text.
+assertNotRegex()- Tests that a regex search does not match the text.
+
+
+c. unittest.main()
+This delivers a command-line interface to the test script. The output suggests whether the tests ran okay or failed.
+assertCountEqual()- Tests that the first argument, which is a sequence, contains the same as does the second.
+assertMultiLineEqual()- Tests that the first argument, which is a multiline string, is equal to the second.
+
+assertSequenceEqual()- Tests that two sequences are equal.
+assertListEqual()- Tests that two lists are equal.
+
+assertTupleEqual()- Tests that two lists are equal.
+assertSetEqual()- Tests that two sets are equal.
+
+It was fun working with Python Unittest. But before leaving, 
+we want to introduce you to pytest, a framework that makes it fun to write small tests. 
+But that doesn’t limit it- we can scale it to support complex functional testing for applications and libraries.
+First, install pytest with Python pip-
+pip install pytest
+You don’t have to import this in the IDLE; we create the following Python file on our Desktop-
+
+def modthree(x):
+   return x%3
+def test_value():
+   assert(modthree(4)==1)
+We save this as demo.py. Then, we open the command line and get to the desktop. After that, we run a test-
+
+assertDictEqual()- Tests that two dictionaries are equal.
+
+Now that we’ve discussed all these, you can go check the code once again. We used the methods assertEqual(), assertTrue(), assertFalse(), and assertRaises().

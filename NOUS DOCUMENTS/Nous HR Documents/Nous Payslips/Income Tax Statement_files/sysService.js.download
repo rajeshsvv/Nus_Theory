@@ -1,0 +1,7 @@
+
+function sysService() { }
+sysService._path = '/dwr';
+
+sysService.addToFavourites = function(callback) {
+    DWREngine._execute(sysService._path, 'sysService', 'addToFavourites', false, false, callback);
+}

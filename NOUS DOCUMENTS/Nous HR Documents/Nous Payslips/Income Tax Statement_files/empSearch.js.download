@@ -1,0 +1,87 @@
+
+function empSearch() { }
+empSearch._path = '/dwr';
+
+empSearch.setEmployeeManager = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setEmployeeManager', p0, callback);
+}
+
+empSearch.setUserManager = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setUserManager', p0, callback);
+}
+
+empSearch.getEmployees = function(p0, p1, p2, p3, p4, p5, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'getEmployees', p0, p1, p2, p3, p4, p5, callback);
+}
+
+empSearch.setBrowseEmployee = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setBrowseEmployee', p0, callback);
+}
+
+empSearch.getBreadCrumbStack = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'getBreadCrumbStack', false, callback);
+}
+
+empSearch.setSynchronizeOnSession = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setSynchronizeOnSession', p0, callback);
+}
+
+empSearch.isSynchronizeOnSession = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'isSynchronizeOnSession', callback);
+}
+
+empSearch.handleRequest = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'handleRequest', false, false, callback);
+}
+
+empSearch.setCacheSeconds = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setCacheSeconds', p0, callback);
+}
+
+empSearch.setSupportedMethods = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setSupportedMethods', p0, callback);
+}
+
+empSearch.getSupportedMethods = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'getSupportedMethods', callback);
+}
+
+empSearch.setRequireSession = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setRequireSession', p0, callback);
+}
+
+empSearch.isRequireSession = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'isRequireSession', callback);
+}
+
+empSearch.setUseExpiresHeader = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setUseExpiresHeader', p0, callback);
+}
+
+empSearch.isUseExpiresHeader = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'isUseExpiresHeader', callback);
+}
+
+empSearch.setUseCacheControlHeader = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setUseCacheControlHeader', p0, callback);
+}
+
+empSearch.isUseCacheControlHeader = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'isUseCacheControlHeader', callback);
+}
+
+empSearch.getCacheSeconds = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'getCacheSeconds', callback);
+}
+
+empSearch.setServletContext = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setServletContext', false, callback);
+}
+
+empSearch.getApplicationContext = function(callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'getApplicationContext', callback);
+}
+
+empSearch.setApplicationContext = function(p0, callback) {
+    DWREngine._execute(empSearch._path, 'empSearch', 'setApplicationContext', p0, callback);
+}

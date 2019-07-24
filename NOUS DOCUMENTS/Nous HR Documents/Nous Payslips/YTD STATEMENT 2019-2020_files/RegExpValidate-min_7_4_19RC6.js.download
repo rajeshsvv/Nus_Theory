@@ -1,0 +1,243 @@
+
+function validateEmail(strValue){var objRegExp=/(^[a-z]([a-z_\-\.0-9]*)@([a-z0-9_])([a-z_\-\.0-9]*)([.][a-z]{3})$)|(^[a-z0-9]([a-z_\-\.0-9]*)@([a-z0-9_])([a-z_\-\.0-9]*)([a-z]{2})?([.][a-z]{2})$)/i;return objRegExp.test(strValue);}
+function validateAlpha(value){var regexp=/^[a-zA-Z\s]*$/i;return regexp.test(value);}
+function validateAlphaNumeric(value){var regexp=/^[a-zA-Z0-9\-\.\s]*$/i;return regexp.test(value);}
+function validateName(value){var regexp=/^[a-zA-Z\'\.]?[a-zA-Z\'\s\.]*$/i;return regexp.test(value);}
+function validatePhone(value){var regexp=/^[\+\(]?[0-9]*[0-9\-\) ]*\d+$/i;return regexp.test(value);}
+function validatePositiveInteger(value){var regexp=/^[0-9]*$/i;return regexp.test(value);}
+function validateBit(value){var regexp=/^[01]?$/i;return regexp.test(value);}
+function validateTime(value){var regexp=/^[0-1][0-9]:[0-5][0-9]$|^[2][0-3]:[0-5][0-9]$|^[2][3]:[0][0]$/;return regexp.test(value);}
+function validateDate(value){var regexp=/^[0-3]?[0-9][\-/\s][A-Za-z]*[\-/\s]\d\d\d\d$/;return regexp.test(value);}
+function isURL(argvalue){if(argvalue.indexOf(" ")!=-1)
+return false;else if(argvalue.indexOf("http://")==-1)
+return false;else if(argvalue=="http://")
+return false;else if(argvalue.indexOf("http://")>0)
+return false;argvalue=argvalue.substring(7,argvalue.length);if(argvalue.indexOf(".")==-1)
+return false;else if(argvalue.indexOf(".")==0)
+return false;else if(argvalue.charAt(argvalue.length-1)==".")
+return false;if(argvalue.indexOf("/")!=-1){argvalue=argvalue.substring(0,argvalue.indexOf("/"));if(argvalue.charAt(argvalue.length-1)==".")
+return false;}
+if(argvalue.indexOf(":")!=-1){if(argvalue.indexOf(":")==(argvalue.length-1))
+return false;else if(argvalue.charAt(argvalue.indexOf(":")+1)==".")
+return false;argvalue=argvalue.substring(0,argvalue.indexOf(":"));if(argvalue.charAt(argvalue.length-1)==".")
+return false;}
+return true;}
+function validateUSPhone(strValue){var objRegExp=/^\([1-9]\d{2}\)\s?\d{3}\-\d{4}$/;return objRegExp.test(strValue);}
+function validateNumeric(strValue){var objRegExp=/(^-?\d\d*\.\d*$)|(^-?\d\d*$)|(^-?\.\d\d*$)/;return objRegExp.test(strValue);}
+function validateInteger(strValue){var objRegExp=/(^-?\d\d*$)/;return objRegExp.test(strValue);}
+function validateNotEmpty(strValue){var strTemp=strValue;strTemp=trimAll(strTemp);if(strTemp.length>0){return true;}
+return false;}
+function validateUSZip(strValue){var objRegExp=/(^\d{5}$)|(^\d{5}-\d{4}$)/;return objRegExp.test(strValue);}
+function validateUSDate(strValue){var objRegExp=/^\d{1,2}(\-|\/|\.)\d{1,2}\1\d{4}$/;if(!objRegExp.test(strValue))
+return false;else{var strSeparator=strValue.substring(2,3)
+var arrayDate=strValue.split(strSeparator);var arrayLookup={'01':31,'03':31,'04':30,'05':31,'06':30,'07':31,'08':31,'09':30,'10':31,'11':30,'12':31}
+var intDay=parseInt(arrayDate[1]);if(arrayLookup[arrayDate[0]]!=null){if(intDay<=arrayLookup[arrayDate[0]]&&intDay!=0)
+return true;}
+var intYear=parseInt(arrayDate[2]);var intMonth=parseInt(arrayDate[0]);if(((intYear%4==0&&intDay<=29)||(intYear%4!=0&&intDay<=28))&&intDay!=0)
+return true;}
+return false;}
+function validateValue(strValue,strMatchPattern){var objRegExp=new RegExp(strMatchPattern);return objRegExp.test(strValue);}
+function rightTrim(strValue){var objRegExp=/^([\w\W]*)(\b\s*)$/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'$1');}
+return strValue;}
+function leftTrim(strValue){var objRegExp=/^(\s*)(\b[\w\W]*)$/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'$2');}
+return strValue;}
+function trimAll(strValue){var objRegExp=/^(\s*)$/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'');if(strValue.length==0)
+return strValue;}
+objRegExp=/^(\s*)([\W\w]*)(\b\s*$)/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'$2');}
+return strValue;}
+function removeCurrency(strValue){var objRegExp=/\(/;var strMinus='';if(objRegExp.test(strValue)){strMinus='-';}
+objRegExp=/\)|\(|[,]/g;strValue=strValue.replace(objRegExp,'');if(strValue.indexOf('$')>=0){strValue=strValue.substring(1,strValue.length);}
+return strMinus+strValue;}
+function addCurrency(strValue){var objRegExp=/-?[0-9]+\.[0-9]{2}$/;if(objRegExp.test(strValue)){objRegExp.compile('^-');strValue=addCommas(strValue);if(objRegExp.test(strValue)){strValue='('+strValue.replace(objRegExp,'')+')';}
+return'$'+strValue;}
+else
+return strValue;}
+function removeCommas(strValue){var objRegExp=/,/g;return strValue.replace(objRegExp,'');}
+function addCommas(strValue){var objRegExp=new RegExp('(-?[0-9]+)([0-9]{3})');while(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'$1,$2');}
+return strValue;}
+function removeCharacters(strValue,strMatchPattern){var objRegExp=new RegExp(strMatchPattern,'gi');return strValue.replace(objRegExp,'');}
+function CheckFor18Yrs(strFormName,strfldDate,strfldDummyDate,strfldDOB,strDesc)
+{var strjoindate;var dtjoindate;var strdob;var dtdob;var strFormDoc="document."+strFormName+".";strjoindate=eval(strFormDoc+strfldDate+".value");strdob=eval(strFormDoc+strfldDOB+".value");if(strjoindate!=''&&strdob!='')
+{dtjoindate=new Date(strjoindate);dtdob=new Date(strdob);var intage=dtjoindate.getFullYear()-dtdob.getFullYear();if(intage<18)
+{alert(strDesc+" [ "+strjoindate+" ] should be 18 yrs after the DOB [ "+strdob+" ] ");eval(strFormDoc+strfldDate+".value = ''");eval(strFormDoc+strfldDummyDate+".value = ''");}}}
+function validatemaxlen(frm,strfld,intmaxlen)
+{var intLen;var strFldValue;strFldValue=eval("frm."+strfld+".value");intLen=strFldValue.length;if(intLen>intmaxlen)
+{alert("Please note that the value is exceeding the maximum length of "+intmaxlen+" characters");eval("frm."+strfld+".value='"+strFldValue.substring(0,intmaxlen)+"'");}}
+function validateforsysdate(strFormName,strfldDate,strfldDummyDate,strDateDesc)
+{var dtSysDate;var dtDate;var strFormDoc="document."+strFormName+".";var strDate=eval(strFormDoc+strfldDate+".value");if(strDate!='')
+{dtDate=Date.parse(strDate);dtSysDate=new Date();if(dtDate>dtSysDate)
+{alert(strDateDesc+" cannot be greater than the System date");eval(strFormDoc+strfldDummyDate+".value = ''");eval(strFormDoc+strfldDate+".value = ''");}}}
+function NotLessThanSysdate(strFormName,strfldDate,strfldDummyDate,strfldrDate,strfldrDummyDate,strDateDesc,strid)
+{var dtSysDate;var dtDate;var dtrdate
+var strFormDoc="document."+strFormName+".";var strDate=eval(strFormDoc+strfldDate+".value");if(strid=='1')
+{var strrDate=eval(strFormDoc+strfldrDate+".value");}
+else
+var strrDate=strfldrDate;if(strDate!='')
+{dtDate=Date.parse(strDate);dtrdate=Date.parse(strrDate);if(dtDate<dtrdate)
+{alert(strDateDesc+" should be greater than release date ");eval(strFormDoc+strfldDummyDate+".value = ''");eval(strFormDoc+strfldDate+".value = ''");}}}
+function IsNumber(strValue)
+{var objRegExp=/(^\d\d*\.\d*$)|(^\d\d*$)|(^\.\d\d*$)/;return objRegExp.test(strValue);}
+function validEmail(frm,strfld)
+{var strValue=eval("frm."+strfld+".value");if(trimAll(strValue)!='')
+{if(validateEmail(strValue)==false)
+{alert("Invalid email entered !");eval("frm."+strfld+".focus()");}}}
+function IsInteger(strValue)
+{var objRegExp=/(^\d\d*$)/;return objRegExp.test(strValue);}
+function validatePercent(fld)
+{var value;value=parseInt(fld.value);if(value>100)
+{fld.value=100;alert("Percentage value cannot exceed a value of 100");}}
+function validateMonths(fld)
+{var intYears;var fltMonths;var fltValue;if(fld.value!='')
+{fltValue=parseFloat(fld.value);intYears=parseInt(fld.value);fltMonths=(fltValue-intYears);if((1-fltMonths)<0.89)
+{alert("Invalid Months entered ! ");fld.value=intYears;}}}
+function fallsbetween(xval,yval,fld)
+{var intxval,intyval;var intval;intxval=parseInt(xval);intyval=parseInt(yval);intval=parseInt(fld.value);if(intval<intxval&&intyval==0)
+{alert(intval+" should be greater than or equal to "+intxval);fld.value=intxval;}
+else if(intval>intyval&&intxval==0)
+{alert(intval+" should be less than or equal to "+intyval);fld.value=intyval;}
+else if((intval<intxval||intval>intyval)&&(intxval!=-1&&intyval!=0))
+{alert(intval+" should fall between "+intxval+" and "+intyval);fld.value=intxval;}}
+function checkifblank(fld,defvalue)
+{if(fld.value=='')
+{fld.value=defvalue;}}
+function validateFROMTO(frmName,strFrom,strTo,strFromDesc,strToDesc)
+{var dtFromDate;var dtToDate;var strFromVal;var strToVal;var strDocForm;strDocForm="document."+frmName+".";strFromVal=eval(strDocForm+strFrom+".value");strToVal=eval(strDocForm+strTo+".value");if(strFromVal!=''&&strToVal!='')
+{dtFromDate=Date.parse(strFromVal);dtToDate=Date.parse(strToVal);if(dtFromDate>dtToDate)
+{alert(strFromDesc+" date [ "+strFromVal+" ] cannot be \n greater than "+strToDesc+" date [ "+strToVal+" ] ");eval(strDocForm+strFrom+".value = ''");eval(strDocForm+'dummy'+strFrom+".value = ''");}}}
+function validateGridFROMTO(frmName,strFrom,strTo,strDummyFrom,strFromDesc,strToDesc)
+{var dtFromDate;var dtToDate;var strFromVal;var strToVal;var strDocForm;strDocForm="document."+frmName+".";strFromVal=eval(strDocForm+strFrom+".value");strToVal=eval(strDocForm+strTo+".value");if(strFromVal!=''&&strToVal!='')
+{dtFromDate=Date.parse(strFromVal);dtToDate=Date.parse(strToVal);if(dtFromDate>dtToDate)
+{alert(strFromDesc+" date [ "+strFromVal+" ] cannot be \n greater than "+strToDesc+" date [ "+strToVal+" ] ");eval(strDocForm+strFrom+".value = ''");eval(strDocForm+strDummyFrom+".value = ''");}}}
+function DateFallsBetween(frmName,strFrom,strTo,strFld,strDummyFld,strFallsDesc,strFldDesc)
+{var strDocForm;var strFromVal;var strToVal;var strFldVal;var dtFromDate,dtToDate,dtFldDate;var blnFlag;strDocForm="document."+frmName+".";strFromVal=eval(strDocForm+strFrom+".value");strToVal=eval(strDocForm+strTo+".value");strFldVal=eval(strDocForm+strFld+".value");if(strFromVal!=''&&strToVal!=''&&strFldVal!='')
+{dtFromDate=Date.parse(strFromVal);dtToDate=Date.parse(strToVal);dtFldDate=Date.parse(strFldVal);if(dtFldDate<dtFromDate||dtFldDate>dtToDate)
+{alert(strFldDesc+" [ "+strFldVal+" ] should fall between \n "+strFallsDesc+" Start date [ "+strFromVal+" ] and End date [ "+strToVal+" ]");blnFlag=true;}}
+else if(strFromVal!=''&&strToVal==''&&strFldVal!='')
+{dtFromDate=Date.parse(strFromVal);dtFldDate=Date.parse(strFldVal);if(dtFldDate<dtFromDate)
+{alert(strFldDesc+" [ "+strFldVal+" ] should be greater than \n "+strFallsDesc+" Start date [ "+strFromVal+" ]");blnFlag=true;}}
+else if(strFromVal==''&&strToVal!=''&&strFldVal!='')
+{dtToDate=Date.parse(strToVal);dtFldDate=Date.parse(strFldVal);if(dtFldDate>dtToDate)
+{alert(strFldDesc+" [ "+strFldVal+" ] should be less than \n "+strFallsDesc+" End date [ "+strToVal+" ]");blnFlag=true;}}
+if(blnFlag==true)
+{eval(strDocForm+strFld+".value = ''");eval(strDocForm+strDummyFld+".value = ''");}}
+function newpagesubmitform(strFormName,strMode,strPageNo)
+{if(navigator.appName!='Netscape')
+{window.event.returnValue=false;}
+eval("document."+strFormName+".mode.value = "+strMode);eval("document."+strFormName+".pageno.value = "+strPageNo);eval("document."+strFormName+".submit()");}
+function validateXYAmt(frm,fldx,fldy,strXDesc,strYDesc)
+{var strFldX='frm.'+fldx+'.value';var strFldY='frm.'+fldy+'.value';if(eval(strFldX)!=''&&eval(strFldY)!='')
+{var fltX=parseFloat(eval(strFldX));var fltY=parseFloat(eval(strFldY));if(fltX>fltY)
+{alert(strXDesc+' of [ Rs. '+eval(strFldX)+']'+' cannot exceed '+strYDesc+' of [ Rs. '+eval(strFldY)+']');eval(strFldX+" = '' ");}}}
+function ControlExists(ctlName)
+{var blnExists;blnExists=false;for(var intIndex=0;intIndex<document.forms[0].elements.length;intIndex++)
+{if(ctlName==trimAll(document.forms[0].elements[intIndex].name))
+{blnExists=true;break;}}
+return blnExists;}
+function NewControlExists(strfrm,ctlName)
+{var blnExists;var intTotallength;var strFormDoc="document."+strfrm+".";blnExists=false;intTotallength=eval(strFormDoc+"elements.length");for(var intIndex=0;intIndex<intTotallength;intIndex++)
+{if(ctlName==trimAll(eval(strFormDoc+"elements["+intIndex+"].name")))
+{blnExists=true;break;}}
+return blnExists;}
+function submitme(strform,straction,strcid)
+{eval("document."+strform+".hdrowid.value = '"+strcid+"'");eval("document."+strform+".hdaction.value = '"+straction+"'");eval("document."+strform+".submit()");}
+function printme(strfrm,straction,strrowid,strbentype,struserlock)
+{var strlock='1';if(eval("document."+strfrm+".hdunlock.value")==1&&struserlock=='1')
+{if(confirm("Are you sure of unlocking this transaction ? ")==true)
+strlock='0';}
+eval("document."+strfrm+".target = '_new'");eval("document."+strfrm+".hdaction.value = '"+straction+"'");eval("document."+strfrm+".hdrowid.value = '"+strrowid+"'");eval("document."+strfrm+".hdbentype.value = '"+strbentype+"'");eval("document."+strfrm+".hduserlock.value = '"+strlock+"'");eval("document."+strfrm+".submit()");}
+function suycDateDiff(start,end,interval,rounding){var iOut=0;var startMsg="Check the Start Date and End Date\n"
+startMsg+="must be a valid date format.\n\n"
+startMsg+="Please try again.";var intervalMsg="Sorry the dateAdd function only accepts\n"
+intervalMsg+="day, hrs, min ,sec OR month intervals.\n\n"
+intervalMsg+="Please try again.";var bufferA=Date.parse(start);var bufferB=Date.parse(end);if(isNaN(bufferA)||isNaN(bufferB)){alert(startMsg);return null;}
+if(interval.charAt=='undefined'){alert(intervalMsg);return null;}
+var number=bufferB-bufferA+86400000;switch(interval.substring(0,2))
+{case'da':iOut=parseInt(number/86400000);if(rounding)iOut+=parseInt((number%86400000)/43200001);break;case'ho':iOut=parseInt(number/3600000);if(rounding)iOut+=parseInt((number%3600000)/1800001);break;case'mi':iOut=parseInt(number/60000);if(rounding)iOut+=parseInt((number%60000)/30001);break;case'se':iOut=parseInt(number/1000);if(rounding)iOut+=parseInt((number%1000)/501);break;case'mo':iOut=parseInt(number/(86400000*30.42));if(rounding)iOut+=parseInt((number%(86400000*30.42))/(43200001*15.21));break;default:alert(intervalMsg);return null;}
+return iOut;}
+function Calculatedatediff(frm,fromdate,todate,result,format){var iout;var ierr=1;if(document[frm].elements[fromdate].value!=''&&document[frm].elements[todate].value!='')
+{if(document[frm].elements[fromdate].value!='')
+{var ierr=1;var roundDays='true';if(document[frm].elements[fromdate].value!=''){if(!isNaN(Date.parse(document[frm].elements[fromdate].value))){var s=new Date(Date.parse(document[frm].elements[fromdate].value));ierr=0;}}
+if(document[frm].elements[todate].value!='')
+{if(!isNaN(Date.parse(document[frm].elements[todate].value)))
+{var e=new Date(Date.parse(document[frm].elements[todate].value));var temp=suycDateDiff(s,e,'da',roundDays);}else{ierr=1;}}else{ierr=1;}
+if(temp!=null)
+var yano=temp+1;var mono=temp+1;yano=Math.floor(Math.abs(yano/365));var mono=temp.toString();mono=mono-(yano*365);var Dano=mono;mono=Math.floor(Math.abs(mono/30.4));Dano=Dano-(mono*30.4);var adj;var FinalData;FinalData='';if(Dano>15){if(mono==11){mono=0;yano=yano+1;}else{mono=mono+1;}}else{adj=1;}
+if(yano>0)
+{if(yano<10)
+{FinalData='0'+yano+'.';}else
+FinalData=yano+'.';}else
+FinalData='0'+'.';if(mono>0)
+{if(mono<10)
+{FinalData=FinalData+'0'+mono+'';}else
+FinalData=FinalData+mono+'';}else
+FinalData=FinalData+'00'+'';if(format=='yy.mm')
+{document[frm].elements[result].value=FinalData;return iout;}
+if(format=='yy.mm.dd.')
+{if(Dano>0)
+{FinalData=FinalData+Dano+'.';}else
+FinalData='0'+sysbolm;document[frm].elements[result].value=FinalData;return iout;}}}}
+function trimAll(strValue)
+{var objRegExp=/^(\s*$)/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'');if(strValue.length==0)
+return strValue;}
+objRegExp=/^(\s*)([\W\w]*)(\b\s*$)/;if(objRegExp.test(strValue)){strValue=strValue.replace(objRegExp,'$2');}
+return strValue;}
+function checkIfDataIsValid(frm,controlName){if(document[frm].elements[controlName].value!=''){var strValue=document[frm].elements[controlName].value;var strData=document[frm].elements[controlName].value.indexOf('.');if(strData==0||strData==1||strData==2){if(document[frm].elements[controlName].value.substr(strData+1).length==1){document[frm].elements[controlName].value='00:'+document[frm].elements[controlName].value.substr(strData+1)+'0';}
+else{document[frm].elements[controlName].value='00:'+document[frm].elements[controlName].value.substr(strData+1);}}
+if(document[frm].elements[controlName].value<25){var strData2=document[frm].elements[controlName].value.indexOf(document[frm].elements[controlName].value);}
+if(strData2==0){if(document[frm].elements[controlName].value.substr(strData+1).length==2){document[frm].elements[controlName].value=document[frm].elements[controlName].value.substr(strData+1)+':00';}
+if(document[frm].elements[controlName].value.substr(strData+1).length==1){document[frm].elements[controlName].value='0'+document[frm].elements[controlName].value.substr(strData+1)+':00';}}}}
+function CheckHHMMFormat(strValue){var objRegExp=/^[0-1][0-9]:[0-5][0-9]$|^[2][0-3]:[0-5][0-9]$|^[2][4]:[0][0]$|^\.[0-5][0-9]$|^\.[0-5]$|^[0-2][0-4]$|^[0-9]$|^[0-1][0-9]$/;return objRegExp.test(strValue);}
+function PadDigits(n,totalDigits)
+{n=n.toString();var pd='';if(totalDigits>n.length)
+{for(i=0;i<(totalDigits-n.length);i++)
+{pd+='0';}}
+return pd+n.toString();}
+function formatDate(longDate){var date=new Date(longDate);var day=date.getDate();var month=date.getMonth();var year=date.getFullYear();var m_names=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");return day+" "+m_names[month]+" "+year;}
+var MONTH_NAMES=new Array('January','February','March','April','May','June','July','August','September','October','November','December','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');var DAY_NAMES=new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sun','Mon','Tue','Wed','Thu','Fri','Sat');function isDate(val,format){var date=getDateFromFormat(val,format);if(date==0){return false;}
+return true;}
+function _isInteger(val){var digits="1234567890";for(var i=0;i<val.length;i++){if(digits.indexOf(val.charAt(i))==-1){return false;}}
+return true;}
+function _getInt(str,i,minlength,maxlength){for(var x=maxlength;x>=minlength;x--){var token=str.substring(i,i+x);if(token.length<minlength){return null;}
+if(_isInteger(token)){return token;}}
+return null;}
+function getDateFromFormat(val,format){val=val+"";format=format+"";var i_val=0;var i_format=0;var c="";var token="";var token2="";var x,y;var now=new Date();var year=now.getYear();var month=now.getMonth()+1;var date=1;var hh=now.getHours();var mm=now.getMinutes();var ss=now.getSeconds();var ampm="";while(i_format<format.length){c=format.charAt(i_format);token="";while((format.charAt(i_format)==c)&&(i_format<format.length)){token+=format.charAt(i_format++);}
+if(token=="yyyy"||token=="yy"||token=="y"){if(token=="yyyy"){x=4;y=4;}
+if(token=="yy"){x=2;y=2;}
+if(token=="y"){x=2;y=4;}
+year=_getInt(val,i_val,x,y);if(year==null){return 0;}
+i_val+=year.length;if(year.length==2){if(year>70){year=1900+(year-0);}
+else{year=2000+(year-0);}}}
+else if(token=="MMM"||token=="NNN"){month=0;for(var i=0;i<MONTH_NAMES.length;i++){var month_name=MONTH_NAMES[i];if(val.substring(i_val,i_val+month_name.length).toLowerCase()==month_name.toLowerCase()){if(token=="MMM"||(token=="NNN"&&i>11)){month=i+1;if(month>12){month-=12;}
+i_val+=month_name.length;break;}}}
+if((month<1)||(month>12)){return 0;}}
+else if(token=="EE"||token=="E"){for(var i=0;i<DAY_NAMES.length;i++){var day_name=DAY_NAMES[i];if(val.substring(i_val,i_val+day_name.length).toLowerCase()==day_name.toLowerCase()){i_val+=day_name.length;break;}}}
+else if(token=="MM"||token=="M"){month=_getInt(val,i_val,token.length,2);if(month==null||(month<1)||(month>12)){return 0;}
+i_val+=month.length;}
+else if(token=="dd"||token=="d"){date=_getInt(val,i_val,token.length,2);if(date==null||(date<1)||(date>31)){return 0;}
+i_val+=date.length;}
+else if(token=="hh"||token=="h"){hh=_getInt(val,i_val,token.length,2);if(hh==null||(hh<1)||(hh>12)){return 0;}
+i_val+=hh.length;}
+else if(token=="HH"||token=="H"){hh=_getInt(val,i_val,token.length,2);if(hh==null||(hh<0)||(hh>23)){return 0;}
+i_val+=hh.length;}
+else if(token=="KK"||token=="K"){hh=_getInt(val,i_val,token.length,2);if(hh==null||(hh<0)||(hh>11)){return 0;}
+i_val+=hh.length;}
+else if(token=="kk"||token=="k"){hh=_getInt(val,i_val,token.length,2);if(hh==null||(hh<1)||(hh>24)){return 0;}
+i_val+=hh.length;hh--;}
+else if(token=="mm"||token=="m"){mm=_getInt(val,i_val,token.length,2);if(mm==null||(mm<0)||(mm>59)){return 0;}
+i_val+=mm.length;}
+else if(token=="ss"||token=="s"){ss=_getInt(val,i_val,token.length,2);if(ss==null||(ss<0)||(ss>59)){return 0;}
+i_val+=ss.length;}
+else if(token=="a"){if(val.substring(i_val,i_val+2).toLowerCase()=="am"){ampm="AM";}
+else if(val.substring(i_val,i_val+2).toLowerCase()=="pm"){ampm="PM";}
+else{return 0;}
+i_val+=2;}
+else{if(val.substring(i_val,i_val+token.length)!=token){return 0;}
+else{i_val+=token.length;}}}
+if(i_val!=val.length){return 0;}
+if(month==2){if(((year%4==0)&&(year%100!=0))||(year%400==0)){if(date>29){return 0;}}
+else{if(date>28){return 0;}}}
+if((month==4)||(month==6)||(month==9)||(month==11)){if(date>30){return 0;}}
+if(hh<12&&ampm=="PM"){hh=hh-0+12;}
+else if(hh>11&&ampm=="AM"){hh-=12;}
+var newdate=new Date(year,month-1,date,hh,mm,ss);return newdate.getTime();}
+function validateNameWithUnderscore(value) {var regexp  = /^[a-zA-Z][a-zA-Z\s\_]*$/;return regexp.test(value);}

@@ -1,0 +1,14 @@
+
+function convertToTimeFormat(value){var hours;var minutes;if(isDotSeparated(value)){if(isDotFraction(value)){hours=RegExp.$1.length==0?0:parseInt(RegExp.$1,10);minutes=parseFloat(RegExp.$2)*60;value=hours+":"+minutes;}else if(isDotMinute(value)){hours=RegExp.$2.length==0?0:parseInt(RegExp.$2,10);minutes=parseFloat(RegExp.$3);value=hours+":"+RegExp.$3;}}
+if(!isColonSeparated(value)&&!isUnitSpecified(value)){var amount=parseInt(value,10);value=value+(amount<10?"h":"m");}
+if(isUnitSpecified(value)){if(isUnitValid(value)){if(RegExp.$3=="h"){hours=parseInt(RegExp.$2,10);minutes=0;value=hours+":00";}
+if(RegExp.$5=="m"){minutes=parseInt(RegExp.$4,10);hours=Math.floor(minutes/60);minutes=minutes%60;value=hours+":"+(minutes<9?"0"+minutes:minutes+"");}}}
+if(!isHHMM(value)){return"";}else{hours=RegExp.$1.length==0?0:parseInt(RegExp.$1, 10);value=(hours<10?"0"+hours:hours)+RegExp.$2;}
+return value;}
+function isColonSeparated(value){return/.*:.*/.test(value);}
+function isHHMM(value){return/^([01]?[0-9]|[2][0-3])(:[0-5][0-9])?$/.test(value);}
+function isDotSeparated(value){return/\./.test(value);}
+function isDotFraction(value){return/^([01]?[0-9]|[2][0-3])?(\.(25|5|75))?$/.test(value);}
+function isDotMinute(value){return/^([01]?[0-9]|[2][0-3])(\.([0-5][0-9]))?$/.test(value);}
+function isUnitSpecified(value){return/h|m/.test(value);}
+function isUnitValid(value){return/^(([01]?[0-9]|[2][0-3])(h)|([0-9]+)(m))$/.test(value);}

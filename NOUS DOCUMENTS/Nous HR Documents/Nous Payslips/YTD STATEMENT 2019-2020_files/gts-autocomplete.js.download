@@ -1,0 +1,259 @@
+var AutoCompleteBox = Class.create();
+
+AutoCompleteBox.prototype =  {
+	initialize: function(el, items, defaultValue, size, itemSelectEventCallback) {
+		this.container = el;
+		this.name = el.id;
+		this.items = items;
+		this.hasItems = false;
+		this.highlight = null;
+		this.defaultValue = defaultValue;
+		this.className = AutoCompleteBox.isIE? "className" : "class";
+		this.itemSelectEventCallback = itemSelectEventCallback;
+
+		if (el.tagName != "DIV") {
+			return;
+		}
+		
+		el.setAttribute(this.className, "sb_container");
+
+		this.outer_span = document.createElement('SPAN');
+		this.outer_span.setAttribute(this.className, "x");
+		el.appendChild(this.outer_span);
+		this.outer_span.style.zIndex = el.style.zIndex;
+
+		this.input = document.createElement('INPUT');
+		this.input.setAttribute('type', 'text');
+		this.input.setAttribute('id', '_sinput_' + this.name);
+		this.input.setAttribute('name', this.name);
+		this.input.setAttribute('title', "type some text to search for matching results");
+		this.input.setAttribute("autocomplete", "off");
+		this.input.setAttribute('size', size != null? parseInt(size) : '40');
+		this.input.onkeydown = this.navigate.bindAsEventListener(this);
+		this.input.onkeyup = this.search.bindAsEventListener(this);
+		this.input.onfocus = this.onfocusHandler.bindAsEventListener(this);
+		this.input.onblur = this.hideDelayed.bindAsEventListener(this);
+		this.outer_span.appendChild(this.input);
+
+		this.list = document.createElement('DIV');
+		this.list.setAttribute(this.className, "search_list");
+		this.list.style.display = "none";
+		el.appendChild(this.list);
+
+		if (AutoCompleteBox.isIE) {
+		    var iframeEl = document.createElement("IFRAME");
+		    iframeEl.frameBorder = 1;
+		    iframeEl.id = "_iframe_" + this.name;
+		    iframeEl.src = "javascript:false;";
+		    iframeEl.style.display = "";
+		    iframeEl.style.top = "0px";
+		    iframeEl.style.height = "0px";
+		    iframeEl.style.position = "absolute";
+		    iframeEl.style.border = "solid thin red";
+		    
+		    iframeEl.style.filter = "progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)";
+		    el.appendChild(iframeEl);
+		    this.iFrame = iframeEl;
+		}
+		this.gRef = "_sb_" + this.name;
+		eval(this.gRef + "=this")
+	},
+	
+	navigate: function(event) {
+		if (this.list.childNodes.length == 0) {
+			return;
+		}
+	
+		var li = this.highlight;
+		if (event.keyCode == 40 )
+		//KEY DOWN
+		{
+			if (!li) {
+				// this.show();
+				li = this.ul.firstChild;
+			} else {
+				li = this.highlight.nextSibling;
+			}
+			this.setHighlight(li);
+		} 
+		//KEY UP
+		else if (event.keyCode == 38 ) {
+			if (!li) {
+				// this.show();
+				li = this.ul.lastChild;
+			} 
+			else {
+				li = this.highlight.previousSibling;
+			}
+			this.setHighlight(li);
+		} 
+		//ESC
+		else if (event.keyCode == 27) {
+			li = null;
+			this.hide();
+		} 
+		// ENTER
+		else if (event.keyCode == 13) {
+			if (!this.highlight && this.list.childNodes.length == 1) {
+				this.highlight = this.ul.firstChild;
+			}
+			if (this.highlight) {
+				this.chooseItem(this.highlight);
+			} else {
+			}
+		} else {
+			return;
+		}
+		event.cancelBubble = true;
+		event.returnValue = false;
+		if (!AutoCompleteBox.isIE) { event.preventDefault(); }
+		if (event.stopPropagation) event.stopPropagation();
+	}, 
+	
+	search: function (event) {
+		if (event.keyCode == 40 || event.keyCode == 38 || event.keyCode == 27 || event.keyCode == 13) {
+			return;
+		}
+		
+		var results = AutoCompleteBox.doSearch(AutoCompleteBox.showResults, this, this.input.value);
+	}, 
+	
+	hide: function () {
+		// this.container.style.position = 'absolute';
+		this.list.style.display = 'none';
+		if (AutoCompleteBox.isIE) {
+		    this.iFrame.style.display = "none";
+		}
+		if (this.highlight) {
+			this.highlight.removeAttribute(this.className);
+		}
+		this.highlight = null;
+	},
+
+	hideDelayed: function () {
+		window.setTimeout(this.gRef + ".hide()", 400);
+	},
+	
+	onfocusHandler: function () {
+		this.input.select();
+		this.show();
+	},
+
+	show: function () {
+		if (!this.hasItems) {
+			return;
+		}
+		
+		this.list.style.display = 'inline';
+
+		if (AutoCompleteBox.isIE) {
+			var top = this.input.offsetHeight;
+			var left = 0;
+			
+			onode = this.container;			
+			prevNodeTagName = '';
+			do {			
+				if (onode.offsetTop) {
+					top += onode.offsetTop;
+				}
+				if (onode.offsetLeft) {
+					left += onode.offsetLeft;
+				}
+				prevNodeTagName = onode.tagName;
+				onode = onode.offsetParent;
+			} while (onode && prevNodeTagName != 'TABLE');
+			
+			this.list.style.top = top;
+			this.list.style.left = left;
+			this.iFrame.style.top = this.list.style.top;
+			this.iFrame.style.left = this.list.style.left;
+			this.iFrame.style.width = this.list.offsetWidth;
+			this.iFrame.style.height = this.list.offsetHeight;
+		    this.iFrame.style.display = "";
+		}
+
+	},
+	
+	setHighlightViaHover: function (event) {
+		var li = Event.element(event).parentNode;
+		this.setHighlight(li);
+	},
+	
+	setHighlight: function (li) {
+		if (li) {
+			if (this.highlight) {
+				this.highlight.removeAttribute(this.className);
+			}
+			this.highlight = li;
+			this.highlight.setAttribute(this.className, "current");
+		}
+	},
+	
+	chooseItemByMouse: function (event) {
+		var el = Event.element(event); 
+		this.chooseItem(el.parentNode)
+	},
+
+	chooseItem: function (li) {
+		var desc = li.firstChild.innerHTML;
+		var id = li.id.substr(4);
+		this.input.value = desc;
+		this.hide();
+		if (this.itemSelectEventCallback != null) {
+			this.itemSelectEventCallback(id, desc);
+		}
+	}
+};
+
+AutoCompleteBox.isIE = ( /msie/i.test(navigator.userAgent) && !/opera/i.test(navigator.userAgent) );
+
+AutoCompleteBox.doSearch = function (callback, obj, text) {
+	var results = new Array()
+	if (text.length != 0) {
+		var regExp = eval("/\\b" + text + ".*/i");
+		for (j = 0; j < obj.items.length; j++) {
+			if (regExp.test(obj.items[j][1])) {
+				results.push(obj.items[j]);
+			}
+		}
+	} 
+	if (callback) {
+		callback(obj, results);
+	}
+	return results;
+}
+	
+AutoCompleteBox.showResults = function (obj, results) {
+	obj.ul = document.createElement("UL");
+
+	if (results) {
+		for (j = 0; j < results.length && j < 12; j++) {
+			obj.hasItems = true;
+			var li = document.createElement("LI");
+			var id = "_li_" + results[j][0];
+			li.setAttribute('id', id);
+			obj.ul.appendChild(li);
+			
+			aEl = document.createElement('A');
+			aEl.setAttribute('id', '_link_' + j);
+			aEl.onmouseover = obj.setHighlightViaHover.bindAsEventListener(obj);
+			aEl.onclick = obj.chooseItemByMouse.bindAsEventListener(obj);
+			aEl.innerHTML = results[j][1];
+			li.appendChild(aEl);
+		}
+	}
+	
+	if (obj.ul.childNodes.length > 0) {
+		while (obj.list.childNodes.length > 0) { 
+			var child = obj.list.childNodes[0];
+			obj.list.removeChild(child);
+		}
+		obj.list.appendChild(obj.ul);
+		obj.show();
+	} else {
+		obj.list.innerHTML = "";
+		obj.hide();
+	}
+}
+	
+

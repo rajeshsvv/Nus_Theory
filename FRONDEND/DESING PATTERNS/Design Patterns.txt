@@ -1,0 +1,55 @@
+ECB	-EUROPEAN CENTRAL BANK
+IRRBB-	-interest rate risk in banking book
+
+DESIGN PATTERNS: GoF Rule(Group of Four 23 Total Design Patterns)Gamma, Helm, Johnson and Vlissides.
+
+Design Patterns are reusable solutions to common programming problems.
+
+This course covers all the GoF design patterns. In fact, here's the full list of what is covered:
+
+SOLID Design Principles: 
+			Single Responsibility Principle, 
+			Open-Closed Principle, 
+			Liskov Substitution Principle, 
+			Interface Segregation Principle and 			 
+			Dependency Inversion Principle
+
+
+
+Structural. 
+Behavioral.
+
+Creational Design Patterns: These design patterns are all about class instantiation or object creation.
+
+Builder,
+		(seperate the construction of complex object from its representation so same construction process can create different representations)
+Factories (Factory Method and Abstract Factory), 
+		(Provide an interface for creating families of related or dependent objects without specifying their concrete class.)
+		(factory method pattern uses subclass to create object of derivved class of antoher class which is not known.
+		Factory method lets a class defer instantiation to subclass.)
+Prototype.
+			Singleton.(only one instance can be created for class it will be available for all other applications).
+
+Structrural Design Patterns:These design patterns are about organizing different classes and objects to form larger structures and provide new functionality.
+
+			Adapter, 
+			Bridge, 
+			Composite, 
+			Decorator, 
+			Façade, 	
+			Flyweight 
+			Proxy
+
+Behavioral Design Patterns: 
+
+			Chain of Responsibility, 
+			Command, 
+			Interpreter, 
+			Iterator, 
+			Mediator, 
+			Memento, 
+			Observer, 
+			State, 	
+			Strategy, 
+			Template Method
+			Visitor

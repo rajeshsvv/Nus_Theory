@@ -5,7 +5,8 @@ They're based on a branch of algebraic set theory known as relational algebra.
 Meanwhile, non-relational databases like MongoDB represent data in collections of JSON documents.Cassendra CoachDB.
 
 MongoDB is a document-oriented database. 
-Instead of storing your data in tables made out of individual rows, like a relational database does, it stores your data in collections made out of individual documents. 
+Instead of storing your data in tables made out of individual rows, like a relational database does, 
+it stores your data in collections made out of individual documents. 
 In MongoDB, a document is a big JSON blob with no particular format or schema
 
 The key difference is that RDBMS (relational database management system) applications store data in a tabular form, 
